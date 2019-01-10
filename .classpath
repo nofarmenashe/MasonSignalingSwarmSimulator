@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="libraries/|libraries/" kind="src" path="">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="mason/libraries"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/nofarm/Downloads/libraries/bsh-2.0b4.jar"/>
+	<classpathentry kind="lib" path="/home/nofarm/Downloads/libraries/itext-1.2.jar"/>
+	<classpathentry kind="lib" path="/home/nofarm/Downloads/libraries/jcommon-1.0.21.jar"/>
+	<classpathentry kind="lib" path="/home/nofarm/Downloads/libraries/jfreechart-1.0.17.jar"/>
+	<classpathentry kind="lib" path="/home/nofarm/Downloads/libraries/jmf.jar"/>
+	<classpathentry kind="lib" path="/home/nofarm/Downloads/libraries/portfolio.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>
