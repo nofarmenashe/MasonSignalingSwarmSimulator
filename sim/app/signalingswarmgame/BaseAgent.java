@@ -34,41 +34,33 @@ public abstract class BaseAgent implements Steppable, sim.portrayal.Oriented2D {
     public abstract void step(SimState state);
     public abstract Double2D getDirectionLoc(SignalingSwarmGame swarm);
 
-    public Double2D calculateDirectionVector(Double2D startPoint, Double2D endPoint){
-        double dx = endPoint.x - startPoint.x;
-        double dy = endPoint.y - startPoint.y;
-        double dis = Math.sqrt((dx * dx) + (dy * dy));
-        return new Double2D(dx / dis, dy / dis);
-    }
-
-
     public double calculateAngleBetweenDirections(Double2D direction1, Double2D direction2){
         double dotProduct = (direction1.x * direction2.x) + (direction1.y * direction2.y);
 
         double angle = Math.acos(dotProduct);
-        return Double.isNaN(angle) ? 0 : Math.PI - angle;
+        return Double.isNaN(angle) ? 0 : angle;
     }
 
 
-    public double calculateAngleBetweenAgentAndDirectionToOther(BaseAgent otherAgent, SignalingSwarmGame swarm){
+    public double calculateAngleBetweenAgentAndDirectionToOther(Double2D directionLoc, BaseAgent otherAgent, SignalingSwarmGame swarm){
         Double2D otherLoc = swarm.agents.getObjectLocation(otherAgent);
 
-        Double2D directionLoc = getDirectionLoc(swarm);
-        Double2D currentAgentDirection = calculateDirectionVector(loc, directionLoc);
+        Double2D currentAgentDirection = getDirection(loc, directionLoc, swarm.jump);
 
-        Double2D directionToOther = calculateDirectionVector(loc, otherLoc);
+        Double2D directionToOther = getDirection(loc, otherLoc, swarm.jump);
 
         double angle = calculateAngleBetweenDirections(currentAgentDirection, directionToOther);
+        
         return angle;
     }
 
-    public Double2D getDirectionWithAngleToOtherAgentLocation(BaseAgent otherAgent, double angle, SignalingSwarmGame swarm){
+    public Double2D getDirectionWithAngleToOtherAgentLocation(Double2D original_direction, BaseAgent otherAgent, double angle, SignalingSwarmGame swarm){
 
         Double2D other_loc = swarm.agents.getObjectLocation(otherAgent);
-        Double2D d_other = new Double2D(otherAgent.loc.x - loc.x, otherAgent.loc.y - loc.y);
-        Double2D original_direction = getOriginalDirection(swarm);
-
-        double dis = Math.sqrt(Math.pow(otherAgent.loc.x - loc.x, 2) + Math.pow(other_loc.y - loc.y, 2));
+        Double2D d_other = new Double2D(other_loc.x - loc.x, other_loc.y - loc.y);
+       
+        double dis = Math.sqrt(Math.pow(other_loc.x - loc.x, 2) + Math.pow(other_loc.y - loc.y, 2));
+        
         double agent_dis = Math.sqrt(Math.pow(original_direction.x, 2) + Math.pow(original_direction.y, 2));
 
         double y_ratio = d_other.y / original_direction.y;
@@ -86,16 +78,15 @@ public abstract class BaseAgent implements Steppable, sim.portrayal.Oriented2D {
         return new Double2D(new_x, new_y);
     }
 
-    protected Double2D getOriginalDirection(SignalingSwarmGame swarm){
-        Double2D directionLoc =  getDirectionLoc(swarm);
+	protected Double2D getDirection(Double2D fromLoc, Double2D toLoc,  double jump){
+       Double2D direction = new Double2D(toLoc.x - fromLoc.x, toLoc.y - fromLoc.y);
+       double dis = Math.sqrt(Math.pow(direction.x, 2) + Math.pow(direction.y, 2));
 
-        Double2D original_direction = new Double2D(loc.x - directionLoc.x, loc.y - directionLoc.y);
+       if (dis == 0) return new Double2D(jump, 0);
+       
+        direction = new Double2D(direction.x / dis * jump, direction.y / dis * jump);
 
-        double agent_dis = Math.sqrt(Math.pow(original_direction.x, 2) + Math.pow(original_direction.y, 2));
-
-        original_direction = new Double2D(original_direction.x / agent_dis * swarm.jump, original_direction.y / agent_dis * swarm.jump);
-
-        return original_direction;
+        return direction;
     }
 
 }
