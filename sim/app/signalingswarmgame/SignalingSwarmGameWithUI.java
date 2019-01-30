@@ -16,13 +16,30 @@ import java.awt.*;
 import sim.portrayal.simple.*;
 import sim.portrayal.SimplePortrayal2D;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 public class SignalingSwarmGameWithUI extends GUIState {
     public Display2D display;
     public JFrame displayFrame;
+    
+    public static PrintWriter writeToFile;
+    public static StringBuilder stringBuilder = new StringBuilder();
+    
+    private int currentStep;
 
     public static void main(String[] args) {
         new SignalingSwarmGameWithUI().createController();  // randomizes by currentTimeMillis
+        try {
+			writeToFile = new PrintWriter(new File("simulationResults.csv"));
+			stringBuilder = new StringBuilder();
+			appendHeaders();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
     }
 
     public Object getSimulationInspectedObject() {
@@ -48,6 +65,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
     public void start() {
         super.start();
         setupPortrayals();
+        currentStep = 0;
     }
 
     public void load(SimState state) {
@@ -58,6 +76,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
     public boolean step() {
         boolean result = super.step();
         updatePortraylsColors();
+        updateResultFile(super.state);
         return result;
     }
 
@@ -148,10 +167,48 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
     public void quit() {
         super.quit();
+        
 
         if (displayFrame != null) displayFrame.dispose();
         displayFrame = null;
         display = null;
+    }
+    
+    private static void appendHeaders() {
+    	stringBuilder.append("Step Number");
+    	stringBuilder.append(",");
+    	stringBuilder.append("leader signal");
+    	stringBuilder.append(",");
+    	stringBuilder.append("# accepted signal");
+    	stringBuilder.append(",");
+    	stringBuilder.append("utility");
+    	stringBuilder.append(",");
+    	stringBuilder.append("# agents");
+    	stringBuilder.append(",");
+    	stringBuilder.append("avg dis from leader");
+    	stringBuilder.append("\n");
+    }
+    
+    private void updateResultFile(SimState state) {
+    	SignalingSwarmGame swarm = (SignalingSwarmGame) state;
+    	int currAgents = swarm.getNumOfCurrentMovingAgent();
+    	stringBuilder.append(++currentStep);
+    	stringBuilder.append(",");
+    	stringBuilder.append(swarm.isLeaderSignaled);
+    	stringBuilder.append(",");
+    	stringBuilder.append(swarm.numAgentsAcceptSignal());
+    	stringBuilder.append(",");
+    	stringBuilder.append(swarm.leaderAgent.currentSignalingUtilities);
+    	stringBuilder.append(",");
+    	stringBuilder.append(currAgents);
+    	stringBuilder.append(",");
+    	stringBuilder.append(swarm.getAgentAvgDistanceFromLeader());
+    	stringBuilder.append("\n");
+    	
+    	if(currAgents == 0) {
+            writeToFile.write(stringBuilder.toString());
+            writeToFile.close();
+    	}
     }
 
 }

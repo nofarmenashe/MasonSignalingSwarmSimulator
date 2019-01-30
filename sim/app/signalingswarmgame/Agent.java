@@ -9,10 +9,6 @@ package sim.app.signalingswarmgame;
 import sim.engine.*;
 import sim.util.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-
 public class Agent extends BaseAgent {
 	public boolean isReachedLeader = false;
 	public boolean isAgentAcceptSignalCorrectly;

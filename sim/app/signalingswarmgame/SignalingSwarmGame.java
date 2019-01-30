@@ -21,7 +21,7 @@ public class SignalingSwarmGame extends SimState
     public int numAgents = 4;
     public double jump = 1;  // how far do we move in a timestep?
     public boolean isLeaderSignaled = false;
-
+    
     public double p_signal_accecptness_v = 0.55;
     public char model_v = 'A';
     public double initial_alpha_v = 0;
@@ -88,7 +88,40 @@ public class SignalingSwarmGame extends SimState
         agent.updateLastD(jump);
     }
 
-
+    public int numAgentsAcceptSignal() {
+    	int counter = 0;
+    	if(!isLeaderSignaled) return -1;
+    	for (int x=0;x<agents.allObjects.numObjs;x++) {
+    		 if(agents.allObjects.objs[x] != leaderAgent){
+                 Agent agent = (Agent)(agents.allObjects.objs[x]);
+                 if(agent.isAgentAcceptSignalCorrectly) counter++;
+    		 }
+    	}
+    	return counter;
+    }
+    
+    public double getAgentAvgDistanceFromLeader() {
+    	double sumOfDistances = 0;
+    	for (int x=0;x<agents.allObjects.numObjs;x++) {
+   		 if(agents.allObjects.objs[x] != leaderAgent){
+                Agent agent = (Agent)(agents.allObjects.objs[x]);
+                sumOfDistances += agent.getDistanceFromOther(leaderAgent);
+   		 }
+    	}
+    	return sumOfDistances / numAgents;
+    }
+    
+    public int getNumOfCurrentMovingAgent() {
+    	int counter = 0;
+    	for (int x=0;x<agents.allObjects.numObjs;x++) {
+      		 if(agents.allObjects.objs[x] != leaderAgent){
+                   Agent agent = (Agent)(agents.allObjects.objs[x]);
+                   if(!agent.isReachedLeader) counter++;
+      		 }
+       	}
+    	return counter;
+    }
+    
     public static void main(String[] args)
     {
         doLoop(SignalingSwarmGame.class, args);

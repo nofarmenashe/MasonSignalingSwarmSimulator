@@ -88,5 +88,11 @@ public abstract class BaseAgent implements Steppable, sim.portrayal.Oriented2D {
 
         return direction;
     }
+	
+	public double getDistanceFromOther(BaseAgent other) {
+		return Math.sqrt(Math.pow(loc.x - other.loc.x, 2) + 
+						 Math.pow(loc.y - other.loc.y, 2));
+
+	}
 
 }

@@ -10,6 +10,8 @@ import sim.engine.*;
 import sim.util.*;
 
 public class Leader extends BaseAgent {
+	public double currentSignalingUtilities;
+	public double currentUnsignalingUtilities;
 
     public Double2D getDirectionLoc(SignalingSwarmGame swarm){
         return swarm.agents.getObjectLocation(this);
@@ -32,7 +34,8 @@ public class Leader extends BaseAgent {
                 unsignalingUtilities += Math.cos(alpha);
             }
         }
-
+        currentSignalingUtilities = signalingUtilities;
+        currentUnsignalingUtilities = unsignalingUtilities;
         swarm.isLeaderSignaled = signalingUtilities > unsignalingUtilities;
 
         /* ToDo: change leaders location */
