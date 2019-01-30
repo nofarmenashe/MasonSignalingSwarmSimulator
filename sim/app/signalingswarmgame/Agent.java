@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class Agent extends BaseAgent {
-	private boolean isReachedLeader = false;
+	public boolean isReachedLeader = false;
 	public boolean isAgentAcceptSignalCorrectly;
 
 	public Agent() {

@@ -24,6 +24,8 @@ public class Leader extends BaseAgent {
         for (int x=0;x<swarm.agents.allObjects.numObjs;x++) {
             if(swarm.agents.allObjects.objs[x] != this){
                 Agent agent = (Agent)(swarm.agents.allObjects.objs[x]);
+                if(agent.isReachedLeader) 
+                	continue;
                 double alpha = agent.calculateAngleBetweenAgentAndDirectionToOther(agent.getDirectionLoc(swarm),this, swarm);
                 if(swarm.getModel() == 'A') alpha = alpha / 2.0;
                 signalingUtilities += (2 * p) - 1;
