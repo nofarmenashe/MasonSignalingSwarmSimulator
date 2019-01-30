@@ -36,7 +36,7 @@ public class Leader extends BaseAgent {
         swarm.isLeaderSignaled = signalingUtilities > unsignalingUtilities;
 
         /* ToDo: change leaders location */
-        lastLoc = loc;
+//        lastLoc = loc;
         swarm.agents.setObjectLocation(this, loc);
     }
 

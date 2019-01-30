@@ -56,6 +56,7 @@ public class SignalingSwarmGame extends SimState
 
         leaderAgent = new Leader();
         leaderAgent.loc =  new Double2D(random.nextDouble()*width, random.nextDouble() * height);
+        leaderAgent.lastLoc =  new Double2D(random.nextDouble()*width, random.nextDouble() * height);
         agents.setObjectLocation(leaderAgent,leaderAgent.loc);
         schedule.scheduleRepeating(schedule.EPOCH, 0, leaderAgent);
 
