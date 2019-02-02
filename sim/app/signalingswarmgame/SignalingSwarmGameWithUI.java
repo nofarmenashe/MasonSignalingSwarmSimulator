@@ -19,6 +19,9 @@ import sim.portrayal.SimplePortrayal2D;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class SignalingSwarmGameWithUI extends GUIState {
     public Display2D display;
@@ -32,9 +35,11 @@ public class SignalingSwarmGameWithUI extends GUIState {
     public static void main(String[] args) {
         new SignalingSwarmGameWithUI().createController();  // randomizes by currentTimeMillis
         try {
-			writeToFile = new PrintWriter(new File("simulationResults.csv"));
+        	String timestamp = LocalDateTime.now()
+        		       .format(DateTimeFormatter.ofPattern("dd_MM_yyyy HH_mm_ss"));
+			writeToFile = new PrintWriter(
+					new File("Reports/simulationResults "+timestamp+".csv"));
 			stringBuilder = new StringBuilder();
-			appendHeaders();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,6 +71,9 @@ public class SignalingSwarmGameWithUI extends GUIState {
         super.start();
         setupPortrayals();
         currentStep = 0;
+        appendSimulatorParameters(super.state);
+		appendHeaders();
+		updateResultFile(super.state);
     }
 
     public void load(SimState state) {
@@ -186,26 +194,57 @@ public class SignalingSwarmGameWithUI extends GUIState {
     	stringBuilder.append("# agents");
     	stringBuilder.append(",");
     	stringBuilder.append("avg dis from leader");
+    	stringBuilder.append(",");
+    	stringBuilder.append("avg angle from leader");
+    	stringBuilder.append("\n");
+    }
+    
+    private void appendSimulatorParameters(SimState state) {
+    	SignalingSwarmGame swarm = (SignalingSwarmGame) state;
+    	
+    	stringBuilder.append("Parameters");
+    	stringBuilder.append("\n");
+    	
+    	stringBuilder.append("Model");
+    	stringBuilder.append(",");
+    	stringBuilder.append(swarm.model_v);
+    	stringBuilder.append("\n");
+    	
+    	stringBuilder.append("P");
+    	stringBuilder.append(",");
+    	stringBuilder.append(swarm.p_signal_accecptness_v);
+    	stringBuilder.append("\n");
+    	
+    	stringBuilder.append("Initial Alpha");
+    	stringBuilder.append(",");
+    	stringBuilder.append(swarm.initial_alpha_v);
+    	stringBuilder.append("\n");
+    	
+    	stringBuilder.append("Independent");
+    	stringBuilder.append(",");
+    	stringBuilder.append(swarm.are_agents_independent_v);
     	stringBuilder.append("\n");
     }
     
     private void updateResultFile(SimState state) {
     	SignalingSwarmGame swarm = (SignalingSwarmGame) state;
-    	int currAgents = swarm.getNumOfCurrentMovingAgent();
-    	stringBuilder.append(++currentStep);
+    	int currAgents = swarm.numOfCurrentMovingAgent();
+    	stringBuilder.append(currentStep++);
     	stringBuilder.append(",");
     	stringBuilder.append(swarm.isLeaderSignaled);
     	stringBuilder.append(",");
     	stringBuilder.append(swarm.numAgentsAcceptSignal());
     	stringBuilder.append(",");
-    	stringBuilder.append(swarm.leaderAgent.currentSignalingUtilities);
+    	stringBuilder.append(swarm.leaderAgent.currentRelativeSignalingUtilities);
     	stringBuilder.append(",");
     	stringBuilder.append(currAgents);
     	stringBuilder.append(",");
-    	stringBuilder.append(swarm.getAgentAvgDistanceFromLeader());
+    	stringBuilder.append(swarm.calculateAgentAvgDistanceFromLeader());
+    	stringBuilder.append(",");
+    	stringBuilder.append(swarm.calculateAgentAvgAngleFromLeader());
     	stringBuilder.append("\n");
     	
-    	if(currAgents == 0) {
+    	if(currAgents == 0 && writeToFile != null) {
             writeToFile.write(stringBuilder.toString());
             writeToFile.close();
     	}

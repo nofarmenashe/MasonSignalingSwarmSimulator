@@ -18,14 +18,14 @@ public class SignalingSwarmGame extends SimState
 
     public double width = 100;
     public double height = 100;
-    public int numAgents = 4;
+    public int numAgents = 2;
     public double jump = 1;  // how far do we move in a timestep?
     public boolean isLeaderSignaled = false;
     
     public double p_signal_accecptness_v = 0.55;
-    public char model_v = 'A';
+    public char model_v = 'B';
     public double initial_alpha_v = 0;
-    public boolean are_agents_independent_v = true;
+    public boolean are_agents_independent_v = false;
 
     // some properties to appear in the inspector
     public double getAcceptLeadersSignalCorrectly() { return p_signal_accecptness_v;}
@@ -100,7 +100,7 @@ public class SignalingSwarmGame extends SimState
     	return counter;
     }
     
-    public double getAgentAvgDistanceFromLeader() {
+    public double calculateAgentAvgDistanceFromLeader() {
     	double sumOfDistances = 0;
     	for (int x=0;x<agents.allObjects.numObjs;x++) {
    		 if(agents.allObjects.objs[x] != leaderAgent){
@@ -111,7 +111,21 @@ public class SignalingSwarmGame extends SimState
     	return sumOfDistances / numAgents;
     }
     
-    public int getNumOfCurrentMovingAgent() {
+    public double calculateAgentAvgAngleFromLeader() {
+    	double sumOfAngles = 0;
+    	for (int x=0;x<agents.allObjects.numObjs;x++) {
+   		 if(agents.allObjects.objs[x] != leaderAgent){
+                Agent agent = (Agent)(agents.allObjects.objs[x]);
+                sumOfAngles += agent.calculateAngleBetweenAgentAndDirectionToOther(
+		                		agent.getDirectionLoc(this), 
+		                		leaderAgent, 
+		                		this);
+   		 }
+    	}
+    	return sumOfAngles / numAgents;
+    }
+    
+    public int numOfCurrentMovingAgent() {
     	int counter = 0;
     	for (int x=0;x<agents.allObjects.numObjs;x++) {
       		 if(agents.allObjects.objs[x] != leaderAgent){
