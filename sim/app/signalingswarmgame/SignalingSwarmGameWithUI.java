@@ -176,6 +176,11 @@ public class SignalingSwarmGameWithUI extends GUIState {
     public void quit() {
         super.quit();
         
+        if(writeToFile != null) {
+            writeToFile.write(stringBuilder.toString());
+            writeToFile.close();
+    	}
+        
 
         if (displayFrame != null) displayFrame.dispose();
         displayFrame = null;
@@ -244,6 +249,10 @@ public class SignalingSwarmGameWithUI extends GUIState {
     	stringBuilder.append(swarm.calculateAgentAvgAngleFromLeader());
     	stringBuilder.append("\n");
     	
+    	if(currentStep % 10 == 0) {
+    		writeToFile.write(stringBuilder.toString());
+    		stringBuilder = new StringBuilder();
+    	}
     	if(currAgents == 0 && writeToFile != null) {
             writeToFile.write(stringBuilder.toString());
             writeToFile.close();

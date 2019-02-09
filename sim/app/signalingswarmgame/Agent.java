@@ -61,6 +61,12 @@ public abstract class Agent extends BaseAgent {
 				newLoc = acceptedSignalBehavior(swarm);
 			else // signal misunderstood
 				newLoc = misunderstoodSignalBehavior(swarm);
+			
+			// add leader's influence
+			Double2D noSignalLoc = noSignalBehavior(swarm);
+			double lambda = swarm.getLeaderInfluence();
+			newLoc = newLoc.multiply(lambda).add(noSignalLoc.multiply(1-lambda));
+			
 		} else
 			newLoc = noSignalBehavior(swarm);
 

@@ -17,8 +17,8 @@ public class GatheringLeader extends Leader {
     }
 
 	@Override
-	public double getSignalingUtility(Agent agent,double p) {
-		return (2 * p) - 1;
+	public double getSignalingUtility(Agent agent, SignalingSwarmGame swarm) {
+		return (2 * swarm.getAcceptLeadersSignalCorrectly()) - 1;
 	}
 
 	@Override

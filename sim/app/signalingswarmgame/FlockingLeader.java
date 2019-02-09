@@ -17,16 +17,20 @@ public class FlockingLeader extends Leader {
     }
 
 	@Override
-	public double getSignalingUtility(Agent agent,double p, SignalingSwarmGame swarm) {
+	public double getSignalingUtility(Agent agent,SignalingSwarmGame swarm) {
+		double p = swarm.getAcceptLeadersSignalCorrectly();
 		Double2D acceptedLoc = agent.acceptedSignalBehavior(swarm);
 		Double2D misunderstoodLoc = agent.misunderstoodSignalBehavior(swarm);
 		Double2D leaderDirection = swarm.leaderAgent.getMovementDirection(swarm);
 		
-		Double2D acceptedDirection = getDirectionBetweenPoints(loc, acceptedLoc, swarm.jump);
-		Double2D misunderstoodDirection = getDirectionBetweenPoints(loc, misunderstoodLoc, swarm.jump);
+		Double2D acceptedDirection = getDirectionBetweenPoints(agent.loc, acceptedLoc, swarm.jump);
+		Double2D misunderstoodDirection = getDirectionBetweenPoints(agent.loc, misunderstoodLoc, swarm.jump);
+		
+		double dbgAcceptDis = getDistanceBetweenPoints(agent.loc, acceptedLoc);
+		double dbgMisunderstoodDis = getDistanceBetweenPoints(agent.loc, misunderstoodLoc);
 		
 		return 1 / (p * getDistanceBetweenPoints(acceptedDirection, leaderDirection) + 
-				   (1-p)* getDistanceBetweenPoints(misunderstoodDirection, leaderDirection));
+				   (1 - p) * getDistanceBetweenPoints(misunderstoodDirection, leaderDirection));
 //		return 2* p -1;
 	}
 
@@ -36,7 +40,7 @@ public class FlockingLeader extends Leader {
 		
 		Double2D leaderDirection = swarm.leaderAgent.getMovementDirection(swarm);
 		
-		Double2D noSignalDirection = getDirectionBetweenPoints(loc, noSignalLoc, swarm.jump);
+		Double2D noSignalDirection = getDirectionBetweenPoints(agent.loc, noSignalLoc, swarm.jump);
 		
 		return 1 / getDistanceBetweenPoints(noSignalDirection, leaderDirection);
 	}

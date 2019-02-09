@@ -111,9 +111,6 @@ public class FlockingAgent extends Agent {
 	
 	public Double2D acceptedSignalBehavior(SignalingSwarmGame swarm) {
 		Double2D leaderDirection = swarm.leaderAgent.getMovementDirection(swarm);
-		Double2D leaderLoc = swarm.agents.getObjectLocation(swarm.leaderAgent);
-		
-		double distanceFromLeader = Math.sqrt(Math.pow(leaderLoc.x - loc.x, 2) + Math.pow(leaderLoc.y - loc.y, 2));
 		
 		double newX = loc.x + leaderDirection.x;
 		double newY = loc.y + leaderDirection.y;
@@ -123,9 +120,6 @@ public class FlockingAgent extends Agent {
 	
 	public Double2D misunderstoodSignalBehavior(SignalingSwarmGame swarm) {
 		Double2D leaderDirection = swarm.leaderAgent.getMovementDirection(swarm);
-		Double2D leaderLoc = swarm.agents.getObjectLocation(swarm.leaderAgent);
-		
-		double distanceFromLeader = Math.sqrt(Math.pow(leaderLoc.x - loc.x, 2) + Math.pow(leaderLoc.y - loc.y, 2));
 		
 		double newX = loc.x - leaderDirection.x;
 		double newY = loc.y - leaderDirection.y;

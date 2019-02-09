@@ -26,6 +26,7 @@ public class SignalingSwarmGame extends SimState
     public char model_v = 'B';
     public double initial_alpha_v = 0;
     public boolean are_agents_independent_v = false;
+    public double leader_influence_v = 1;
 
     // some properties to appear in the inspector
     public double getAcceptLeadersSignalCorrectly() { return p_signal_accecptness_v;}
@@ -39,6 +40,9 @@ public class SignalingSwarmGame extends SimState
 
     public boolean getAreAgentsIndependent() { return are_agents_independent_v;}
     public void setAreAgentsIndependent(boolean indenpendentAgents) { are_agents_independent_v = indenpendentAgents;}
+
+    public double getLeaderInfluence() { return leader_influence_v;}
+    public void setLeaderInfluence(double leaderInfluence) { leader_influence_v = leaderInfluence;}
 
     /** Creates a SignalingSwarmGame simulation with the given random number seed. */
     public SignalingSwarmGame(long seed)
