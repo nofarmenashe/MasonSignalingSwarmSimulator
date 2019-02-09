@@ -1,0 +1,9 @@
+Parameters
+Model,B
+P,0.55
+Initial Alpha,0.0
+Independent,false
+Step Number,leader signal,# accepted signal,utility,# agents,avg dis from leader,avg angle from leader
+0,false,-1,0.0,2,41.00747865812146,1.465520419411732
+1,true,2,1.343119194805383,2,41.098631959740516,1.6953128089558174
+2,true,2,0.39762435676343777,0,41.098631959740516,1.6953128089558174

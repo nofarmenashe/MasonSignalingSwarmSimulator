@@ -32,7 +32,8 @@ public abstract class BaseAgent implements Steppable, sim.portrayal.Oriented2D {
     }
 
     public abstract void step(SimState state);
-    public abstract Double2D getDirectionLoc(SignalingSwarmGame swarm);
+    
+    public abstract Double2D getNextLocInOriginalBehaviorDirection(SignalingSwarmGame swarm);
 
     public double calculateAngleBetweenDirections(Double2D direction1, Double2D direction2){
         double dotProduct = (direction1.x * direction2.x) + (direction1.y * direction2.y);
@@ -41,13 +42,12 @@ public abstract class BaseAgent implements Steppable, sim.portrayal.Oriented2D {
         return Double.isNaN(angle) ? 0 : angle;
     }
 
-
     public double calculateAngleBetweenAgentAndDirectionToOther(Double2D directionLoc, BaseAgent otherAgent, SignalingSwarmGame swarm){
         Double2D otherLoc = swarm.agents.getObjectLocation(otherAgent);
 
-        Double2D currentAgentDirection = getDirection(loc, directionLoc, swarm.jump);
+        Double2D currentAgentDirection = getDirectionBetweenPoints(loc, directionLoc, swarm.jump);
 
-        Double2D directionToOther = getDirection(loc, otherLoc, swarm.jump);
+        Double2D directionToOther = getDirectionBetweenPoints(loc, otherLoc, swarm.jump);
 
         double angle = calculateAngleBetweenDirections(currentAgentDirection, directionToOther);
         
@@ -78,7 +78,11 @@ public abstract class BaseAgent implements Steppable, sim.portrayal.Oriented2D {
         return new Double2D(new_x, new_y);
     }
 
-	protected Double2D getDirection(Double2D fromLoc, Double2D toLoc,  double jump){
+    public Double2D getMovementDirection(SignalingSwarmGame swarm) {
+    	return getDirectionBetweenPoints(lastLoc, loc, swarm.jump);
+    }
+	
+    protected Double2D getDirectionBetweenPoints(Double2D fromLoc, Double2D toLoc,  double jump){
        Double2D direction = new Double2D(toLoc.x - fromLoc.x, toLoc.y - fromLoc.y);
        double dis = Math.sqrt(Math.pow(direction.x, 2) + Math.pow(direction.y, 2));
 
@@ -89,6 +93,12 @@ public abstract class BaseAgent implements Steppable, sim.portrayal.Oriented2D {
         return direction;
     }
 	
+    public double getDistanceBetweenPoints(Double2D firstPoint, Double2D secondPoint) {
+		return Math.sqrt(Math.pow(secondPoint.x - firstPoint.x, 2) + 
+						 Math.pow(secondPoint.y - firstPoint.y, 2));
+
+	}
+    
 	public double getDistanceFromOther(BaseAgent other) {
 		return Math.sqrt(Math.pow(loc.x - other.loc.x, 2) + 
 						 Math.pow(loc.y - other.loc.y, 2));

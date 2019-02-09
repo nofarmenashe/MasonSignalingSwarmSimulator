@@ -53,8 +53,9 @@ public class SignalingSwarmGame extends SimState
         // set up the agents field
         agents = new Continuous2D(width,width,height);
 
-
-        leaderAgent = new Leader();
+        leaderAgent = new FlockingLeader();
+        
+//        leaderAgent = new GatheringLeader();
         leaderAgent.loc =  new Double2D(random.nextDouble()*width, random.nextDouble() * height);
         leaderAgent.lastLoc =  new Double2D(random.nextDouble()*width, random.nextDouble() * height);
         agents.setObjectLocation(leaderAgent,leaderAgent.loc);
@@ -64,7 +65,8 @@ public class SignalingSwarmGame extends SimState
         // make a bunch of agents and schedule 'em
         for(int x=0;x<numAgents;x++)
         {
-            Agent agent = new Agent();
+            Agent agent = new FlockingAgent();
+//            Agent agent = new GatheringAgent();
             locateAgent(agent);
             agents.setObjectLocation(agent, agent.loc);
             schedule.scheduleRepeating(schedule.EPOCH, 1, agent);
@@ -117,7 +119,7 @@ public class SignalingSwarmGame extends SimState
    		 if(agents.allObjects.objs[x] != leaderAgent){
                 Agent agent = (Agent)(agents.allObjects.objs[x]);
                 sumOfAngles += agent.calculateAngleBetweenAgentAndDirectionToOther(
-		                		agent.getDirectionLoc(this), 
+		                		agent.getNextLocInOriginalBehaviorDirection(this), 
 		                		leaderAgent, 
 		                		this);
    		 }
@@ -130,7 +132,7 @@ public class SignalingSwarmGame extends SimState
     	for (int x=0;x<agents.allObjects.numObjs;x++) {
       		 if(agents.allObjects.objs[x] != leaderAgent){
                    Agent agent = (Agent)(agents.allObjects.objs[x]);
-                   if(!agent.isReachedLeader) counter++;
+                   if(!agent.doesStopCriteriaMet) counter++;
       		 }
        	}
     	return counter;
