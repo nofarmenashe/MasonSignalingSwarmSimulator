@@ -1,0 +1,9 @@
+Parameters
+Model,B
+P,0.75
+Initial Alpha,0.0
+Independent,false
+Leader's Influence,1.0
+Step Number,leader signal,# accepted signal,utility,avg dis from leader,avg angle from leader,avg directions
+0,false,-1,0.0,40.06196777917811,1.8083793933992944,1.212354200939484
+1,true,2,2.305737543773509,40.061967779178104,0.92546955865447,1.2008898127460164E-15

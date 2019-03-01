@@ -70,7 +70,6 @@ public class SignalingSwarmGame extends SimState
         for(int x=0;x<numAgents;x++)
         {
             Agent agent = new FlockingAgent();
-//            Agent agent = new GatheringAgent();
             locateAgent(agent);
             agents.setObjectLocation(agent, agent.loc);
             schedule.scheduleRepeating(schedule.EPOCH, 1, agent);
@@ -123,7 +122,7 @@ public class SignalingSwarmGame extends SimState
    		 if(agents.allObjects.objs[x] != leaderAgent){
                 Agent agent = (Agent)(agents.allObjects.objs[x]);
                 sumOfAngles += agent.calculateAngleBetweenAgentAndDirectionToOther(
-		                		agent.getNextLocInOriginalBehaviorDirection(this), 
+		                		agent.loc.add(agent.lastD), 
 		                		leaderAgent, 
 		                		this);
    		 }
@@ -131,15 +130,14 @@ public class SignalingSwarmGame extends SimState
     	return sumOfAngles / numAgents;
     }
     
-    public int numOfCurrentMovingAgent() {
-    	int counter = 0;
+    public boolean swarmReachedGoal() {
     	for (int x=0;x<agents.allObjects.numObjs;x++) {
       		 if(agents.allObjects.objs[x] != leaderAgent){
                    Agent agent = (Agent)(agents.allObjects.objs[x]);
-                   if(!agent.doesStopCriteriaMet) counter++;
+                   if(!agent.checkStopCriteria(this)) return false;
       		 }
        	}
-    	return counter;
+    	return true;
     }
     
     public static void main(String[] args)
