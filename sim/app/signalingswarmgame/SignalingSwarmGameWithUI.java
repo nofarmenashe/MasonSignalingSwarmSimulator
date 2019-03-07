@@ -196,15 +196,15 @@ public class SignalingSwarmGameWithUI extends GUIState {
     	stringBuilder.append(",");
     	stringBuilder.append("leader signal");
     	stringBuilder.append(",");
-    	stringBuilder.append("# accepted signal");
+    	stringBuilder.append("accept signal");
     	stringBuilder.append(",");
-    	stringBuilder.append("utility");
+    	stringBuilder.append("loc x");
     	stringBuilder.append(",");
-    	stringBuilder.append("avg dis from leader");
+    	stringBuilder.append("loc y");
     	stringBuilder.append(",");
-    	stringBuilder.append("avg angle from leader");
+    	stringBuilder.append("direction x");
     	stringBuilder.append(",");
-    	stringBuilder.append("avg directions");
+    	stringBuilder.append("direction y");
     	stringBuilder.append("\n");
     }
     
@@ -247,18 +247,35 @@ public class SignalingSwarmGameWithUI extends GUIState {
     	stringBuilder.append(",");
     	stringBuilder.append(swarm.isLeaderSignaled);
     	stringBuilder.append(",");
-    	stringBuilder.append(swarm.numAgentsAcceptSignal());
+    	stringBuilder.append("");
     	stringBuilder.append(",");
-    	stringBuilder.append(swarm.leaderAgent.currentRelativeSignalingUtilities);
+    	stringBuilder.append(swarm.leaderAgent.loc.x);
     	stringBuilder.append(",");
-    	stringBuilder.append(swarm.calculateAgentAvgDistanceFromLeader());
+    	stringBuilder.append(swarm.leaderAgent.loc.y);
     	stringBuilder.append(",");
-    	stringBuilder.append(swarm.calculateAgentAvgAngleFromLeader());
+    	stringBuilder.append(swarm.leaderAgent.getMovementDirection().x);
     	stringBuilder.append(",");
-    	stringBuilder.append(((FlockingAgent)swarm.agents.allObjects.objs[1])
-			    			.getNeighboursAverageDirection(swarm)
-			    			.distance(swarm.leaderAgent.getMovementDirection(swarm)));
+    	stringBuilder.append(swarm.leaderAgent.getMovementDirection().y);
     	stringBuilder.append("\n");
+    	
+    	for(int i = 0; i < swarm.agents.allObjects.numObjs; i++) {
+    		if(swarm.agents.allObjects.get(i) == swarm.leaderAgent) continue;
+    		Agent a = (Agent)swarm.agents.allObjects.get(i);
+    		stringBuilder.append("");
+        	stringBuilder.append(",");
+        	stringBuilder.append("");
+        	stringBuilder.append(",");
+        	stringBuilder.append(a.isAgentAcceptSignalCorrectly);
+        	stringBuilder.append(",");
+        	stringBuilder.append(a.loc.x);
+        	stringBuilder.append(",");
+        	stringBuilder.append(a.loc.y);
+        	stringBuilder.append(",");
+        	stringBuilder.append(a.getMovementDirection().x);
+        	stringBuilder.append(",");
+        	stringBuilder.append(a.getMovementDirection().y);
+        	stringBuilder.append("\n");
+    	}
     	
     	if(currentStep % 10 == 0) {
     		writeToFile.write(stringBuilder.toString());

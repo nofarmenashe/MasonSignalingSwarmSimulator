@@ -19,6 +19,7 @@ public class SignalingSwarmGame extends SimState
     public double width = 100;
     public double height = 100;
     public int numAgents = 2;
+    public int numLeaders = 1;
     public double jump = 1;  // how far do we move in a timestep?
     public boolean isLeaderSignaled = false;
     
@@ -92,44 +93,44 @@ public class SignalingSwarmGame extends SimState
         }
         agent.updateLastD(jump);
     }
-
-    public int numAgentsAcceptSignal() {
-    	int counter = 0;
-    	if(!isLeaderSignaled) return -1;
-    	for (int x=0;x<agents.allObjects.numObjs;x++) {
-    		 if(agents.allObjects.objs[x] != leaderAgent){
-                 Agent agent = (Agent)(agents.allObjects.objs[x]);
-                 if(agent.isAgentAcceptSignalCorrectly) counter++;
-    		 }
-    	}
-    	return counter;
-    }
-    
-    public double calculateAgentAvgDistanceFromLeader() {
-    	double sumOfDistances = 0;
-    	for (int x=0;x<agents.allObjects.numObjs;x++) {
-   		 if(agents.allObjects.objs[x] != leaderAgent){
-                Agent agent = (Agent)(agents.allObjects.objs[x]);
-                sumOfDistances += agent.getDistanceFromOther(leaderAgent);
-   		 }
-    	}
-    	return sumOfDistances / numAgents;
-    }
-    
-    public double calculateAgentAvgAngleFromLeader() {
-    	double sumOfAngles = 0;
-    	for (int x=0;x<agents.allObjects.numObjs;x++) {
-   		 if(agents.allObjects.objs[x] != leaderAgent){
-                Agent agent = (Agent)(agents.allObjects.objs[x]);
-                sumOfAngles += agent.calculateAngleBetweenAgentAndDirectionToOther(
-		                		agent.loc.add(agent.lastD), 
-		                		leaderAgent, 
-		                		this);
-   		 }
-    	}
-    	return sumOfAngles / numAgents;
-    }
-    
+//
+//    public int numAgentsAcceptSignal() {
+//    	int counter = 0;
+//    	if(!isLeaderSignaled) return -1;
+//    	for (int x=0;x<agents.allObjects.numObjs;x++) {
+//    		 if(agents.allObjects.objs[x] != leaderAgent){
+//                 Agent agent = (Agent)(agents.allObjects.objs[x]);
+//                 if(agent.isAgentAcceptSignalCorrectly) counter++;
+//    		 }
+//    	}
+//    	return counter;
+//    }
+//    
+//    public double calculateAgentAvgDistanceFromLeader() {
+//    	double sumOfDistances = 0;
+//    	for (int x=0;x<agents.allObjects.numObjs;x++) {
+//   		 if(agents.allObjects.objs[x] != leaderAgent){
+//                Agent agent = (Agent)(agents.allObjects.objs[x]);
+//                sumOfDistances += agent.getDistanceFromOther(leaderAgent);
+//   		 }
+//    	}
+//    	return sumOfDistances / numAgents;
+//    }
+//    
+//    public double calculateAgentAvgAngleFromLeader() {
+//    	double sumOfAngles = 0;
+//    	for (int x=0;x<agents.allObjects.numObjs;x++) {
+//   		 if(agents.allObjects.objs[x] != leaderAgent){
+//                Agent agent = (Agent)(agents.allObjects.objs[x]);
+//                sumOfAngles += agent.calculateAngleBetweenAgentAndDirectionToOther(
+//		                		agent.loc.add(agent.lastD), 
+//		                		leaderAgent, 
+//		                		this);
+//   		 }
+//    	}
+//    	return sumOfAngles / numAgents;
+//    }
+//    
     public boolean swarmReachedGoal() {
     	for (int x=0;x<agents.allObjects.numObjs;x++) {
       		 if(agents.allObjects.objs[x] != leaderAgent){

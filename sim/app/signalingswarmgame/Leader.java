@@ -37,9 +37,9 @@ public abstract class Leader extends BaseAgent {
         currentRelativeSignalingUtilities = signalingUtilities - unsignalingUtilities;
         swarm.isLeaderSignaled = signalingUtilities > unsignalingUtilities;
 
-        Double2D direction = getMovementDirection(swarm); /*does not change*/
+        Double2D direction = getMovementDirection(); /*does not change*/
         lastLoc = loc;
-        loc = lastLoc.add(direction);
+        loc = lastLoc.add(direction.multiply(swarm.jump));
         swarm.agents.setObjectLocation(this, loc);
     }
 }

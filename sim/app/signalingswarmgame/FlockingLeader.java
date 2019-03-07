@@ -13,36 +13,42 @@ public class FlockingLeader extends Leader {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private double EPSILON = 0.000000001;
 	public double currentRelativeSignalingUtilities;
 
-    public Double2D getNextLocInOriginalBehaviorDirection(SignalingSwarmGame swarm){
-        return swarm.agents.getObjectLocation(this);
-    }
+//    public Double2D getNextLocInOriginalBehaviorDirection(SignalingSwarmGame swarm){
+//        return swarm.agents.getObjectLocation(this);
+//    }
 
 	@Override
 	public double getSignalingUtility(Agent agent,SignalingSwarmGame swarm) {
 		double p = swarm.getAcceptLeadersSignalCorrectly();
-		Double2D acceptedLoc = agent.acceptedSignalBehavior(swarm);
-		Double2D misunderstoodLoc = agent.misunderstoodSignalBehavior(swarm);
+		Double2D acceptedDir = agent.acceptedSignalDirection(swarm);
+		Double2D misunderstoodDir = agent.misunderstoodSignalDirection(swarm);
 		
-		double acceptedAlpha = agent.calculateAngleBetweenAgentAndDirectionToOther(acceptedLoc, swarm.leaderAgent, swarm);
-		double misunderstoodAlpha = agent.calculateAngleBetweenAgentAndDirectionToOther(misunderstoodLoc, swarm.leaderAgent, swarm);
+		double acceptedOrientationDelta = agent.getDistanceBetweenPoints(acceptedDir, swarm.leaderAgent.getMovementDirection());
+		double acceptedAttractionDelta = agent.getDistanceBetweenPoints(loc.add(acceptedDir), swarm.leaderAgent.loc);
 		
-		return (p * 1 / (acceptedAlpha == 0? EPSILON: acceptedAlpha)) + 
-			   ((1 - p) * 1/(misunderstoodAlpha == 0?EPSILON: misunderstoodAlpha));
+		double acceptionDirectionDelta = 0.5 * (acceptedOrientationDelta + acceptedAttractionDelta);
+		
+		double misunderstoodOrientationDelta = agent.getDistanceBetweenPoints(misunderstoodDir, swarm.leaderAgent.getMovementDirection());
+		double misunderstoodAttractionDelta = agent.getDistanceBetweenPoints(loc.add(misunderstoodDir), swarm.leaderAgent.loc);
+		
+		double misunderstoodDirectionDelta = 0.5 * (misunderstoodOrientationDelta + misunderstoodAttractionDelta);
+		
+		return (p * 1 / (acceptionDirectionDelta == 0? EPSILON: acceptionDirectionDelta)) + 
+			   ((1 - p) * 1/(misunderstoodDirectionDelta == 0? EPSILON: misunderstoodDirectionDelta));
 	}
 
 	@Override
 	public double getUnsignalingUtility(Agent agent, SignalingSwarmGame swarm) {
-		Double2D noSignalLoc = agent.noSignalBehavior(swarm);
+		Double2D noSignalDir = agent.noSignalDirection(swarm);
 		
-		Double2D leaderDirection = swarm.leaderAgent.getMovementDirection(swarm);
+		double noSignalOrientationDelta = agent.getDistanceBetweenPoints(noSignalDir, swarm.leaderAgent.getMovementDirection());
+		double noSignalAttractionDelta = agent.getDistanceBetweenPoints(loc.add(noSignalDir), swarm.leaderAgent.loc);
 		
-		Double2D noSignalDirection = getDirectionBetweenPoints(agent.loc, noSignalLoc, swarm.jump);
+		double noSignalDirectionDelta = 0.5 * (noSignalOrientationDelta + noSignalAttractionDelta);
 		
-		double noSignalAlpha = calculateAngleBetweenDirections(noSignalDirection, leaderDirection);
 		
-		return 1 / (noSignalAlpha == 0? EPSILON : noSignalAlpha);
+		return 1 / (noSignalDirectionDelta == 0? EPSILON : noSignalDirectionDelta);
 	}    
 }
