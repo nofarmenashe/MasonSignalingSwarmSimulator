@@ -9,46 +9,39 @@ package sim.app.signalingswarmgame;
 import sim.util.*;
 
 public class FlockingLeader extends Leader {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	public double currentRelativeSignalingUtilities;
 
-//    public Double2D getNextLocInOriginalBehaviorDirection(SignalingSwarmGame swarm){
-//        return swarm.agents.getObjectLocation(this);
-//    }
-
 	@Override
-	public double getSignalingUtility(Agent agent,SignalingSwarmGame swarm) {
+	public double getSignalingUtility(Agent agent, SignalingSwarmGame swarm) {
 		double p = swarm.getAcceptLeadersSignalCorrectly();
 		Double2D acceptedDir = agent.acceptedSignalDirection(swarm);
 		Double2D misunderstoodDir = agent.misunderstoodSignalDirection(swarm);
 		
-		double acceptedOrientationDelta = agent.getDistanceBetweenPoints(acceptedDir, swarm.leaderAgent.getMovementDirection());
-		double acceptedAttractionDelta = agent.getDistanceBetweenPoints(loc.add(acceptedDir), swarm.leaderAgent.loc);
+		double acceptedOrientationAngle = agent.calculateAngleBetweenDirections(acceptedDir, swarm.leaderAgent.getMovementDirection());
+		double acceptedAttractionAngle = agent.calculateAngleBetweenDirections(acceptedDir, agent.getDirectionToNeighbor(this));
 		
-		double acceptionDirectionDelta = 0.5 * (acceptedOrientationDelta + acceptedAttractionDelta);
+		double acceptionDirectionUtility = 0.5 * (Math.cos(acceptedOrientationAngle) + Math.cos(acceptedAttractionAngle));
 		
-		double misunderstoodOrientationDelta = agent.getDistanceBetweenPoints(misunderstoodDir, swarm.leaderAgent.getMovementDirection());
-		double misunderstoodAttractionDelta = agent.getDistanceBetweenPoints(loc.add(misunderstoodDir), swarm.leaderAgent.loc);
+		double misunderstoodOrientationAngle = agent.calculateAngleBetweenDirections(misunderstoodDir, swarm.leaderAgent.getMovementDirection());
+		double misunderstoodAttractionAngle = agent.calculateAngleBetweenDirections(misunderstoodDir, agent.getDirectionToNeighbor(this));
 		
-		double misunderstoodDirectionDelta = 0.5 * (misunderstoodOrientationDelta + misunderstoodAttractionDelta);
+		double misunderstoodDirectionUtility = 0.5 * (Math.cos(misunderstoodOrientationAngle) + Math.cos(misunderstoodAttractionAngle));
 		
-		return (p * 1 / (acceptionDirectionDelta == 0? EPSILON: acceptionDirectionDelta)) + 
-			   ((1 - p) * 1/(misunderstoodDirectionDelta == 0? EPSILON: misunderstoodDirectionDelta));
+		return (p * acceptionDirectionUtility) + 
+			   ((1 - p) * misunderstoodDirectionUtility);
 	}
 
 	@Override
 	public double getUnsignalingUtility(Agent agent, SignalingSwarmGame swarm) {
 		Double2D noSignalDir = agent.noSignalDirection(swarm);
 		
-		double noSignalOrientationDelta = agent.getDistanceBetweenPoints(noSignalDir, swarm.leaderAgent.getMovementDirection());
-		double noSignalAttractionDelta = agent.getDistanceBetweenPoints(loc.add(noSignalDir), swarm.leaderAgent.loc);
+		double noSignalOrientationAngle = agent.calculateAngleBetweenDirections(noSignalDir, swarm.leaderAgent.getMovementDirection());
+		double noSignalAttractionAngle = agent.calculateAngleBetweenDirections(noSignalDir, agent.getDirectionToNeighbor(this));
 		
-		double noSignalDirectionDelta = 0.5 * (noSignalOrientationDelta + noSignalAttractionDelta);
+		double noSignalDirectionUtility = 0.5 * (Math.cos(noSignalOrientationAngle) + Math.cos(noSignalAttractionAngle));
 		
-		
-		return 1 / (noSignalDirectionDelta == 0? EPSILON : noSignalDirectionDelta);
+		return noSignalDirectionUtility;
 	}    
 }

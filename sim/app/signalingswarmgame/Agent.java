@@ -24,8 +24,6 @@ public abstract class Agent extends BaseAgent {
 		}
 		lastLoc = new Double2D(loc.x - lastD.x, loc.y - lastD.y);
 	}
-
-//	public abstract Double2D getNextLocInOriginalBehaviorDirection(SignalingSwarmGame swarm);
 	
 	protected abstract boolean checkStopCriteria(SignalingSwarmGame swarm);
 	
@@ -41,6 +39,7 @@ public abstract class Agent extends BaseAgent {
 		double p = swarm.getAcceptLeadersSignalCorrectly();
 		
 		Double2D desiredNoSignalDirection = noSignalDirection(swarm);
+		isAgentAcceptSignalCorrectly = false;
 
 		if (swarm.isLeaderSignaled) {
 			isAgentAcceptSignalCorrectly = Math.random() < p;

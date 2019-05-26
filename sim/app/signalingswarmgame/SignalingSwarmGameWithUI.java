@@ -29,6 +29,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
     
     public static PrintWriter writeToFile;
     public static StringBuilder stringBuilder = new StringBuilder();
+    private String gameStatistics = "";
     
     private int currentStep;
 
@@ -79,6 +80,14 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
     public void finish() {
     	super.finish();
+    	try {
+			new PrintWriter(
+					new File("Reports/simulationResults.csv")).write(new StringBuilder().append(this.gameStatistics + this.currentStep).toString());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
     	
     	if(writeToFile != null) {
             writeToFile.write(stringBuilder.toString());
@@ -205,11 +214,25 @@ public class SignalingSwarmGameWithUI extends GUIState {
     	stringBuilder.append("direction x");
     	stringBuilder.append(",");
     	stringBuilder.append("direction y");
+    	stringBuilder.append(",");
+    	stringBuilder.append("oreintation angle - signal");
+    	stringBuilder.append(",");
+    	stringBuilder.append("attraction angle -signal");
+    	stringBuilder.append(",");
+    	stringBuilder.append("oreintation angle - no signal");
+    	stringBuilder.append(",");
+    	stringBuilder.append("attraction angle -no signal");
+    	stringBuilder.append(",");
+    	stringBuilder.append("signal utility");
+    	stringBuilder.append(",");
+    	stringBuilder.append("unsignal utility");
     	stringBuilder.append("\n");
     }
     
     private void appendSimulatorParameters(SimState state) {
     	SignalingSwarmGame swarm = (SignalingSwarmGame) state;
+    	
+    	this.gameStatistics = swarm.numAgents + "," + swarm.p_signal_accecptness_v + ",";
     	
     	stringBuilder.append("Parameters");
     	stringBuilder.append("\n");
@@ -274,10 +297,22 @@ public class SignalingSwarmGameWithUI extends GUIState {
         	stringBuilder.append(a.getMovementDirection().x);
         	stringBuilder.append(",");
         	stringBuilder.append(a.getMovementDirection().y);
+        	stringBuilder.append(",");
+        	stringBuilder.append(a.calculateAngleBetweenDirections(a.getDesiredDirection(a.getNeighbours(swarm, true), true, true), swarm.leaderAgent.getMovementDirection()));
+        	stringBuilder.append(",");
+        	stringBuilder.append(a.calculateAngleBetweenDirections(a.getDesiredDirection(a.getNeighbours(swarm, true), true, true), a.getDirectionToNeighbor(swarm.leaderAgent)));
+        	stringBuilder.append(",");
+        	stringBuilder.append(a.calculateAngleBetweenDirections(a.getDesiredDirection(a.getNeighbours(swarm, false), false, false), swarm.leaderAgent.getMovementDirection()));
+        	stringBuilder.append(",");
+        	stringBuilder.append(a.calculateAngleBetweenDirections(a.getDesiredDirection(a.getNeighbours(swarm, false), false, false), a.getDirectionToNeighbor(swarm.leaderAgent)));
+        	stringBuilder.append(",");
+        	stringBuilder.append(swarm.leaderAgent.getSignalingUtility(a, swarm));
+        	stringBuilder.append(",");
+        	stringBuilder.append(swarm.leaderAgent.getUnsignalingUtility(a, swarm));
         	stringBuilder.append("\n");
     	}
     	
-    	if(currentStep % 10 == 0) {
+    	if(currentStep % 5 == 0) {
     		writeToFile.write(stringBuilder.toString());
     		writeToFile.flush();
     		stringBuilder = new StringBuilder();
