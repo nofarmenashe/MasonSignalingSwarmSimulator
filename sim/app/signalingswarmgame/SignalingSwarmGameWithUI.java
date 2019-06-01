@@ -18,6 +18,7 @@ import sim.portrayal.SimplePortrayal2D;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -62,13 +63,15 @@ public class SignalingSwarmGameWithUI extends GUIState {
         setupPortrayals();
         
         currentStep = 0;
+		String timestamp = LocalDateTime.now()
+				.format(DateTimeFormatter.ofPattern("dd_MM_yyyy HH_mm_ss"));
+		File f = new File("Reports/simulationResults "+timestamp+".csv");
         try {
-        	String timestamp = LocalDateTime.now()
-        		       .format(DateTimeFormatter.ofPattern("dd_MM_yyyy HH_mm_ss"));
-			writeToFile = new PrintWriter(
-					new File("Reports/simulationResults "+timestamp+".csv"));
+        	if(!f.getParentFile().exists())
+        		f.getParentFile().mkdirs();
+			writeToFile = new PrintWriter(f);
 			stringBuilder = new StringBuilder();
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
