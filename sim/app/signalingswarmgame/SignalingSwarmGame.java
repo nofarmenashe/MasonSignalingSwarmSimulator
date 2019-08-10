@@ -15,19 +15,22 @@ public class SignalingSwarmGame extends SimState
 
     public Continuous2D agents;
     public Leader leaderAgent;
-
+    public  double prevStepRate = 0.5;
     public double width = 100;
     public double height = 100;
-    public int numAgents = 1;
+    public int numAgents = 2;
     public int numLeaders = 1;
     public double jump = 1;  // how far do we move in a timestep?
     public boolean isLeaderSignaled = false;
+    public SwarmType swarmType = SwarmType.Flocking;
     
-    public double p_signal_accecptness_v = 0.1;
+    public double p_signal_accecptness_v = 0.6;
     public char model_v = 'B';
     public double initial_alpha_v = 0;
     public boolean are_agents_independent_v = false;
     public double leader_influence_v = 1;
+    public int stepsLookahead = 2;
+
 
     // some properties to appear in the inspector
     public double getAcceptLeadersSignalCorrectly() { return p_signal_accecptness_v;}
@@ -47,10 +50,16 @@ public class SignalingSwarmGame extends SimState
 
     /** Creates a SignalingSwarmGame simulation with the given random number seed. */
     public SignalingSwarmGame(long seed)
+{
+    super(seed);
+}
+
+    public SignalingSwarmGame(long seed, int n, double p)
     {
         super(seed);
+        setAcceptLeadersSignalCorrectly(p);
+        numAgents = n;
     }
-
     public void start()
     {
         super.start();
@@ -58,47 +67,55 @@ public class SignalingSwarmGame extends SimState
         // set up the agents field
         agents = new Continuous2D(width,width,height);
 
-        leaderAgent = new FlockingLeader();
+        if(swarmType == SwarmType.Flocking)
+            AgentMovementCalculator.setInstance(new FlockingAgentMovementCalculator());
+
+        leaderAgent = new Leader();
         
 //        leaderAgent = new GatheringLeader();
-        leaderAgent.loc =  new Double2D(random.nextDouble()*width, random.nextDouble() * height);
-        leaderAgent.lastLoc =  new Double2D(random.nextDouble()*width, random.nextDouble() * height);
-        agents.setObjectLocation(leaderAgent,leaderAgent.loc);
+        Double2D loc =  new Double2D(random.nextDouble()*width, random.nextDouble() * height);
+        Double2D lastLoc =  new Double2D(random.nextDouble()*width, random.nextDouble() * height);
+        leaderAgent.position = new AgentPosition(loc, lastLoc);
+        leaderAgent.currentPhysicalPosition = new AgentPosition(loc, lastLoc);
+        agents.setObjectLocation(leaderAgent,leaderAgent.position.loc);
         schedule.scheduleRepeating(schedule.EPOCH, 0, leaderAgent);
 
 
         // make a bunch of agents and schedule 'em
         for(int x=0;x<numAgents;x++)
         {
-            Agent agent = new FlockingAgent();
+            Agent agent = new Agent();
             locateAgent(agent);
-            agents.setObjectLocation(agent, agent.loc);
+            agents.setObjectLocation(agent, agent.position.loc);
             schedule.scheduleRepeating(schedule.EPOCH, 1, agent);
         }
 
     }
 
     private void locateAgent(Agent agent){
-        agent.loc = new Double2D(random.nextDouble()*width, random.nextDouble() * height);
+        Double2D loc = new Double2D(random.nextDouble()*width, random.nextDouble() * height);
         double alpha = getInitialAlpha();
+        Double2D lastLoc;
         if(alpha != 0.0){ // alpha is constant
-            Double2D leadLoc = leaderAgent.loc;
-            Double2D d_loc_leader = new Double2D(leadLoc.x - agent.loc.x, leadLoc.y - agent.loc.y);
+            Double2D leadLoc = leaderAgent.position.loc;
+            Double2D d_loc_leader = new Double2D(leadLoc.x - loc.x, leadLoc.y - loc.y);
             double theta = Math.PI + alpha;
 
-            agent.lastLoc = new Double2D(agent.loc.x + (d_loc_leader.x * Math.cos(theta)) - (d_loc_leader.y * Math.sin(theta)),
-                                         agent.loc.y + (d_loc_leader.y * Math.cos(theta)) + (d_loc_leader.x * Math.sin(theta)));
-        } else{
-            agent.lastLoc = new Double2D(random.nextDouble()*width, random.nextDouble() * height);
-        }
-        agent.updateLastD(jump);
+            lastLoc = new Double2D(loc.x + (d_loc_leader.x * Math.cos(theta)) - (d_loc_leader.y * Math.sin(theta)),
+                                         loc.y + (d_loc_leader.y * Math.cos(theta)) + (d_loc_leader.x * Math.sin(theta)));
+        } else
+            lastLoc = new Double2D(random.nextDouble()*width, random.nextDouble() * height);
+
+        agent.position = new AgentPosition(loc, lastLoc);
+        agent.currentPhysicalPosition = new AgentPosition(loc, lastLoc);
+//        agent.updateLastD(jump);
     }
 
     public boolean swarmReachedGoal() {
     	for (int x=0;x<agents.allObjects.numObjs;x++) {
       		 if(agents.allObjects.objs[x] != leaderAgent){
                    Agent agent = (Agent)(agents.allObjects.objs[x]);
-                   if(!agent.checkStopCriteria(this)) return false;
+                   if(!AgentMovementCalculator.isAgentReachedGoal(this, agent)) return false;
       		 }
        	}
     	return true;

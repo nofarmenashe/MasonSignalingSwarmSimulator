@@ -9,80 +9,40 @@ package sim.app.signalingswarmgame;
 import sim.engine.*;
 import sim.util.*;
 
-public abstract class Agent extends BaseAgent {
+public class Agent extends BaseAgent {
 	public boolean isAgentAcceptSignalCorrectly;
 
-	public Agent() {
-		super();
-	}
+	public Agent(){	}
 
-	public void updateLastD(double jump) {
-		Double2D d = new Double2D(loc.x - lastLoc.x, loc.y - lastLoc.y);
-		double dis = Math.sqrt(d.x * d.x + d.y * d.y);
-		if (dis > 0) {
-			lastD = new Double2D(d.x / dis * jump, d.y / dis * jump);
-		}
-		lastLoc = new Double2D(loc.x - lastD.x, loc.y - lastD.y);
-	}
-	
-	protected abstract boolean checkStopCriteria(SignalingSwarmGame swarm);
-	
-	protected abstract BaseAgent[] getNeighbours(SignalingSwarmGame swarm, boolean isLeaderSignaled);
-	
-	protected abstract Double2D getDesiredDirection(BaseAgent[] neighbours, 
-													boolean isLeaderSignaled, 
-													boolean isAcceptedSignalCorrectly);
-	
+	@Override
 	public void step(SimState state) {
 		Double2D desiredDirection;
 		final SignalingSwarmGame swarm = (SignalingSwarmGame) state;
 		double p = swarm.getAcceptLeadersSignalCorrectly();
-		
-		Double2D desiredNoSignalDirection = noSignalDirection(swarm);
-		isAgentAcceptSignalCorrectly = false;
+
+		position = new AgentPosition(currentPhysicalPosition);
+
+		Double2D desiredNoSignalDirection =
+				AgentMovementCalculator.getAgentNextDirectionByState(swarm,this, AgentState.NoSignal);
 
 		if (swarm.isLeaderSignaled) {
 			isAgentAcceptSignalCorrectly = Math.random() < p;
 			
-			Double2D desiredSignalDirection = (isAgentAcceptSignalCorrectly)? 
-											  acceptedSignalDirection(swarm): 
-											  misunderstoodSignalDirection(swarm);
+			Double2D desiredSignalDirection = (isAgentAcceptSignalCorrectly)?
+					AgentMovementCalculator.getAgentNextDirectionByState(swarm, this, AgentState.AcceptedSignal):
+					AgentMovementCalculator.getAgentNextDirectionByState(swarm, this, AgentState.MisunderstoodSignal);
 			
-			double lambda = swarm.getLeaderInfluence();
+			double leaderInfluenceRate = swarm.getLeaderInfluence();
 			
 			desiredDirection = desiredSignalDirection
-					.multiply(lambda)
-					.add(desiredNoSignalDirection.multiply(1-lambda));	
+					.multiply(leaderInfluenceRate)
+					.add(desiredNoSignalDirection.multiply(1-leaderInfluenceRate));
 		} else
 			desiredDirection = desiredNoSignalDirection;
 
-		
-		lastLoc = loc;
-		loc = loc.add(desiredDirection.multiply(swarm.jump));
-		lastD = new Double2D(loc.x - lastLoc.x, loc.y - lastLoc.y);
-		
-		swarm.agents.setObjectLocation(this, loc);
-	}
-	
-	public Double2D acceptedSignalDirection(SignalingSwarmGame swarm) {
-		BaseAgent[] signalNeighbors = getNeighbours(swarm, true);
-		Double2D desiredAcceptedSignalDirection = getDesiredDirection(signalNeighbors, true, true);
-		
-		return desiredAcceptedSignalDirection;
-	}
-	
-	public Double2D misunderstoodSignalDirection(SignalingSwarmGame swarm) {
-		BaseAgent[] signalNeighbors = getNeighbours(swarm, true);
-		Double2D desiredMisunderstoodSignalDirection = getDesiredDirection(signalNeighbors, true, false);
-		
-		return desiredMisunderstoodSignalDirection;
-	}
-	
-	public Double2D noSignalDirection(SignalingSwarmGame swarm) {
-		BaseAgent[] noSignalNeighbors = getNeighbours(swarm, false);
-		Double2D desiredNoSignalDirection = getDesiredDirection(noSignalNeighbors, false, false);
-		
-		return desiredNoSignalDirection;
-	}
+		currentPhysicalPosition.updatePosition(getNextStepLocation(swarm, desiredDirection, currentPhysicalPosition.loc));
+		position = new AgentPosition(currentPhysicalPosition);
 
+		swarm.agents.setObjectLocation(this, currentPhysicalPosition.loc);
+	}
 }
