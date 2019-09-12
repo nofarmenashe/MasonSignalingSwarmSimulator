@@ -20,7 +20,7 @@ public class Agent extends BaseAgent {
 		final SignalingSwarmGame swarm = (SignalingSwarmGame) state;
 		double p = swarm.getAcceptLeadersSignalCorrectly();
 
-		position = new AgentPosition(currentPhysicalPosition);
+//		position = new AgentPosition(currentPhysicalPosition);
 
 		Double2D desiredNoSignalDirection =
 				AgentMovementCalculator.getAgentNextDirectionByState(swarm,this, AgentState.NoSignal);

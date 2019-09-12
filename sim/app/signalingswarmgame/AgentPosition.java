@@ -9,13 +9,13 @@ public class AgentPosition {
     public AgentPosition(){}
 
     public AgentPosition(Double2D loc, Double2D lastLoc){
-        this.loc = loc;
-        this.lastLoc = lastLoc;
+        this.loc = new Double2D(loc.x, loc.y);
+        this.lastLoc = new Double2D(lastLoc.x, lastLoc.y);
     }
 
     public AgentPosition(AgentPosition pos){
-        this.loc = pos.loc;
-        this.lastLoc = pos.lastLoc;
+        this.loc = new Double2D(pos.loc.x, pos.loc.y);
+        this.lastLoc = new Double2D(pos.lastLoc.x, pos.lastLoc.y);
     }
 
     public Double2D getMovementDirection() {

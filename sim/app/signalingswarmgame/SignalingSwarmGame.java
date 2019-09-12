@@ -29,7 +29,7 @@ public class SignalingSwarmGame extends SimState
     public double initial_alpha_v = 0;
     public boolean are_agents_independent_v = false;
     public double leader_influence_v = 1;
-    public int stepsLookahead = 2;
+    public int steps_lookahead_v = 2;
 
 
     // some properties to appear in the inspector
@@ -48,17 +48,21 @@ public class SignalingSwarmGame extends SimState
     public double getLeaderInfluence() { return leader_influence_v;}
     public void setLeaderInfluence(double leaderInfluence) { leader_influence_v = leaderInfluence;}
 
+    public int getStepsLookahead() { return steps_lookahead_v;}
+    public void setStepsLookahead(int lookahead) { steps_lookahead_v = lookahead;}
+
     /** Creates a SignalingSwarmGame simulation with the given random number seed. */
     public SignalingSwarmGame(long seed)
 {
     super(seed);
 }
 
-    public SignalingSwarmGame(long seed, int n, double p)
+    public SignalingSwarmGame(long seed, int n, double p, int l)
     {
         super(seed);
         setAcceptLeadersSignalCorrectly(p);
         numAgents = n;
+        setStepsLookahead(l);
     }
     public void start()
     {
