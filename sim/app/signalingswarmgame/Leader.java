@@ -50,12 +50,12 @@ public class Leader extends BaseAgent {
             entry.getKey().position = entry.getValue();
 
         for (Map.Entry<Agent,AgentPosition> entry: positionMap.entrySet()) {
-            AgentState state = isLeaderSignal ?
-                            AgentState.AcceptedSignal : AgentState.NoSignal;
             AgentPosition nextPosition = new AgentPosition(
-                    AgentMovementCalculator.getAgentNextPositionByState(swarm, entry.getKey(), state)
-                            .multiply((2 * swarm.p_signal_accecptness_v) - 1),
-                    entry.getValue().loc);
+                    isLeaderSignal ?
+                    AgentMovementCalculator.getAgentNextPositionByState(swarm, entry.getKey(), AgentState.AcceptedSignal)
+                            .multiply((2 * swarm.p_signal_accecptness_v) - 1):
+                    AgentMovementCalculator.getAgentNextPositionByState(swarm, entry.getKey(), AgentState.NoSignal)
+                    , entry.getValue().loc);
 
             updatedPositions.put(entry.getKey(), nextPosition);
         }

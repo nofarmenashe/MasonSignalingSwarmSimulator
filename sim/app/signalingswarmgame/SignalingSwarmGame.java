@@ -23,7 +23,8 @@ public class SignalingSwarmGame extends SimState
     public double jump = 1;  // how far do we move in a timestep?
     public boolean isLeaderSignaled = false;
     public SwarmType swarmType = SwarmType.Flocking;
-    
+
+    public int sight_size_v = numAgents;
     public double p_signal_accecptness_v = 0.6;
     public char model_v = 'B';
     public double initial_alpha_v = 0;
@@ -51,6 +52,9 @@ public class SignalingSwarmGame extends SimState
     public int getStepsLookahead() { return steps_lookahead_v;}
     public void setStepsLookahead(int lookahead) { steps_lookahead_v = lookahead;}
 
+    public int getSightSize() { return sight_size_v;}
+    public void setSightSize(int sightSize) { sight_size_v = sightSize;}
+
     /** Creates a SignalingSwarmGame simulation with the given random number seed. */
     public SignalingSwarmGame(long seed)
 {
@@ -63,6 +67,7 @@ public class SignalingSwarmGame extends SimState
         setAcceptLeadersSignalCorrectly(p);
         numAgents = n;
         setStepsLookahead(l);
+        sight_size_v = n;
     }
     public void start()
     {

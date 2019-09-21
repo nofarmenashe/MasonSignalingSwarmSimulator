@@ -7,31 +7,29 @@
 package sim.app.signalingswarmgame;
 
 import sim.display.Console;
-import sim.engine.*;
-import sim.display.*;
-import sim.portrayal.continuous.*;
+import sim.display.Controller;
+import sim.display.Display2D;
+import sim.display.GUIState;
+import sim.engine.SimState;
+import sim.portrayal.SimplePortrayal2D;
+import sim.portrayal.continuous.ContinuousPortrayal2D;
+import sim.portrayal.simple.*;
+import sim.util.Double2D;
 
 import javax.swing.*;
 import java.awt.*;
-
-import sim.portrayal.simple.*;
-import sim.portrayal.SimplePortrayal2D;
-import sim.util.Double2D;
-
-import java.io.*;
-import java.time.Duration;
-import java.time.Instant;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.concurrent.TimeUnit;
 
 public class SignalingSwarmGameWithUI extends GUIState {
     public Display2D display;
     public JFrame displayFrame;
     public static PrintWriter simulationReportWriter;
+    public static PrintWriter simulationDistReportWriter;
     public static PrintWriter simulationSetReportWriter;
 
     public static boolean isCurrentGameFinished;
@@ -41,26 +39,30 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private int firstSignalStep;
     private int signalsCount;
     private Long sumStepsTime;
+    private String[] agentsDistancesList;
+    private String signalsList;
 
     public static void main(String[] args) {
 //        int n = 10;
 //        int p = 3;
         int l = 1;
+//        int s = 3;
 
         SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
         Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-//        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 30; i++) {
             for (int p = 9; p > 0; p--) {
                 for (int n = 1; n <= 20; n++) {
+//                    for (int s = 1; s <= n; s++) {
 //                for (int l = 1; l <= 6; l++) {
-                    sgwui.setParams(n, p / 10.0, l);
-                    ((Console) simConsole).pressPlay();
-                    while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+                        sgwui.setParams(n, p / 10.0, l);
+                        ((Console) simConsole).pressPlay();
+                        while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+                        }
                     }
-//                }
-//                }
+                }
             }
-        }
+//        }
     }
 
     public Object getSimulationInspectedObject() {
@@ -71,10 +73,18 @@ public class SignalingSwarmGameWithUI extends GUIState {
     ContinuousPortrayal2D trailsPortrayal = new ContinuousPortrayal2D();
     ContinuousPortrayal2D signalsPortrayal = new ContinuousPortrayal2D();
 
+    public void setParams(int n, double p, int l, int s) {
+        ((SignalingSwarmGame) state).setAcceptLeadersSignalCorrectly(p);
+        ((SignalingSwarmGame) state).numAgents = n;
+        ((SignalingSwarmGame) state).setStepsLookahead(l);
+        ((SignalingSwarmGame) state).setSightSize(s);
+    }
+
     public void setParams(int n, double p, int l) {
-        ((SignalingSwarmGame)state).setAcceptLeadersSignalCorrectly(p);
-        ((SignalingSwarmGame)state).numAgents = n;
-        ((SignalingSwarmGame)state).setStepsLookahead(l);
+        ((SignalingSwarmGame) state).setAcceptLeadersSignalCorrectly(p);
+        ((SignalingSwarmGame) state).numAgents = n;
+        ((SignalingSwarmGame) state).sight_size_v = n;
+        ((SignalingSwarmGame) state).setStepsLookahead(l);
     }
 
     public SignalingSwarmGameWithUI() {
@@ -97,29 +107,43 @@ public class SignalingSwarmGameWithUI extends GUIState {
         firstSignalStep = 0;
         signalsCount = 0;
         sumStepsTime = Long.valueOf(0);
+        agentsDistancesList = new String[((SignalingSwarmGame) state).numAgents];
+        signalsList = ",,,";
 
-//        createReportFilePrintWriter();
-        createSimulationSetFilePrintWriter();
+        createReportsPrintWriter();
 //        appendSimulatorParameters(state);
 //        updateReportFile(state);
     }
 
-    private void createReportFilePrintWriter() {
-        String timestamp = LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("dd_MM_yyyy HH_mm_ss"));
-        File simulationReportFile = new File("Reports/simulationResults " + timestamp + ".csv");
+    private void createReportsPrintWriter() {
+//        String timestamp = LocalDateTime.now()
+//                .format(DateTimeFormatter.ofPattern("dd_MM_yyyy HH_mm_ss"));
+//        File simulationReportFile = new File("Reports/simulationResults " + timestamp + ".csv");
+//
+//        try {
+//            if (!simulationReportFile.getParentFile().exists())
+//                simulationReportFile.getParentFile().mkdirs();
+//            simulationReportWriter = new PrintWriter(simulationReportFile);
+//        } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
 
         try {
-            if (!simulationReportFile.getParentFile().exists())
-                simulationReportFile.getParentFile().mkdirs();
-            simulationReportWriter = new PrintWriter(simulationReportFile);
+            FileWriter simulationSetReportFileWriter = new FileWriter("Reports/simulationSetResults.csv", true);
+            simulationSetReportWriter = new PrintWriter(simulationSetReportFileWriter);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
 
-    private void createSimulationSetFilePrintWriter() {
+        try {
+            FileWriter simulationDistReportFileWriter = new FileWriter("Reports/simulationDistResults.csv", true);
+            simulationDistReportWriter = new PrintWriter(simulationDistReportFileWriter);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         try {
             FileWriter simulationSetReportFileWriter = new FileWriter("Reports/simulationSetResults.csv", true);
@@ -130,22 +154,39 @@ public class SignalingSwarmGameWithUI extends GUIState {
         }
     }
 
-
     public void finish() {
         super.finish();
         updateSimulationSetReportFile();
+        updateSimulationDistReportFile();
 
         isCurrentGameFinished = true;
     }
 
+    private void updateSimulationDistReportFile() {
+        SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
+        simulationDistReportWriter.write(signalsList + "\n");
+        for (int i = 0; i < agentsDistancesList.length; i++) {
+            StringBuilder sb = new StringBuilder(String.format("%d, %.2f, %d, %s\n",
+                    swarm.numAgents,
+                    swarm.getAcceptLeadersSignalCorrectly(),
+                    i + 1,
+                    agentsDistancesList[i]));
+            simulationDistReportWriter.write(sb.toString());
+        }
+        simulationDistReportWriter.write("\n");
+        simulationDistReportWriter.flush();
+        simulationDistReportWriter.close();
+    }
+
     private void updateSimulationSetReportFile() {
         SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
-        long avgStepTime =sumStepsTime / currentStep;
+        long avgStepTime = sumStepsTime / currentStep;
 
-        StringBuilder sb = new StringBuilder(String.format("%d, %.2f, %d, %d, %d, %d, %d\n",
+        StringBuilder sb = new StringBuilder(String.format("%d, %.2f, %d, %d, %d, %d, %d, %d\n",
                 swarm.numAgents,
                 swarm.getAcceptLeadersSignalCorrectly(),
                 swarm.getStepsLookahead(),
+                swarm.getSightSize(),
                 firstSignalStep,
                 signalsCount,
                 currentStep,
@@ -171,20 +212,34 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
         updatePortrayalsColors();
         currentStep++;
+        updateDistFile(state);
 //        updateReportFile(super.state);
         SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
         if (((SignalingSwarmGame) state).isLeaderSignaled) {
             signalsCount++;
-            if(firstSignalStep == 0)
+            if (firstSignalStep == 0)
                 firstSignalStep = currentStep;
         }
-        if (swarm.swarmReachedGoal() || currentStep >= 100000) {
+        if (swarm.swarmReachedGoal() || currentStep >= 1000) {
 //            simulationReportWriter.close();
             finish();
         }
 
 
         return result;
+    }
+
+    private void updateDistFile(SimState state) {
+        SignalingSwarmGame swarm = (SignalingSwarmGame) state;
+        signalsList += swarm.isLeaderSignaled + ",";
+        for (int i = 0; i < swarm.agents.allObjects.numObjs; i++) {
+            BaseAgent a = (BaseAgent) swarm.agents.allObjects.get(i);
+            if (!(a instanceof Leader)) {
+                double disFromLeader = (a instanceof Leader) ? 0 : AgentMovementCalculator.distanceFromGoal(swarm, (Agent) a);
+                agentsDistancesList[i - 1] = (agentsDistancesList[i - 1] == null) ?
+                        disFromLeader + "," : agentsDistancesList[i - 1] + disFromLeader + ",";
+            }
+        }
     }
 
     public void setupPortrayals() {

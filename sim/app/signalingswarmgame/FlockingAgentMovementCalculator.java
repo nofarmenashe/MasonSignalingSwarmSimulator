@@ -3,6 +3,7 @@ package sim.app.signalingswarmgame;
 import sim.util.Double2D;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FlockingAgentMovementCalculator extends AgentMovementCalculator{
 
@@ -64,13 +65,20 @@ public class FlockingAgentMovementCalculator extends AgentMovementCalculator{
         ArrayList<BaseAgent> neighbors = new ArrayList<BaseAgent>();
 
         for (int i = 0; i < swarm.agents.allObjects.numObjs; i++) { //TODO: filter neighbors out of sight zone
-            BaseAgent otherAgent = (BaseAgent) swarm.agents.allObjects.get(i);
+            BaseAgent otherAgent = (BaseAgent) swarm.agents.allObjects.objs[i];
+            double dist = getDistanceBetweenPoints(agent.position.loc, otherAgent.position.loc);
             if (otherAgent != agent)
                 neighbors.add(otherAgent);
         }
 
+
         BaseAgent[] neighborsArray = new BaseAgent[neighbors.size()];
         neighbors.toArray(neighborsArray);
+//        Arrays.sort(neighborsArray,
+//                (a1, a2) -> (int) (100 * (getDistanceBetweenPoints(agent.position.loc, ((BaseAgent)a1).position.loc) -
+//                        getDistanceBetweenPoints(agent.position.loc, ((BaseAgent)a2).position.loc))));
+
+//        BaseAgent[] neighborsInSight =  Arrays.copyOfRange(neighborsArray, 0, swarm.sight_size_v);
         return neighborsArray;
     }
 }
