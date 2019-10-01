@@ -44,25 +44,27 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
     public static void main(String[] args) {
 //        int n = 10;
-//        int p = 3;
+//        int p = 8;
         int l = 1;
-//        int s = 3;
+//        int s = 10;
 
         SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
+//        sgwui.setParams(n, p / 10.0, l, s);
         Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-        for (int i = 0; i < 30; i++) {
+//        for (int i = 0; i < 30; i++) {
             for (int p = 9; p > 0; p--) {
-                for (int n = 1; n <= 20; n++) {
-//                    for (int s = 1; s <= n; s++) {
-//                for (int l = 1; l <= 6; l++) {
-                        sgwui.setParams(n, p / 10.0, l);
-                        ((Console) simConsole).pressPlay();
-                        while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
-                        }
+                for (int n = 1; n <= 20; n+=3) {
+                    for (int s = 1; s <= n; s+=3) {
+//                        for (int l = 1; l <= 6; l++) {
+                            sgwui.setParams(n, p / 10.0, l, s);
+                            ((Console) simConsole).pressPlay();
+                            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+                            }
+//                        }
                     }
                 }
-            }
-//        }
+//            }
+        }
     }
 
     public Object getSimulationInspectedObject() {
@@ -137,13 +139,13 @@ public class SignalingSwarmGameWithUI extends GUIState {
             e.printStackTrace();
         }
 
-        try {
-            FileWriter simulationDistReportFileWriter = new FileWriter("Reports/simulationDistResults.csv", true);
-            simulationDistReportWriter = new PrintWriter(simulationDistReportFileWriter);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+//        try {
+//            FileWriter simulationDistReportFileWriter = new FileWriter("Reports/simulationDistResults.csv", true);
+//            simulationDistReportWriter = new PrintWriter(simulationDistReportFileWriter);
+//        } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
 
         try {
             FileWriter simulationSetReportFileWriter = new FileWriter("Reports/simulationSetResults.csv", true);
@@ -157,7 +159,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
     public void finish() {
         super.finish();
         updateSimulationSetReportFile();
-        updateSimulationDistReportFile();
+//        updateSimulationDistReportFile();
 
         isCurrentGameFinished = true;
     }
@@ -212,7 +214,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
         updatePortrayalsColors();
         currentStep++;
-        updateDistFile(state);
+//        updateDistFile(state);
 //        updateReportFile(super.state);
         SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
         if (((SignalingSwarmGame) state).isLeaderSignaled) {
@@ -220,7 +222,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
             if (firstSignalStep == 0)
                 firstSignalStep = currentStep;
         }
-        if (swarm.swarmReachedGoal() || currentStep >= 1000) {
+        if (swarm.swarmReachedGoal() || currentStep >= 100000) {
 //            simulationReportWriter.close();
             finish();
         }

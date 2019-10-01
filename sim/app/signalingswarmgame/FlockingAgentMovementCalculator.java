@@ -74,11 +74,11 @@ public class FlockingAgentMovementCalculator extends AgentMovementCalculator{
 
         BaseAgent[] neighborsArray = new BaseAgent[neighbors.size()];
         neighbors.toArray(neighborsArray);
-//        Arrays.sort(neighborsArray,
-//                (a1, a2) -> (int) (100 * (getDistanceBetweenPoints(agent.position.loc, ((BaseAgent)a1).position.loc) -
-//                        getDistanceBetweenPoints(agent.position.loc, ((BaseAgent)a2).position.loc))));
+        Arrays.sort(neighborsArray,
+                (a1, a2) -> (int) (100 * (getDistanceBetweenPoints(agent.position.loc, ((BaseAgent)a1).position.loc) -
+                        getDistanceBetweenPoints(agent.position.loc, ((BaseAgent)a2).position.loc))));
 
-//        BaseAgent[] neighborsInSight =  Arrays.copyOfRange(neighborsArray, 0, swarm.sight_size_v);
-        return neighborsArray;
+        BaseAgent[] neighborsInSight =  Arrays.copyOfRange(neighborsArray, 0, swarm.sight_size_v);
+        return neighborsInSight;
     }
 }

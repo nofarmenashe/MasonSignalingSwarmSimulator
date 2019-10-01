@@ -45,16 +45,18 @@ public class Leader extends BaseAgent {
 
     private Map<Agent, AgentPosition> getNextStepPositionsByState(SignalingSwarmGame swarm, Map<Agent, AgentPosition> positionMap,
                                                                       boolean isLeaderSignal) {
+        double p = swarm.p_signal_accecptness_v;
         Map<Agent,AgentPosition> updatedPositions = new HashMap<>();
         for (Map.Entry<Agent,AgentPosition> entry: positionMap.entrySet())
             entry.getKey().position = entry.getValue();
 
         for (Map.Entry<Agent,AgentPosition> entry: positionMap.entrySet()) {
+            Double2D acpt = AgentMovementCalculator.getAgentNextPositionByState(swarm, entry.getKey(), AgentState.AcceptedSignal);
+            Double2D misu = AgentMovementCalculator.getAgentNextPositionByState(swarm, entry.getKey(), AgentState.MisunderstoodSignal);
+            Double2D nosig = AgentMovementCalculator.getAgentNextPositionByState(swarm, entry.getKey(), AgentState.NoSignal);
+
             AgentPosition nextPosition = new AgentPosition(
-                    isLeaderSignal ?
-                    AgentMovementCalculator.getAgentNextPositionByState(swarm, entry.getKey(), AgentState.AcceptedSignal)
-                            .multiply((2 * swarm.p_signal_accecptness_v) - 1):
-                    AgentMovementCalculator.getAgentNextPositionByState(swarm, entry.getKey(), AgentState.NoSignal)
+                    isLeaderSignal ? acpt: nosig
                     , entry.getValue().loc);
 
             updatedPositions.put(entry.getKey(), nextPosition);
@@ -91,7 +93,7 @@ public class Leader extends BaseAgent {
 
         leaderPosition.updatePosition(swarm.jump);
 
-        double currentSignalUtility = calculateUtility(signalPositions, leaderPosition);
+        double currentSignalUtility = ((2 * swarm.p_signal_accecptness_v) - 1) * calculateUtility(signalPositions, leaderPosition);
         double currentNosignalUtility =  calculateUtility(nosignalPositions, leaderPosition);
 
         if(stepsLookahead > 1) {
