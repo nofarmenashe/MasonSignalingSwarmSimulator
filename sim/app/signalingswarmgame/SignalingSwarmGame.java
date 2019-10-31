@@ -22,6 +22,7 @@ public class SignalingSwarmGame extends SimState
     public int numLeaders = 1;
     public double jump = 0.01;  // how far do we move in a timestep?
     public boolean isLeaderSignaled = false;
+    public BaseAgent[] influencedAgents = null;
     public SwarmType swarmType = SwarmType.Flocking;
 
     public int sight_size_v = numAgents;

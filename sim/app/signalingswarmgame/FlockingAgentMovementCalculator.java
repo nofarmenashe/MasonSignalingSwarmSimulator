@@ -55,11 +55,11 @@ public class FlockingAgentMovementCalculator extends AgentMovementCalculator{
         return getNormalizedVector(joinedDirection);
     }
 
-    public BaseAgent[] agentNeighborsByState(SignalingSwarmGame swarm, Agent agent, AgentState state) {
+    public BaseAgent[] agentNeighborsByState(SignalingSwarmGame swarm, BaseAgent agent, AgentState state) {
         if (swarm.getAreAgentsIndependent())
             return null;
 
-        if (state != AgentState.NoSignal)
+        if (state != AgentState.NoSignal && agent.isCurrentAgentInfluencedByLeader(swarm))
             return new BaseAgent[]{swarm.leaderAgent}; // TODO: get all leaders after add relevant code
 
         ArrayList<BaseAgent> neighbors = new ArrayList<BaseAgent>();
