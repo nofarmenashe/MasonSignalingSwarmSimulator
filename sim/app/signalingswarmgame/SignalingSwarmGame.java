@@ -20,7 +20,7 @@ public class SignalingSwarmGame extends SimState
     public double height = 100;
     public int numAgents = 2;
     public int numLeaders = 1;
-    public double jump = 1;  // how far do we move in a timestep?
+    public double jump = 0.01;  // how far do we move in a timestep?
     public boolean isLeaderSignaled = false;
     public SwarmType swarmType = SwarmType.Flocking;
 
@@ -134,5 +134,16 @@ public class SignalingSwarmGame extends SimState
     {
         doLoop(SignalingSwarmGame.class, args);
         System.exit(0);
+    }
+
+    public double getConvergancePercentage() {
+        int alignedCounter = 0;
+        for (int x=0;x<agents.allObjects.numObjs;x++) {
+            if(agents.allObjects.objs[x] != leaderAgent){
+                Agent agent = (Agent)(agents.allObjects.objs[x]);
+                if(AgentMovementCalculator.distanceFromGoal(this, agent) < 0.15) alignedCounter++;
+            }
+        }
+        return alignedCounter / numAgents;
     }
 }

@@ -43,28 +43,28 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private String signalsList;
 
     public static void main(String[] args) {
-//        int n = 10;
+//        int n = 11;
 //        int p = 8;
-        int l = 1;
-//        int s = 10;
+//        int l = 1;
+//        int s = 2;
 
         SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
 //        sgwui.setParams(n, p / 10.0, l, s);
         Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-//        for (int i = 0; i < 30; i++) {
+//        for (int i = 0; i < 5; i++) {
             for (int p = 9; p > 0; p--) {
                 for (int n = 1; n <= 20; n+=3) {
                     for (int s = 1; s <= n; s+=3) {
-//                        for (int l = 1; l <= 6; l++) {
-                            sgwui.setParams(n, p / 10.0, l, s);
-                            ((Console) simConsole).pressPlay();
-                            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
-                            }
-//                        }
+        for (int l = 1; l <= 6; l++) {
+            sgwui.setParams(n, p / 10.0, l);
+            ((Console) simConsole).pressPlay();
+            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+            }
+                        }
                     }
-                }
-//            }
         }
+//            }
+//        }
     }
 
     public Object getSimulationInspectedObject() {
@@ -113,23 +113,23 @@ public class SignalingSwarmGameWithUI extends GUIState {
         signalsList = ",,,";
 
         createReportsPrintWriter();
-//        appendSimulatorParameters(state);
-//        updateReportFile(state);
+        appendSimulatorParameters(state);
+        updateReportFile(state);
     }
 
     private void createReportsPrintWriter() {
-//        String timestamp = LocalDateTime.now()
-//                .format(DateTimeFormatter.ofPattern("dd_MM_yyyy HH_mm_ss"));
-//        File simulationReportFile = new File("Reports/simulationResults " + timestamp + ".csv");
-//
-//        try {
-//            if (!simulationReportFile.getParentFile().exists())
-//                simulationReportFile.getParentFile().mkdirs();
-//            simulationReportWriter = new PrintWriter(simulationReportFile);
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
+        String timestamp = LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("dd_MM_yyyy HH_mm_ss"));
+        File simulationReportFile = new File("Reports/simulationResults " + timestamp + ".csv");
+
+        try {
+            if (!simulationReportFile.getParentFile().exists())
+                simulationReportFile.getParentFile().mkdirs();
+            simulationReportWriter = new PrintWriter(simulationReportFile);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         try {
             FileWriter simulationSetReportFileWriter = new FileWriter("Reports/simulationSetResults.csv", true);
@@ -139,13 +139,13 @@ public class SignalingSwarmGameWithUI extends GUIState {
             e.printStackTrace();
         }
 
-//        try {
-//            FileWriter simulationDistReportFileWriter = new FileWriter("Reports/simulationDistResults.csv", true);
-//            simulationDistReportWriter = new PrintWriter(simulationDistReportFileWriter);
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
+        try {
+            FileWriter simulationDistReportFileWriter = new FileWriter("Reports/simulationDistResults.csv", true);
+            simulationDistReportWriter = new PrintWriter(simulationDistReportFileWriter);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         try {
             FileWriter simulationSetReportFileWriter = new FileWriter("Reports/simulationSetResults.csv", true);
@@ -159,7 +159,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
     public void finish() {
         super.finish();
         updateSimulationSetReportFile();
-//        updateSimulationDistReportFile();
+        updateSimulationDistReportFile();
 
         isCurrentGameFinished = true;
     }
@@ -183,8 +183,9 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private void updateSimulationSetReportFile() {
         SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
         long avgStepTime = sumStepsTime / currentStep;
+        double convergancePercentage = swarm.getConvergancePercentage();
 
-        StringBuilder sb = new StringBuilder(String.format("%d, %.2f, %d, %d, %d, %d, %d, %d\n",
+        StringBuilder sb = new StringBuilder(String.format("%d, %.2f, %d, %d, %d, %d, %d, %d, %.2f\n",
                 swarm.numAgents,
                 swarm.getAcceptLeadersSignalCorrectly(),
                 swarm.getStepsLookahead(),
@@ -192,7 +193,8 @@ public class SignalingSwarmGameWithUI extends GUIState {
                 firstSignalStep,
                 signalsCount,
                 currentStep,
-                avgStepTime));
+                avgStepTime,
+                convergancePercentage));
         simulationSetReportWriter.write(sb.toString());
         simulationSetReportWriter.flush();
         simulationSetReportWriter.close();
@@ -214,8 +216,8 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
         updatePortrayalsColors();
         currentStep++;
-//        updateDistFile(state);
-//        updateReportFile(super.state);
+        updateDistFile(state);
+        updateReportFile(super.state);
         SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
         if (((SignalingSwarmGame) state).isLeaderSignaled) {
             signalsCount++;
@@ -223,7 +225,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
                 firstSignalStep = currentStep;
         }
         if (swarm.swarmReachedGoal() || currentStep >= 100000) {
-//            simulationReportWriter.close();
+            simulationReportWriter.close();
             finish();
         }
 
