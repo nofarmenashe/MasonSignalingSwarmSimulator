@@ -25,7 +25,7 @@ public class Agent extends BaseAgent {
 		Double2D desiredNoSignalDirection =
 				AgentMovementCalculator.getAgentNextDirectionByState(swarm,this, AgentState.NoSignal);
 
-		if (swarm.isLeaderSignaled) {
+		if (swarm.isLeaderSignaled && isCurrentAgentInfluencedByLeader(swarm)) {
 			isAgentAcceptSignalCorrectly = Math.random() < p;
 			
 			Double2D desiredSignalDirection = (isAgentAcceptSignalCorrectly)?

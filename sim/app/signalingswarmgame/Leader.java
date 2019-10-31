@@ -10,11 +10,12 @@ import com.sun.tools.javac.util.Pair;
 import sim.engine.*;
 import sim.util.*;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Leader extends BaseAgent {
-    public static final double Next_STEP_RATE = .1;
+    public static final double Next_STEP_RATE = 1;
     public double totalSignalUtility;
     public double totalNoSignalUtility;
 
@@ -43,10 +44,11 @@ public class Leader extends BaseAgent {
 
     }
 
-    private Map<Agent, AgentPosition> getNextStepPositionsByState(SignalingSwarmGame swarm, Map<Agent, AgentPosition> positionMap,
-                                                                      boolean isLeaderSignal) {
-        double p = swarm.p_signal_accecptness_v;
-        Map<Agent,AgentPosition> updatedPositions = new HashMap<>();
+    private Map<AgentState, Map<Agent, AgentPosition>> getNextStepPossiblePositions(SignalingSwarmGame swarm, Map<Agent, AgentPosition> positionMap) {
+        Map<Agent, AgentPosition> updatedAcptPositions = new HashMap<>();
+        Map<Agent, AgentPosition> updatedMisuPositions = new HashMap<>();
+        Map<Agent, AgentPosition> updatedNoSigPositions = new HashMap<>();
+
         for (Map.Entry<Agent,AgentPosition> entry: positionMap.entrySet())
             entry.getKey().position = entry.getValue();
 
@@ -55,23 +57,26 @@ public class Leader extends BaseAgent {
             Double2D misu = AgentMovementCalculator.getAgentNextPositionByState(swarm, entry.getKey(), AgentState.MisunderstoodSignal);
             Double2D nosig = AgentMovementCalculator.getAgentNextPositionByState(swarm, entry.getKey(), AgentState.NoSignal);
 
-            AgentPosition nextPosition = new AgentPosition(
-                    isLeaderSignal ? acpt: nosig
-                    , entry.getValue().loc);
-
-            updatedPositions.put(entry.getKey(), nextPosition);
+            Map<AgentState, AgentPosition> nextPositions = new HashMap<>();
+            updatedAcptPositions.put(entry.getKey(), new AgentPosition(acpt,entry.getValue().loc));
+            updatedMisuPositions.put(entry.getKey(), new AgentPosition(misu,entry.getValue().loc));
+            updatedNoSigPositions.put(entry.getKey(), new AgentPosition(nosig,entry.getValue().loc));
         }
 
-        return updatedPositions;
+        return Map.of(
+                AgentState.AcceptedSignal, updatedAcptPositions,
+                AgentState.MisunderstoodSignal, updatedMisuPositions,
+                AgentState.NoSignal, updatedNoSigPositions);
     }
 
     public void step(SimState state) {
         final SignalingSwarmGame swarm = (SignalingSwarmGame) state;
 
         Map<Agent, AgentPosition> agentsToCurrentPosition = getAgentsCurrentPositions(swarm);
-        Pair<Boolean, Double> actionUtility = getLookaheadUtility(swarm, agentsToCurrentPosition, swarm.leaderAgent.position, swarm.getStepsLookahead());
+        Pair<Double, Double> utility = getLookaheadUtility(swarm, agentsToCurrentPosition, swarm.leaderAgent.position, swarm.getStepsLookahead());
         returnAgentsPositionToPhysical(swarm);
-        swarm.isLeaderSignaled = actionUtility.fst;
+        swarm.isLeaderSignaled = utility.fst > utility.snd;
+        swarm.influencedAgents = swarm.isLeaderSignaled? AgentMovementCalculator.getAgentNeighborsByState(swarm, this, AgentState.NoSignal): null;
         currentPhysicalPosition.updatePosition(swarm.jump);
         position = new AgentPosition(currentPhysicalPosition);
         swarm.agents.setObjectLocation(this, position.loc);
@@ -87,27 +92,91 @@ public class Leader extends BaseAgent {
         }
     }
 
-    private Pair<Boolean, Double> getLookaheadUtility(SignalingSwarmGame swarm, Map<Agent, AgentPosition> agentsToCurrentPosition, AgentPosition leaderPosition, int stepsLookahead) {
-        Map<Agent, AgentPosition> signalPositions =   getNextStepPositionsByState(swarm, agentsToCurrentPosition, true);
-        Map<Agent, AgentPosition> nosignalPositions =   getNextStepPositionsByState(swarm, agentsToCurrentPosition, false);
-
-        leaderPosition.updatePosition(swarm.jump);
-
-        double currentSignalUtility = ((2 * swarm.p_signal_accecptness_v) - 1) * calculateUtility(signalPositions, leaderPosition);
-        double currentNosignalUtility =  calculateUtility(nosignalPositions, leaderPosition);
-
-        if(stepsLookahead > 1) {
-            currentSignalUtility = currentSignalUtility + (Next_STEP_RATE * getLookaheadUtility(swarm, signalPositions, leaderPosition,
-                    stepsLookahead - 1).snd);
-            currentNosignalUtility = currentNosignalUtility + (Next_STEP_RATE * getLookaheadUtility(swarm, nosignalPositions, leaderPosition,
-                    stepsLookahead - 1).snd);
+    private Pair<Double, Double> getLookaheadUtility(SignalingSwarmGame swarm, Map<Agent, AgentPosition> agentsToCurrentPosition, AgentPosition leaderPosition, int stepsLookahead) {
+        if(stepsLookahead == 0) {
+//            System.out.println("end");
+            return new Pair<Double, Double>(0.0, 0.0);
         }
 
-        totalSignalUtility = currentSignalUtility;
-        totalNoSignalUtility = currentNosignalUtility;
+        Map<AgentState, Map<Agent, AgentPosition>> possiblePositions =   getNextStepPossiblePositions(swarm, agentsToCurrentPosition);
+        leaderPosition.updatePosition(swarm.jump);
 
-        return (currentSignalUtility > currentNosignalUtility)?
-                new Pair(true, currentSignalUtility): new Pair(false, currentNosignalUtility);
+        Map<Agent, AgentPosition> nosignalPositions = possiblePositions.get(AgentState.NoSignal);
+        double currStepNoSignalUtility = calculateUtility(nosignalPositions, leaderPosition);
+
+//        System.out.println("NoSignalUtility = " + currStepNoSignalUtility + " "+ nosignalPositions +" l = " + stepsLookahead);
+
+        Pair<Double, Double> nextStepNoSignalUtility = getLookaheadUtility(swarm, nosignalPositions, leaderPosition, stepsLookahead-1);
+
+        double noSignalUtility =  currStepNoSignalUtility +
+                (Next_STEP_RATE * Math.max(nextStepNoSignalUtility.fst, nextStepNoSignalUtility.snd));
+
+
+        double signalUtility = 0;
+
+        for (int i = 0; i < Math.pow(2,swarm.numAgents); i++) {
+            boolean[] isSignalAccepted = getBinaryPermutation(i, swarm.numAgents);
+            Map<Agent, AgentPosition> agentsNextPositions = getSwarmPositionsByOptions(swarm, isSignalAccepted,possiblePositions);
+
+            Pair<Double, Double> nextStepOptionUtility = getLookaheadUtility(swarm, agentsNextPositions, leaderPosition, stepsLookahead-1);
+
+            double currStepOptionUtility = calculateUtility(agentsNextPositions, leaderPosition);
+//            System.out.println("SignalOptionUtility = " + currStepOptionUtility + " option = " + Arrays.toString(isSignalAccepted) + ", " + agentsNextPositions + " l = " + stepsLookahead);
+            double optionUtility = currStepOptionUtility +
+                    (Next_STEP_RATE * Math.max(nextStepOptionUtility.fst, nextStepOptionUtility.snd));
+
+            double optionProbability = getOptionProbability(isSignalAccepted, swarm.p_signal_accecptness_v);
+
+            signalUtility += optionProbability * optionUtility;
+        }
+
+        return new Pair<>(signalUtility, noSignalUtility);
+
+//        if(stepsLookahead > 1) {
+//            currentSignalUtility = currentSignalUtility + (Next_STEP_RATE * getLookaheadUtility(swarm, signalPositions, leaderPosition,
+//                    stepsLookahead - 1).snd);
+//            currentNosignalUtility = currentNosignalUtility + (Next_STEP_RATE * getLookaheadUtility(swarm, nosignalPositions, leaderPosition,
+//                    stepsLookahead - 1).snd);
+//        }
+//
+//        totalSignalUtility = currentSignalUtility;
+//        totalNoSignalUtility = currentNosignalUtility;
+//
+//        return (currentSignalUtility > currentNosignalUtility)?
+//                new Pair(true, currentSignalUtility): new Pair(false, currentNosignalUtility);
+    }
+
+    private double getOptionProbability(boolean[] isSignalAccepted, double p_signal_accecptness_v) {
+        double probability = 1;
+
+        for (int i = 0; i < isSignalAccepted.length; i++)
+            probability = probability * (isSignalAccepted[i]? p_signal_accecptness_v: 1- p_signal_accecptness_v);
+
+        return probability;
+    }
+
+    private Map<Agent, AgentPosition> getSwarmPositionsByOptions(SignalingSwarmGame swarm, boolean[] isSignalAccepted, Map<AgentState, Map<Agent, AgentPosition>> possiblePositions) {
+        Map<Agent, AgentPosition> positions = new HashMap<>();
+
+        for (int i = 0; i < swarm.numAgents; i++) {
+            BaseAgent agent = (BaseAgent) swarm.agents.allObjects.objs[i+1];
+//            if(agent instanceof Leader) continue;
+            AgentState agentState = isSignalAccepted[i]? AgentState.AcceptedSignal: AgentState.MisunderstoodSignal;
+                positions.put((Agent)agent, possiblePositions.get(agentState).get(agent));
+            }
+
+        return positions;
+    }
+
+    private boolean[] getBinaryPermutation(int i, int n) {
+        boolean[] permutation = new boolean[n];
+        String binaryString = String.format("%"+ n +"s", Integer.toBinaryString(i));
+        char[] binaryArray = binaryString.toCharArray();
+
+        for (int j = 0; j < binaryArray.length; j++)
+            permutation[j] = binaryArray[j] == '1';
+
+        return permutation;
     }
 
     private double calculateUtility(Map<Agent, AgentPosition> agentsToCurrentPosition, AgentPosition leaderPosition) {

@@ -43,28 +43,35 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private String signalsList;
 
     public static void main(String[] args) {
-//        int n = 10;
-//        int p = 8;
-        int l = 1;
-//        int s = 10;
+//        int n =2;
+//        int p = 7;
+//        int l = 2;
+//        int s = 2;
 
-        SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
-//        sgwui.setParams(n, p / 10.0, l, s);
-        Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-//        for (int i = 0; i < 30; i++) {
-            for (int p = 9; p > 0; p--) {
-                for (int n = 1; n <= 20; n+=3) {
-                    for (int s = 1; s <= n; s+=3) {
-//                        for (int l = 1; l <= 6; l++) {
-                            sgwui.setParams(n, p / 10.0, l, s);
+//        SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
+//        Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
+////        for (int l = 1; l <= 3; l++) {
+//            sgwui.setParams(n, p / 10.0, l, s);
+////            ((Console) simConsole).pressPlay();
+////            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {}
+////        }
+            for (int i = 0; i < 40; i++) {
+            SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
+            Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
+            for (int l = 1; l <= 3; l++) {
+                for (int p = 9; p > 0; p--) {
+                    for (int n = 1; n <= 10; n+=3) {
+////                    for (int s = 1; s <= n; s+=3) {
+//                            sgwui.setParams(n, p / 10.0, l, s);
+                            sgwui.setParams(n, p / 10.0, l);
                             ((Console) simConsole).pressPlay();
                             while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
                             }
-//                        }
+                        }
                     }
                 }
-//            }
-        }
+            }
+//        }
     }
 
     public Object getSimulationInspectedObject() {
@@ -120,7 +127,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private void createReportsPrintWriter() {
 //        String timestamp = LocalDateTime.now()
 //                .format(DateTimeFormatter.ofPattern("dd_MM_yyyy HH_mm_ss"));
-//        File simulationReportFile = new File("Reports/simulationResults " + timestamp + ".csv");
+//        File simulationReportFile = new File("Reports/simulationResults "+ ((SignalingSwarmGame)state).steps_lookahead_v + " " + timestamp + ".csv");
 //
 //        try {
 //            if (!simulationReportFile.getParentFile().exists())
@@ -291,7 +298,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
                     color = Color.red;
             } else {
                 Agent agent = (Agent) swarm.agents.allObjects.objs[x];
-                if (swarm.isLeaderSignaled) {
+                if (swarm.isLeaderSignaled && agent.isCurrentAgentInfluencedByLeader(swarm)) {
                     if (agent.isAgentAcceptSignalCorrectly)
                         color = Color.green;
                     else

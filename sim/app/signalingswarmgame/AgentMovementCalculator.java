@@ -14,7 +14,7 @@ public abstract class AgentMovementCalculator {
                                               AgentState state);
 
     abstract BaseAgent[] agentNeighborsByState(SignalingSwarmGame swarm,
-                                                Agent agent,
+                                                BaseAgent agent,
                                                 AgentState state);
 
     abstract boolean checkStopCriteria(SignalingSwarmGame swarm, Agent agent);
@@ -31,7 +31,7 @@ public abstract class AgentMovementCalculator {
                 getInstance().agentNextDirectionByState(swarm,(Agent)agent,state);
     }
 
-    public static BaseAgent[] getAgentNeighborsByState(SignalingSwarmGame swarm, Agent agent, AgentState state){
+    public static BaseAgent[] getAgentNeighborsByState(SignalingSwarmGame swarm, BaseAgent agent, AgentState state){
         return getInstance().agentNeighborsByState(swarm,agent,state);
     }
 
