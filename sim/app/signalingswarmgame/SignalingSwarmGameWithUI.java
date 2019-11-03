@@ -45,7 +45,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
     public static void main(String[] args) {
 //        int n = 11;
 //        int p = 8;
-//        int l = 1;
+        int l = 1;
 //        int s = 2;
 
 //        SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
@@ -58,12 +58,12 @@ public class SignalingSwarmGameWithUI extends GUIState {
             for (int i = 0; i < 40; i++) {
             SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
             Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-            for (int l = 1; l <= 3; l++) {
+//            for (int l = 1; l <= 3; l++) {
                 for (int p = 9; p > 0; p--) {
-                    for (int n = 1; n <= 10; n+=3) {
-////                    for (int s = 1; s <= n; s+=3) {
-//                            sgwui.setParams(n, p / 10.0, l, s);
-                            sgwui.setParams(n, p / 10.0, l);
+                    for (int n = 1; n <= 20; n+=3) {
+                    for (int s = 1; s <= n; s+=3) {
+                            sgwui.setParams(n, p / 10.0, l, s);
+//                            sgwui.setParams(n, p / 10.0, l);
                             ((Console) simConsole).pressPlay();
                             while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
                             }
@@ -120,8 +120,8 @@ public class SignalingSwarmGameWithUI extends GUIState {
         signalsList = ",,,";
 
         createReportsPrintWriter();
-        appendSimulatorParameters(state);
-        updateReportFile(state);
+//        appendSimulatorParameters(state);
+//        updateReportFile(state);
     }
 
     private void createReportsPrintWriter() {
@@ -138,30 +138,14 @@ public class SignalingSwarmGameWithUI extends GUIState {
 //            e.printStackTrace();
 //        }
 
-        try {
-            if (!simulationReportFile.getParentFile().exists())
-                simulationReportFile.getParentFile().mkdirs();
-            simulationReportWriter = new PrintWriter(simulationReportFile);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        try {
-            FileWriter simulationSetReportFileWriter = new FileWriter("Reports/simulationSetResults.csv", true);
-            simulationSetReportWriter = new PrintWriter(simulationSetReportFileWriter);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        try {
-            FileWriter simulationDistReportFileWriter = new FileWriter("Reports/simulationDistResults.csv", true);
-            simulationDistReportWriter = new PrintWriter(simulationDistReportFileWriter);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+//
+//        try {
+//            FileWriter simulationDistReportFileWriter = new FileWriter("Reports/simulationDistResults.csv", true);
+//            simulationDistReportWriter = new PrintWriter(simulationDistReportFileWriter);
+//        } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
 
         try {
             FileWriter simulationSetReportFileWriter = new FileWriter("Reports/simulationSetResults.csv", true);
@@ -175,7 +159,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
     public void finish() {
         super.finish();
         updateSimulationSetReportFile();
-        updateSimulationDistReportFile();
+//        updateSimulationDistReportFile();
 
         isCurrentGameFinished = true;
     }
@@ -232,8 +216,8 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
         updatePortrayalsColors();
         currentStep++;
-        updateDistFile(state);
-        updateReportFile(super.state);
+//        updateDistFile(state);
+//        updateReportFile(super.state);
         SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
         if (((SignalingSwarmGame) state).isLeaderSignaled) {
             signalsCount++;
@@ -241,7 +225,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
                 firstSignalStep = currentStep;
         }
         if (swarm.swarmReachedGoal() || currentStep >= 100000) {
-            simulationReportWriter.close();
+//            simulationReportWriter.close();
             finish();
         }
 

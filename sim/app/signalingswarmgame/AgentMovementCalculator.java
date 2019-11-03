@@ -38,6 +38,7 @@ public abstract class AgentMovementCalculator {
     public static boolean isAgentReachedGoal(SignalingSwarmGame swarm, Agent agent){
         return getInstance().checkStopCriteria(swarm, agent);
     }
+
     public static double distanceFromGoal(SignalingSwarmGame swarm, Agent agent){
         return getInstance().distanceFromLeader(swarm, agent);
     }
