@@ -18,12 +18,9 @@ import sim.util.Double2D;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class SignalingSwarmGameWithUI extends GUIState {
     public Display2D display;
@@ -148,7 +145,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
 //        }
 
         try {
-            FileWriter simulationSetReportFileWriter = new FileWriter("Reports/simulationSetResults.csv", true);
+            FileWriter simulationSetReportFileWriter = new FileWriter("Reports/simulationSetResults2.csv", true);
             simulationSetReportWriter = new PrintWriter(simulationSetReportFileWriter);
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -184,8 +181,9 @@ public class SignalingSwarmGameWithUI extends GUIState {
         SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
         long avgStepTime = sumStepsTime / currentStep;
         double convergancePercentage = swarm.getConvergancePercentage();
+        double lostPercentage = swarm.getLostPercentage();
 
-        StringBuilder sb = new StringBuilder(String.format("%d, %.2f, %d, %d, %d, %d, %d, %d, %.2f\n",
+        StringBuilder sb = new StringBuilder(String.format("%d, %.2f, %d, %d, %d, %d, %d, %d, %.2f, %.2f\n",
                 swarm.numAgents,
                 swarm.getAcceptLeadersSignalCorrectly(),
                 swarm.getStepsLookahead(),
@@ -194,7 +192,8 @@ public class SignalingSwarmGameWithUI extends GUIState {
                 signalsCount,
                 currentStep,
                 avgStepTime,
-                convergancePercentage));
+                convergancePercentage,
+                lostPercentage));
         simulationSetReportWriter.write(sb.toString());
         simulationSetReportWriter.flush();
         simulationSetReportWriter.close();
@@ -224,7 +223,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
             if (firstSignalStep == 0)
                 firstSignalStep = currentStep;
         }
-        if (swarm.swarmReachedGoal() || currentStep >= 100000) {
+        if (swarm.swarmReachedGoal() || currentStep >= 10000) {
 //            simulationReportWriter.close();
             finish();
         }
