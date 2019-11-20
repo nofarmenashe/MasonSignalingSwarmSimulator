@@ -127,12 +127,25 @@ public class SignalingSwarmGame extends SimState
         for (int x=0;x<agents.allObjects.numObjs;x++) {
             if(agents.allObjects.objs[x] != leaderAgent){
                 Agent agent = (Agent)(agents.allObjects.objs[x]);
-                if(AgentMovementCalculator.distanceFromGoal(this, agent) < 0.15)
+                if(AgentMovementCalculator.distanceFromGoal(this, agent) <= 0.5)
                     alignedCounter++;
             }
         }
-        return alignedCounter / numAgents;
+        return alignedCounter / (double)numAgents;
     }
+
+    public double getLostPercentage() {
+        int lostCounter = 0;
+        for (int x=0;x<agents.allObjects.numObjs;x++) {
+            if(agents.allObjects.objs[x] != leaderAgent){
+                Agent agent = (Agent)(agents.allObjects.objs[x]);
+                if(AgentMovementCalculator.getDistanceBetweenPoints(leaderAgent.position.loc, agent.position.loc) > 40)
+                    lostCounter++;
+            }
+        }
+        return lostCounter / (double)numAgents;
+    }
+
 
     public boolean swarmReachedGoal() {
     	for (int x=0;x<agents.allObjects.numObjs;x++) {
