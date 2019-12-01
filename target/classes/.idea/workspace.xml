@@ -2,11 +2,539 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba6a4305-9228-4c5e-8e9a-85349c229156" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingLeaderUtilityCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderUtilityCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mason.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mason.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/Agent.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/Agent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/BaseAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/BaseAgent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/.idea/mason.iml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/mason.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ec/util/MersenneTwisterFast.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ec/util/MersenneTwisterFast.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/app/signalingswarmgame/Agent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/app/signalingswarmgame/Agent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/app/signalingswarmgame/BaseAgent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/app/signalingswarmgame/BaseAgent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$10$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$10$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$11$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$11$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$12$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$12$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$3$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$4$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$5$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$6$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$6$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$7$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$7$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$8$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$8$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$9$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$9$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesDoubleDoubles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesDoubleDoubles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesDoubleDoublesAndLabels.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesDoubleDoublesAndLabels.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesDoubles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesDoubles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesDoublesAndLabels.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesDoublesAndLabels.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesObjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesObjects.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesTripleDoubles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities$ProvidesTripleDoubles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/ChartUtilities.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$19.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$20.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$21.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$22.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$23.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$23.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$24.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$24.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$25.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$25.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$26.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$26.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$27.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$27.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$28.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$28.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$29.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$29.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$30.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$30.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$31.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$31.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$32.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$32.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$33.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$33.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$34.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$34.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$35.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$35.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$36.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$36.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$37.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$37.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$38.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$38.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$39.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$39.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$40.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$40.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$41.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$41.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$42.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$42.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$43.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$43.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$44.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$44.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$45.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$45.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$46.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$46.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$47.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$47.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$48.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$48.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$49.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$49.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$50$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$50$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$50.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$50.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$51.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$51.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$52.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$52.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$53.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$53.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$54.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$54.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$55.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$55.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$56.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$56.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$57.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$57.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$58.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$58.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$59.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$59.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$60$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$60$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$60$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$60$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$60.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$60.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$61$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$61$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$61.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$61.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Console.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Console.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$19.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$20.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$21.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$22.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$23.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$23.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$24.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$24.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$25.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$25.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$26.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$26.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$27.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$27.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$28.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$28.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$FieldPortrayal2DHolder$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$FieldPortrayal2DHolder$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$FieldPortrayal2DHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$FieldPortrayal2DHolder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$InnerDisplay2D$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$InnerDisplay2D$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$InnerDisplay2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$InnerDisplay2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$OptionPane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$OptionPane$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$OptionPane$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$OptionPane$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$OptionPane$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$OptionPane$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$OptionPane$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$OptionPane$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$OptionPane$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$OptionPane$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D$OptionPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D$OptionPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Display2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Display2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/GUIState$Repeat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/GUIState$Repeat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/GUIState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/GUIState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Manipulating2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Manipulating2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/Prefs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/Prefs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/RateAdjuster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/RateAdjuster.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/SimApplet$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/SimApplet$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/SimApplet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/SimApplet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/SimpleController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/SimpleController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/SimpleController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/SimpleController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/SimpleController$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/SimpleController$3$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/SimpleController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/SimpleController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/SimpleController$4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/SimpleController$4$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/SimpleController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/SimpleController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/display/SimpleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/display/SimpleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/AsynchronousSteppable$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/AsynchronousSteppable$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/AsynchronousSteppable$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/AsynchronousSteppable$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/AsynchronousSteppable$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/AsynchronousSteppable$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/AsynchronousSteppable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/AsynchronousSteppable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/IterativeRepeat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/IterativeRepeat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/MakesSimState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/MakesSimState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/MethodStep.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/MethodStep.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/MultiStep.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/MultiStep.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/ParallelSequence$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/ParallelSequence$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/ParallelSequence$Worker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/ParallelSequence$Worker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/ParallelSequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/ParallelSequence.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/RandomSequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/RandomSequence.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/Repeat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/Repeat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/Schedule$Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/Schedule$Key.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/Schedule.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/Schedule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/Sequence.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/SimState$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/SimState$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/SimState$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/SimState$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/SimState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/SimState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/Steppable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/Steppable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/Stoppable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/Stoppable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/TentativeStep.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/TentativeStep.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/ThreadPool$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/ThreadPool$Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/ThreadPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/ThreadPool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/engine/WeakStep.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/engine/WeakStep.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/SparseField$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/SparseField$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/SparseField$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/SparseField$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/SparseField$LocationAndIndex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/SparseField$LocationAndIndex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/SparseField.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/SparseField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/SparseField2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/SparseField2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/SparseField3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/SparseField3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/continuous/Continuous2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/continuous/Continuous2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/continuous/Continuous3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/continuous/Continuous3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/AbstractGrid2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/AbstractGrid2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/AbstractGrid3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/AbstractGrid3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/DenseGrid2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/DenseGrid2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/DenseGrid3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/DenseGrid3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/DoubleGrid2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/DoubleGrid2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/DoubleGrid3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/DoubleGrid3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/Grid2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/Grid2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/Grid3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/Grid3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/IntGrid2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/IntGrid2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/IntGrid3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/IntGrid3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/ObjectGrid2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/ObjectGrid2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/ObjectGrid3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/ObjectGrid3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/SparseGrid2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/SparseGrid2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/grid/SparseGrid3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/grid/SparseGrid3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/network/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/network/Edge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/network/Network$IndexOutIn.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/network/Network$IndexOutIn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/field/network/Network.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/field/network/Network.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/DrawInfo2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/DrawInfo2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/FieldPortrayal$CustomInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/FieldPortrayal$CustomInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/FieldPortrayal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/FieldPortrayal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/FieldPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/FieldPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/Fixed2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/Fixed2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/Inspector$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/Inspector$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/Inspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/Inspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/Inspector$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/Inspector$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/Inspector$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/Inspector$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/Inspector$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/Inspector$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/Inspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/Inspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/LocationWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/LocationWrapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/Orientable2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/Orientable2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/Oriented2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/Oriented2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/Portrayal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/Portrayal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/Portrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/Portrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/Scalable2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/Scalable2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector$2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/SimpleInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/SimplePortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/SimplePortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/continuous/ContinuousPortrayal2D$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/continuous/ContinuousPortrayal2D$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/continuous/ContinuousPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/continuous/ContinuousPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/DenseGridPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/DenseGridPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/DrawPolicy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/DrawPolicy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/FastHexaObjectGridPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/FastHexaObjectGridPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/FastHexaValueGridPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/FastHexaValueGridPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/FastObjectGridPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/FastObjectGridPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/FastValueGridPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/FastValueGridPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/HexaDenseGridPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/HexaDenseGridPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/HexaObjectGridPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/HexaObjectGridPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/HexaSparseGridPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/HexaSparseGridPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/HexaValueGridPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/HexaValueGridPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/ObjectGridPortrayal2D$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/ObjectGridPortrayal2D$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/ObjectGridPortrayal2D$Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/ObjectGridPortrayal2D$Message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/ObjectGridPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/ObjectGridPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/SparseGridPortrayal2D$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/SparseGridPortrayal2D$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/SparseGridPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/SparseGridPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/ValueGridPortrayal2D$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/ValueGridPortrayal2D$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/ValueGridPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/grid/ValueGridPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BarChartChartingPropertyInspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BarChartChartingPropertyInspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BarChartChartingPropertyInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BarChartChartingPropertyInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BoxPlotChartingPropertyInspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BoxPlotChartingPropertyInspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BoxPlotChartingPropertyInspector$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BoxPlotChartingPropertyInspector$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BoxPlotChartingPropertyInspector$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BoxPlotChartingPropertyInspector$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BoxPlotChartingPropertyInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BoxPlotChartingPropertyInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BubbleChartChartingPropertyInspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BubbleChartChartingPropertyInspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BubbleChartChartingPropertyInspector$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BubbleChartChartingPropertyInspector$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BubbleChartChartingPropertyInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/BubbleChartChartingPropertyInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$GlobalAttributes$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$GlobalAttributes$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$GlobalAttributes$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$GlobalAttributes$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$GlobalAttributes$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$GlobalAttributes$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$GlobalAttributes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector$GlobalAttributes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ChartingPropertyInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/HistogramChartingPropertyInspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/HistogramChartingPropertyInspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/HistogramChartingPropertyInspector$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/HistogramChartingPropertyInspector$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/HistogramChartingPropertyInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/HistogramChartingPropertyInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PieChartChartingPropertyInspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PieChartChartingPropertyInspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PieChartChartingPropertyInspector$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PieChartChartingPropertyInspector$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PieChartChartingPropertyInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PieChartChartingPropertyInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PropertyInspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PropertyInspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PropertyInspector$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PropertyInspector$2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PropertyInspector$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PropertyInspector$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PropertyInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/PropertyInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ProvidesInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ProvidesInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ScatterPlotChartingPropertyInspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ScatterPlotChartingPropertyInspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ScatterPlotChartingPropertyInspector$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ScatterPlotChartingPropertyInspector$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ScatterPlotChartingPropertyInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/ScatterPlotChartingPropertyInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StableDouble2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StableDouble2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StableInt2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StableInt2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StableLocation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StableLocation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StreamingPropertyInspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StreamingPropertyInspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StreamingPropertyInspector$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StreamingPropertyInspector$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StreamingPropertyInspector$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StreamingPropertyInspector$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StreamingPropertyInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/StreamingPropertyInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/Tabbable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/Tabbable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/TabbedInspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/TabbedInspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/TabbedInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/TabbedInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/TimeSeriesChartingPropertyInspector$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/TimeSeriesChartingPropertyInspector$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/TimeSeriesChartingPropertyInspector$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/TimeSeriesChartingPropertyInspector$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/TimeSeriesChartingPropertyInspector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/inspector/TimeSeriesChartingPropertyInspector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/network/EdgeDrawInfo2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/network/EdgeDrawInfo2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/network/NetworkPortrayal2D$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/network/NetworkPortrayal2D$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/network/NetworkPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/network/NetworkPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/network/SimpleEdgePortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/network/SimpleEdgePortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/network/SpatialNetwork2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/network/SpatialNetwork2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/AbstractShapePortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/AbstractShapePortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/AdjustablePortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/AdjustablePortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/CircledPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/CircledPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/FacetedPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/FacetedPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/HexagonalPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/HexagonalPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/ImagePortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/ImagePortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/LabelledPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/LabelledPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/MovablePortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/MovablePortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/OrientedPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/OrientedPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/OvalPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/OvalPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/RectanglePortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/RectanglePortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/ShapePortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/ShapePortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/TrailedPortrayal2D$DefaultTrail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/TrailedPortrayal2D$DefaultTrail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/TrailedPortrayal2D$Place.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/TrailedPortrayal2D$Place.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/TrailedPortrayal2D$TrailDrawInfo2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/TrailedPortrayal2D$TrailDrawInfo2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/TrailedPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/TrailedPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/TransformedPortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/TransformedPortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/ValuePortrayal2D$DoubleFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/ValuePortrayal2D$DoubleFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/ValuePortrayal2D$Filter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/ValuePortrayal2D$Filter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/ValuePortrayal2D$IntFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/ValuePortrayal2D$IntFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/ValuePortrayal2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/portrayal/simple/ValuePortrayal2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Bag$BagIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Bag$BagIterator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Bag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Bag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/CausedRuntimeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/CausedRuntimeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/CollectionProperties$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/CollectionProperties$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/CollectionProperties$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/CollectionProperties$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/CollectionProperties$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/CollectionProperties$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/CollectionProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/CollectionProperties.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Double2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Double2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Double3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Double3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/DoubleBag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/DoubleBag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Heap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Heap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Indexed.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Indexed.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Int2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Int2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Int3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Int3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/IntBag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/IntBag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Interval.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Interval.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/LocationLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/LocationLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/MutableDouble.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/MutableDouble.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/MutableDouble2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/MutableDouble2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/MutableDouble3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/MutableDouble3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/MutableInt2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/MutableInt2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/MutableInt3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/MutableInt3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Propertied.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Propertied.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Properties.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Properties.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Proxiable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Proxiable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/SimpleProperties$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/SimpleProperties$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/SimpleProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/SimpleProperties.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/TableLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/TableLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/Valuable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/Valuable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/AbstractContinousDistribution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/AbstractContinousDistribution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/AbstractDiscreteDistribution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/AbstractDiscreteDistribution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/AbstractDistribution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/AbstractDistribution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Arithmetic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Arithmetic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Beta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Beta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Binomial.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Binomial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/BreitWigner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/BreitWigner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/BreitWignerMeanSquare.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/BreitWignerMeanSquare.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/ChiSquare.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/ChiSquare.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Distributions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Distributions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Empirical.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Empirical.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/EmpiricalWalker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/EmpiricalWalker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Exponential.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Exponential.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/ExponentialPower.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/ExponentialPower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Fun.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Fun.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Gamma.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Gamma.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/HyperGeometric.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/HyperGeometric.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Hyperbolic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Hyperbolic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Logarithmic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Logarithmic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/NegativeBinomial.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/NegativeBinomial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Normal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Normal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Poisson.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Poisson.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/PoissonSlow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/PoissonSlow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Polynomial.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Polynomial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Probability.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Probability.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Stack.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Stack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/StudentT.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/StudentT.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Uniform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Uniform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/VonMises.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/VonMises.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/distribution/Zeta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/distribution/Zeta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/AbstractColorMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/AbstractColorMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/AbstractScrollable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/AbstractScrollable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/CharColumnScanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/CharColumnScanner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/ColorMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/ColorMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/ColorWell$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/ColorWell$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/ColorWell.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/ColorWell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/CompositeColorMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/CompositeColorMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/DisclosurePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/DisclosurePanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/DisclosurePanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/DisclosurePanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/DisclosurePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/DisclosurePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/FontMetricsScanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/FontMetricsScanner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/HTMLBrowser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/HTMLBrowser$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/HTMLBrowser$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/HTMLBrowser$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/HTMLBrowser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/HTMLBrowser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/LabelledList$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/LabelledList$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/LabelledList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/LabelledList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/MiniHistogram$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/MiniHistogram$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/MiniHistogram$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/MiniHistogram$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/MiniHistogram.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/MiniHistogram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/MovieMaker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/MovieMaker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/NumberTextField$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/NumberTextField$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/NumberTextField$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/NumberTextField$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/NumberTextField$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/NumberTextField$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/NumberTextField$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/NumberTextField$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/NumberTextField$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/NumberTextField$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/NumberTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/NumberTextField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/PropertyField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/SimpleColorMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/SimpleColorMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/Utilities$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/Utilities$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/Utilities$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/Utilities$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/Utilities$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/Utilities$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/Utilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/Utilities.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/WordWrap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/WordWrap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/gui/WordWrapScanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/gui/WordWrapScanner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/MovieEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/MovieEncoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/MovieEncoderDataSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/MovieEncoderDataSource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/MovieEncoderDataStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/MovieEncoderDataStream.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/PDFEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/PDFEncoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/PNGEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/PNGEncoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartSeriesAttributes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BarChartSeriesAttributes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotSeriesAttributes$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotSeriesAttributes$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotSeriesAttributes$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotSeriesAttributes$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotSeriesAttributes$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotSeriesAttributes$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotSeriesAttributes$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotSeriesAttributes$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotSeriesAttributes$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotSeriesAttributes$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotSeriesAttributes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BoxPlotSeriesAttributes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BubbleChartGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BubbleChartGenerator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BubbleChartGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BubbleChartGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BubbleChartSeriesAttributes$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BubbleChartSeriesAttributes$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BubbleChartSeriesAttributes$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BubbleChartSeriesAttributes$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BubbleChartSeriesAttributes$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BubbleChartSeriesAttributes$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BubbleChartSeriesAttributes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/BubbleChartSeriesAttributes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$ScrollableChartPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$ScrollableChartPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$UniqueString.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator$UniqueString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ChartGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/DataCuller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/DataCuller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramGenerator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramGenerator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramGenerator$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/HistogramSeriesAttributes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/MinGapDataCuller$Heap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/MinGapDataCuller$Heap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/MinGapDataCuller$Record.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/MinGapDataCuller$Record.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/MinGapDataCuller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/MinGapDataCuller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/PieChartGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/PieChartGenerator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/PieChartGenerator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/PieChartGenerator$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/PieChartGenerator$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/PieChartGenerator$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/PieChartGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/PieChartGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/PieChartSeriesAttributes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/PieChartSeriesAttributes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ScatterPlotGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ScatterPlotGenerator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ScatterPlotGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ScatterPlotGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ScatterPlotSeriesAttributes$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ScatterPlotSeriesAttributes$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ScatterPlotSeriesAttributes$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ScatterPlotSeriesAttributes$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ScatterPlotSeriesAttributes$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ScatterPlotSeriesAttributes$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ScatterPlotSeriesAttributes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/ScatterPlotSeriesAttributes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/SeriesAttributes$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/SeriesAttributes$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/SeriesAttributes$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/SeriesAttributes$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/SeriesAttributes$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/SeriesAttributes$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/SeriesAttributes$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/SeriesAttributes$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/SeriesAttributes$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/SeriesAttributes$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/SeriesAttributes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/SeriesAttributes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesAttributes$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesAttributes$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesAttributes$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesAttributes$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesAttributes$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesAttributes$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesAttributes$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesAttributes$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesAttributes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesAttributes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesChartGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesChartGenerator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesChartGenerator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesChartGenerator$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesChartGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/TimeSeriesChartGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sim/util/media/chart/XYChartGenerator.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,58 +561,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-131">
-              <caret line="48" column="9" lean-forward="true" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+            <state relative-caret-position="136">
+              <caret line="187" column="30" lean-forward="true" selection-start-line="187" selection-start-column="30" selection-end-line="187" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2318#2319#0" expanded="true" />
-                <element signature="e#3272#3273#0" expanded="true" />
-                <element signature="e#3355#3356#0" expanded="true" />
-                <element signature="e#3442#3443#0" expanded="true" />
-                <element signature="method#updateSimulationDistReportFile#0;class#SignalingSwarmGameWithUI#0" />
-                <element signature="method#updateSimulationSetReportFile#0;class#SignalingSwarmGameWithUI#0" />
-                <element signature="method#updateDistFile#0;class#SignalingSwarmGameWithUI#0" />
-                <element signature="method#setupPortrayals#0;class#SignalingSwarmGameWithUI#0" />
+                <element signature="e#2631#2632#0" expanded="true" />
+                <element signature="e#2659#2660#0" expanded="true" />
+                <element signature="e#3540#3541#0" expanded="true" />
+                <element signature="e#3613#3614#0" expanded="true" />
+                <element signature="e#3668#3669#0" expanded="true" />
+                <element signature="e#3696#3697#0" expanded="true" />
+                <element signature="e#3734#3735#0" expanded="true" />
+                <element signature="e#3783#3784#0" expanded="true" />
                 <element signature="method#updatePortrayalsColors#0;class#SignalingSwarmGameWithUI#0" />
                 <element signature="method#init#0;class#SignalingSwarmGameWithUI#0" />
                 <element signature="method#quit#0;class#SignalingSwarmGameWithUI#0" />
-                <element signature="method#appendSimulatorParameters#0;class#SignalingSwarmGameWithUI#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/Formatter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="2608" selection-start-line="2608" selection-end-line="2608" />
-              <folding>
-                <element signature="e#112309#112310#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/lang/String.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="2896" selection-start-line="2896" selection-end-line="2896" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1309">
-              <caret line="89" column="34" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#12353#12400#0" />
               </folding>
             </state>
           </provider>
@@ -93,8 +588,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Agent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="269">
+              <caret line="33" column="74" lean-forward="true" selection-start-line="33" selection-start-column="74" selection-end-line="33" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -105,8 +600,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/BaseAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-224">
-              <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+            <state relative-caret-position="337">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,10 +610,17 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sim/util/Double2D.java">
+        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="101">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
+              <folding>
+                <element signature="method#Leader#0;class#Leader#0" />
+                <element signature="e#3755#3893#0" />
+                <element signature="e#4143#4302#0" />
+                <element signature="e#3820#4287#0" />
+                <element signature="e#4040#4252#1" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -126,11 +628,69 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="81" column="31" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
+            <state relative-caret-position="153">
+              <caret line="59" column="48" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#checkStopCriteria#0;class#FlockingAgentMovementCalculator#0" />
+                <element signature="method#distanceFromLeader#0;class#FlockingAgentMovementCalculator#0" />
+                <element signature="method#agentNextDirectionByState#0;class#FlockingAgentMovementCalculator#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderUtilityCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+              <folding>
+                <element signature="e#153#177#0" />
+                <element signature="method#returnAgentsPositionToPhysical#0;class#LeaderUtilityCalculator#0" />
+                <element signature="e#154#172#0" />
+                <element signature="n#!!block;n#setInstance#0;n#LeaderUtilityCalculator#0" />
+                <element signature="method#getInstance#0;class#LeaderUtilityCalculator#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingLeaderUtilityCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="77" selection-start-line="4" selection-start-column="77" selection-end-line="4" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#isAgentReachedGoal#0;class#AgentMovementCalculator#0" />
+                <element signature="method#distanceFromGoal#0;class#AgentMovementCalculator#0" />
+                <element signature="method#getAgentNextPositionByState#0;class#AgentMovementCalculator#0" />
+                <element signature="method#getDirectionToNeighbor#0;class#AgentMovementCalculator#0" />
+                <element signature="method#getNormalizedVector#0;class#AgentMovementCalculator#0" />
+                <element signature="method#calculateAngleBetweenDirections#0;class#AgentMovementCalculator#0" />
+                <element signature="method#getVectorLength#0;class#AgentMovementCalculator#0" />
+                <element signature="method#getDirectionBetweenPoints#0;class#AgentMovementCalculator#0" />
+                <element signature="method#getDistanceBetweenPoints#0;class#AgentMovementCalculator#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Reports/simulationSetResults.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="38" column="28" lean-forward="true" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -146,10 +706,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pwd</find>
-      <find>gameStatistics</find>
-      <find>distances</find>
-      <find>noSignalDirection</find>
       <find>acceptedSignalAgentDirection</find>
       <find>lambda</find>
       <find>getdire</find>
@@ -176,6 +732,10 @@
       <find>paramete</find>
       <find>updateReportFile</find>
       <find>getNextStepPositionsByState</find>
+      <find>getSwarmPositionsByOptions</find>
+      <find>firstSigna</find>
+      <find>calculateSingleStepUtility</find>
+      <find>agent.</find>
     </findStrings>
     <replaceStrings>
       <replace>SignalingSwarmGame</replace>
@@ -194,6 +754,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -216,14 +781,16 @@
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/SwarmType.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentLocation.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingLeader.java" />
-        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java" />
-        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/BaseAgent.java" />
-        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentPosition.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/Agent.java" />
-        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java" />
-        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingLeaderUtilityCalculator.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentPosition.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/BaseAgent.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderUtilityCalculator.java" />
       </list>
     </option>
   </component>
@@ -240,7 +807,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="81" />
     <option name="y" value="-12" />
     <option name="width" value="936" />
@@ -252,14 +819,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
             <path>
               <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
               <item name="mason" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
+              <item name="mason" type="616d4139:PackageViewModuleNode" />
+              <item name="Reports" type="1f31426a:PackageElementNode" />
             </path>
             <path>
               <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
@@ -276,6 +846,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -283,10 +855,10 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="masonsignalingswarmsimulator" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569941876077" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574318130231" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15136719" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -410,7 +982,21 @@
       <option name="project" value="LOCAL" />
       <updated>1565439533335</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update java version">
+      <created>1574253831920</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574253831921</updated>
+    </task>
+    <task id="LOCAL-00003" summary="working multiple leader + code refactor">
+      <created>1574317468349</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574317468349</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -423,10 +1009,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="-7" width="1233" height="735" extended-state="6" />
-    <editor active="true" />
+    <frame x="86" y="-7" width="1201" height="735" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.22676897" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.26468012" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -434,7 +1019,39 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.5014663" side_tool="true" weight="0.40174672" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992722" weight="0.41791046" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4394693" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.328125" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.496361" weight="0.3250444" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.503639" side_tool="true" weight="0.32589287" />
+      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.3283582" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.33167496" />
+      <window_info anchor="bottom" id="Inspection Results" order="11" sideWeight="0.72634643" weight="0.54464287" />
+      <window_info anchor="bottom" id="Problems" order="12" sideWeight="0.6448326" weight="0.4724689" />
+      <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.32896653" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Ant Build" order="4" weight="0.24715163" />
+      <window_info anchor="right" id="make" order="5" weight="0.60647774" />
+      <window_info anchor="right" id="Maven" order="6" weight="0.32874495" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="8" />
+      <window_info anchor="right" id="Palette&#9;" order="9" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.26468012" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.5014663" side_tool="true" weight="0.40174672" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4992722" visible="true" weight="0.41791046" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4394693" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -450,40 +1067,8 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="make" order="4" weight="0.60647774" />
-      <window_info anchor="right" id="Ant Build" order="5" weight="0.24777327" />
-      <window_info anchor="right" id="Maven" order="6" weight="0.32874495" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Capture Analysis" order="8" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.15601023" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.5014663" side_tool="true" weight="0.40174672" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992722" visible="true" weight="0.41791046" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3250444" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.328125" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.496361" weight="0.3250444" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.503639" side_tool="true" weight="0.32589287" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3285968" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3321492" />
-      <window_info anchor="bottom" id="Inspection Results" order="11" sideWeight="0.72634643" weight="0.54464287" />
-      <window_info anchor="bottom" id="Problems" order="12" sideWeight="0.6448326" weight="0.4724689" />
-      <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.32896653" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="make" order="4" weight="0.60647774" />
-      <window_info anchor="right" id="Ant Build" order="5" weight="0.24777327" />
+      <window_info anchor="right" id="Ant Build" order="4" weight="0.24715163" />
+      <window_info anchor="right" id="make" order="5" weight="0.60647774" />
       <window_info anchor="right" id="Maven" order="6" weight="0.32874495" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="8" />
@@ -532,28 +1117,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="lookahead" />
-    <option name="LAST_COMMIT_MESSAGE" value="lookahead" />
+    <MESSAGE value="update java version" />
+    <MESSAGE value="working multiple leader + code refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="working multiple leader + code refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java</url>
-          <line>201</line>
+          <line>200</line>
           <properties />
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java</url>
-          <line>96</line>
+          <line>92</line>
           <properties />
           <option name="timeStamp" value="147" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java</url>
-          <line>74</line>
-          <properties />
-          <option name="timeStamp" value="159" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -625,38 +1206,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/sim/portrayal/Portrayal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/virus/VirusInfectionDemo.java" />
-    <entry file="file://$PROJECT_DIR$/sim/app/tutorial1and2/Tutorial1.java" />
-    <entry file="file://$PROJECT_DIR$/sim/app/pacman/PacMan.java" />
-    <entry file="file://$PROJECT_DIR$/sim/portrayal/continuous/ContinuousPortrayal2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="211" column="32" selection-start-line="211" selection-start-column="32" selection-end-line="211" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#17964#0" expanded="true" />
-            <element signature="method#getScale#0;class#ContinuousPortrayal2D#0" />
-            <element signature="method#getPositionLocation#0;class#ContinuousPortrayal2D#0" />
-            <element signature="method#setObjectPosition#0;class#ContinuousPortrayal2D#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/portrayal/Oriented2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#455#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sim/engine/Steppable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="82">
@@ -782,20 +1331,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/engine/Schedule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6069">
-          <caret line="364" selection-start-line="364" selection-end-line="364" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/display/GUIState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="467" selection-start-line="467" selection-end-line="467" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.desktop/java/awt/EventQueue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11679">
@@ -839,26 +1374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/display/Console.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37417">
-          <caret line="2354" selection-start-line="2354" selection-end-line="2354" />
-          <folding>
-            <element signature="e#0#138147#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#8372#8373#0" expanded="true" />
-            <element signature="e#8445#8446#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentPosition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sim/util/Double2D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -883,44 +1398,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java">
+    <entry file="file://$PROJECT_DIR$/sim/display/Console.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        <state relative-caret-position="521">
+          <caret line="2736" selection-start-line="2736" selection-end-line="2736" />
           <folding>
-            <element signature="e#2155#2156#0" expanded="true" />
-            <element signature="e#2174#2175#0" expanded="true" />
-            <element signature="method#locateAgent#0;class#SignalingSwarmGame#0" />
+            <element signature="e#0#138147#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#8372#8373#0" expanded="true" />
+            <element signature="e#8445#8446#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/engine/Schedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="352" selection-start-line="352" selection-end-line="352" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/display/GUIState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="462" selection-start-line="462" selection-end-line="462" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="177" column="11" selection-start-line="177" selection-start-column="11" selection-end-line="177" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/util/SimpleProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="479" selection-start-line="479" selection-end-line="479" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentPosition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/BaseAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-224">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+        <state relative-caret-position="337">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
-          <folding>
-            <element signature="method#getNormalizedVector#0;class#AgentMovementCalculator#0" />
-            <element signature="method#getVectorLength#0;class#AgentMovementCalculator#0" />
-            <element signature="method#getInstance#0;class#AgentMovementCalculator#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Agent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        <state relative-caret-position="269">
+          <caret line="33" column="74" lean-forward="true" selection-start-line="33" selection-start-column="74" selection-end-line="33" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -929,42 +1471,134 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="81" column="31" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
+        <state relative-caret-position="153">
+          <caret line="59" column="48" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#checkStopCriteria#0;class#FlockingAgentMovementCalculator#0" />
+            <element signature="method#distanceFromLeader#0;class#FlockingAgentMovementCalculator#0" />
+            <element signature="method#agentNextDirectionByState#0;class#FlockingAgentMovementCalculator#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="89" column="34" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
+        <state relative-caret-position="101">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#Leader#0;class#Leader#0" />
+            <element signature="e#3755#3893#0" />
+            <element signature="e#4143#4302#0" />
+            <element signature="e#3820#4287#0" />
+            <element signature="e#4040#4252#1" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-131">
-          <caret line="48" column="9" lean-forward="true" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+        <state relative-caret-position="136">
+          <caret line="187" column="30" lean-forward="true" selection-start-line="187" selection-start-column="30" selection-end-line="187" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2318#2319#0" expanded="true" />
-            <element signature="e#3272#3273#0" expanded="true" />
-            <element signature="e#3355#3356#0" expanded="true" />
-            <element signature="e#3442#3443#0" expanded="true" />
-            <element signature="method#updateSimulationDistReportFile#0;class#SignalingSwarmGameWithUI#0" />
-            <element signature="method#updateSimulationSetReportFile#0;class#SignalingSwarmGameWithUI#0" />
-            <element signature="method#updateDistFile#0;class#SignalingSwarmGameWithUI#0" />
-            <element signature="method#setupPortrayals#0;class#SignalingSwarmGameWithUI#0" />
+            <element signature="e#2631#2632#0" expanded="true" />
+            <element signature="e#2659#2660#0" expanded="true" />
+            <element signature="e#3540#3541#0" expanded="true" />
+            <element signature="e#3613#3614#0" expanded="true" />
+            <element signature="e#3668#3669#0" expanded="true" />
+            <element signature="e#3696#3697#0" expanded="true" />
+            <element signature="e#3734#3735#0" expanded="true" />
+            <element signature="e#3783#3784#0" expanded="true" />
             <element signature="method#updatePortrayalsColors#0;class#SignalingSwarmGameWithUI#0" />
             <element signature="method#init#0;class#SignalingSwarmGameWithUI#0" />
             <element signature="method#quit#0;class#SignalingSwarmGameWithUI#0" />
-            <element signature="method#appendSimulatorParameters#0;class#SignalingSwarmGameWithUI#0" />
+            <element signature="e#12353#12400#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+          <folding>
+            <element signature="e#1340#1341#0" expanded="true" />
+            <element signature="e#1385#1386#0" expanded="true" />
+            <element signature="e#1446#1447#0" expanded="true" />
+            <element signature="e#1488#1489#0" expanded="true" />
+            <element signature="e#1527#1528#0" expanded="true" />
+            <element signature="e#1565#1566#0" expanded="true" />
+            <element signature="e#1618#1619#0" expanded="true" />
+            <element signature="e#1661#1662#0" expanded="true" />
+            <element signature="e#1709#1710#0" expanded="true" />
+            <element signature="e#1756#1757#0" expanded="true" />
+            <element signature="e#1827#1828#0" expanded="true" />
+            <element signature="e#1888#1889#0" expanded="true" />
+            <element signature="e#1930#1931#0" expanded="true" />
+            <element signature="e#1971#1972#0" expanded="true" />
+            <element signature="e#2033#2034#0" expanded="true" />
+            <element signature="e#2085#2086#0" expanded="true" />
+            <element signature="e#2123#2124#0" expanded="true" />
+            <element signature="e#2163#2164#0" expanded="true" />
+            <element signature="e#2215#2216#0" expanded="true" />
+            <element signature="e#2260#2261#0" expanded="true" />
+            <element signature="e#2293#2294#0" expanded="true" />
+            <element signature="e#2328#2329#0" expanded="true" />
+            <element signature="e#2375#2376#0" expanded="true" />
+            <element signature="e#2415#2416#0" expanded="true" />
+            <element signature="e#2275#2288#0" />
+            <element signature="method#SignalingSwarmGame#1;class#SignalingSwarmGame#0" />
+            <element signature="e#4350#4851#0" />
+            <element signature="e#4966#4998#0" />
+            <marker date="1574316743793" expanded="true" signature="2422:2707" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#isAgentReachedGoal#0;class#AgentMovementCalculator#0" />
+            <element signature="method#distanceFromGoal#0;class#AgentMovementCalculator#0" />
+            <element signature="method#getAgentNextPositionByState#0;class#AgentMovementCalculator#0" />
+            <element signature="method#getDirectionToNeighbor#0;class#AgentMovementCalculator#0" />
+            <element signature="method#getNormalizedVector#0;class#AgentMovementCalculator#0" />
+            <element signature="method#calculateAngleBetweenDirections#0;class#AgentMovementCalculator#0" />
+            <element signature="method#getVectorLength#0;class#AgentMovementCalculator#0" />
+            <element signature="method#getDirectionBetweenPoints#0;class#AgentMovementCalculator#0" />
+            <element signature="method#getDistanceBetweenPoints#0;class#AgentMovementCalculator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Reports/simulationSetResults.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="38" column="28" lean-forward="true" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingLeaderUtilityCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="77" selection-start-line="4" selection-start-column="77" selection-end-line="4" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderUtilityCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+          <folding>
+            <element signature="e#153#177#0" />
+            <element signature="method#returnAgentsPositionToPhysical#0;class#LeaderUtilityCalculator#0" />
+            <element signature="e#154#172#0" />
+            <element signature="n#!!block;n#setInstance#0;n#LeaderUtilityCalculator#0" />
+            <element signature="method#getInstance#0;class#LeaderUtilityCalculator#0" />
           </folding>
         </state>
       </provider>

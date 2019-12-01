@@ -2,10 +2,12 @@ package sim.app.signalingswarmgame;
 
 import sim.util.Double2D;
 
+import java.util.List;
+
 public abstract class AgentMovementCalculator {
     public static final double EPSILON = 0.000000001;
 
-    private static AgentMovementCalculator movementCalculator;
+    private static AgentMovementCalculator calculatorInstance;
 
     //region Abstract Method
 
@@ -13,9 +15,10 @@ public abstract class AgentMovementCalculator {
                                               Agent agent,
                                               AgentState state);
 
-    abstract BaseAgent[] agentNeighborsByState(SignalingSwarmGame swarm,
+    abstract List<BaseAgent> agentNeighborsByState(SignalingSwarmGame swarm,
                                                 BaseAgent agent,
-                                                AgentState state);
+                                                AgentState state,
+                                                boolean filterLeaders);
 
     abstract boolean checkStopCriteria(SignalingSwarmGame swarm, Agent agent);
 
@@ -31,8 +34,12 @@ public abstract class AgentMovementCalculator {
                 getInstance().agentNextDirectionByState(swarm,(Agent)agent,state);
     }
 
-    public static BaseAgent[] getAgentNeighborsByState(SignalingSwarmGame swarm, BaseAgent agent, AgentState state){
-        return getInstance().agentNeighborsByState(swarm,agent,state);
+    public static List<BaseAgent> getAgentNeighbors(SignalingSwarmGame swarm, BaseAgent agent, boolean filterLeaders){
+        return getInstance().agentNeighborsByState(swarm,agent,AgentState.NoSignal,filterLeaders);
+    }
+
+    public static List<BaseAgent> getAgentNeighbors(SignalingSwarmGame swarm, BaseAgent agent, AgentState state){
+        return getInstance().agentNeighborsByState(swarm,agent,state,false);
     }
 
     public static boolean isAgentReachedGoal(SignalingSwarmGame swarm, Agent agent){
@@ -113,14 +120,18 @@ public abstract class AgentMovementCalculator {
 
     //endregion
 
+    //region Singleton
+
     public static void setInstance(AgentMovementCalculator otherCalculator){
-        movementCalculator = otherCalculator;
+        calculatorInstance = otherCalculator;
     }
 
     private static AgentMovementCalculator getInstance(){
-        if(movementCalculator == null)
-            movementCalculator = new FlockingAgentMovementCalculator(); // default implementation for now
+        if(calculatorInstance == null)
+            calculatorInstance = new FlockingAgentMovementCalculator(); // default implementation for now
 
-        return movementCalculator;
+        return calculatorInstance;
     }
+
+    //endregi
 }

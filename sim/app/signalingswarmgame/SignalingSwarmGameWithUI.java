@@ -14,7 +14,6 @@ import sim.engine.SimState;
 import sim.portrayal.SimplePortrayal2D;
 import sim.portrayal.continuous.ContinuousPortrayal2D;
 import sim.portrayal.simple.*;
-import sim.util.Double2D;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,42 +32,42 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private String gameStatistics = "";
 
     private int currentStep;
-    private int firstSignalStep;
     private int signalsCount;
+    private int firstSignalStep;
     private Long sumStepsTime;
     private String[] agentsDistancesList;
     private String signalsList;
 
     public static void main(String[] args) {
-//        int n = 11;
-//        int p = 8;
+        int n = 8;
+        int p = 8;
         int l = 1;
 //        int s = 2;
 
-//        SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
-//        Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
+        SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
+        Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
 ////        for (int l = 1; l <= 3; l++) {
-//            sgwui.setParams(n, p / 10.0, l, s);
+            sgwui.setParams(n, p / 10.0, l);
 ////            ((Console) simConsole).pressPlay();
 ////            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {}
 ////        }
-            for (int i = 0; i < 40; i++) {
-            SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
-            Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-//            for (int l = 1; l <= 3; l++) {
-                for (int p = 9; p > 0; p--) {
-                    for (int n = 1; n <= 20; n+=3) {
-                    for (int s = 1; s <= n; s+=3) {
-                            sgwui.setParams(n, p / 10.0, l, s);
-//                            sgwui.setParams(n, p / 10.0, l);
-                            ((Console) simConsole).pressPlay();
-                            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
-                            }
-                        }
-                    }
-                }
-            }
-//        }
+//            for (int i = 0; i < 40; i++) {
+//            SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
+//            Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
+////            for (int l = 1; l <= 3; l++) {
+//                for (int p = 9; p > 0; p--) {
+//                    for (int n = 1; n <= 20; n+=3) {
+//                    for (int s = 1; s <= n; s+=3) {
+//                            sgwui.setParams(n, p / 10.0, l, s);
+////                            sgwui.setParams(n, p / 10.0, l);
+//                            ((Console) simConsole).pressPlay();
+//                            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+////        }
     }
 
     public Object getSimulationInspectedObject() {
@@ -180,16 +179,17 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private void updateSimulationSetReportFile() {
         SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
         long avgStepTime = sumStepsTime / currentStep;
-        double convergancePercentage = swarm.getConvergancePercentage();
-        double lostPercentage = swarm.getLostPercentage();
+        double convergancePercentage = swarm.convergencePercentage();
+        double lostPercentage = swarm.lostPercentage();
 
-        StringBuilder sb = new StringBuilder(String.format("%d, %.2f, %d, %d, %d, %d, %d, %d, %.2f, %.2f\n",
+        StringBuilder sb = new StringBuilder(String.format("%d, %d, %.2f, %d, %d, %d, %d, %d, %d, %.2f, %.2f\n",
                 swarm.numAgents,
+                swarm.numLeaders,
                 swarm.getAcceptLeadersSignalCorrectly(),
                 swarm.getStepsLookahead(),
                 swarm.getSightSize(),
                 firstSignalStep,
-                signalsCount,
+                swarm.currentStepSignalsCounter,
                 currentStep,
                 avgStepTime,
                 convergancePercentage,
@@ -218,15 +218,24 @@ public class SignalingSwarmGameWithUI extends GUIState {
 //        updateDistFile(state);
 //        updateReportFile(super.state);
         SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
-        if (((SignalingSwarmGame) state).isLeaderSignaled) {
-            signalsCount++;
+        if (swarm.currentStepSignalsCounter > 0) {
+            signalsCount += swarm.currentStepSignalsCounter;
+
             if (firstSignalStep == 0)
                 firstSignalStep = currentStep;
+
         }
+
+
         if (swarm.swarmReachedGoal() || currentStep >= 10000) {
 //            simulationReportWriter.close();
             finish();
         }
+
+        // reset parameters for next step
+        for(Agent a: swarm.swarmAgents)
+            a.influencingLeader = null;
+        swarm.currentStepSignalsCounter = 0;
 
 
         return result;
@@ -234,7 +243,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
     private void updateDistFile(SimState state) {
         SignalingSwarmGame swarm = (SignalingSwarmGame) state;
-        signalsList += swarm.isLeaderSignaled + ",";
+        signalsList += swarm.currentStepSignalsCounter + ",";
         for (int i = 0; i < swarm.agents.allObjects.numObjs; i++) {
             BaseAgent a = (BaseAgent) swarm.agents.allObjects.get(i);
             if (!(a instanceof Leader)) {
@@ -256,7 +265,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
         for (int x = 0; x < swarm.agents.allObjects.numObjs; x++) {
             int shape = OrientedPortrayal2D.SHAPE_COMPASS;
 
-            if (swarm.agents.allObjects.objs[x] == swarm.leaderAgent)
+            if (swarm.agents.allObjects.objs[x] instanceof Leader)
                 shape = OrientedPortrayal2D.SHAPE_KITE;
 
             SimplePortrayal2D basic = new TrailedPortrayal2D(
@@ -283,16 +292,16 @@ public class SignalingSwarmGameWithUI extends GUIState {
         for (int x = 0; x < swarm.agents.allObjects.numObjs; x++) {
             Color color = Color.black;
             int shape = OrientedPortrayal2D.SHAPE_COMPASS;
-            if (swarm.agents.allObjects.objs[x] == swarm.leaderAgent) {
+            if (swarm.agents.allObjects.objs[x] instanceof Leader) {
                 shape = OrientedPortrayal2D.SHAPE_KITE;
-
-                if (swarm.isLeaderSignaled)
+                Leader leader = (Leader) swarm.agents.allObjects.objs[x];
+                if (leader.isLeaderSignaled)
                     color = Color.green;
                 else
                     color = Color.red;
             } else {
                 Agent agent = (Agent) swarm.agents.allObjects.objs[x];
-                if (swarm.isLeaderSignaled && agent.isCurrentAgentInfluencedByLeader(swarm)) {
+                if (agent.influencingLeader != null) {
                     if (agent.isAgentAcceptSignalCorrectly)
                         color = Color.green;
                     else
@@ -337,43 +346,47 @@ public class SignalingSwarmGameWithUI extends GUIState {
         display = null;
     }
 
-    private void appendSimulatorParameters(SimState state) {
-        SignalingSwarmGame swarm = (SignalingSwarmGame) state;
-        StringBuilder stringBuilder = new StringBuilder();
+    //Todo: need to fix to support multiple leaders
 
-        stringBuilder.append(String.format("Parameters\nModel,%c\nP,%.2f\nInitial Alpha,%.2f\nIndependent,%b\n" +
-                        "Leader's Influence,%.2f\nPrev Step Weight,%.2f\nLookahead steps,%d\n",
-                swarm.model_v, swarm.p_signal_accecptness_v, swarm.initial_alpha_v,
-                swarm.are_agents_independent_v, swarm.leader_influence_v, swarm.prevStepRate,
+//    private void appendSimulatorParameters(SimState state) {
+//        SignalingSwarmGame swarm = (SignalingSwarmGame) state;
+//        StringBuilder stringBuilder = new StringBuilder();
+//
+//        stringBuilder.append(String.format("Parameters\nP,%.2f\nInitial Alpha,%.2f\nIndependent,%b\n" +
+//                        "Leader's Influence,%.2f\nPrev Step Weight,%.2f\nLookahead steps,%d\n",
+//                swarm.p_signal_accecptness_v,
+//                swarm.initial_alpha_v,
+//                swarm.are_agents_independent_v,
+//                swarm.leader_influence_v,
+//                swarm.prevStepRate,
+//                swarm.steps_lookahead_v));
+//
+//        stringBuilder.append("Step, agent, Signal?, lastX, lastY, X, Y, dirX, dirY, disFromLeader, signal utility, no signal utility\n");
+//        simulationReportWriter.write(stringBuilder.toString());
+//    }
+//    private void updateReportFile(SimState state) {
+//        SignalingSwarmGame swarm = (SignalingSwarmGame) state;
+//        StringBuilder stringBuilder = new StringBuilder();
+//
+//        stringBuilder.append(String.format(",,%b,,,,,,,,%.4f,%.4f\n", swarm.currentStepSignalsCounter,
+//                swarm.leaderAgent.totalSignalUtility, swarm.leaderAgent.totalNoSignalUtility));
+//
+//        for (int i = 0; i < swarm.agents.allObjects.numObjs; i++) {
+//            BaseAgent a = (BaseAgent) swarm.agents.allObjects.get(i);
+//
+//            if (a instanceof Leader && currentStep != 0)
+//                continue;
+//
+//            boolean signal = (a instanceof Leader) ? swarm.isLeaderSignaled : ((Agent) a).isAgentAcceptSignalCorrectly;
+//            Double2D dir = a.position.getMovementDirection();
+//            double disFromLeader = (a instanceof Leader) ? 0 : AgentMovementCalculator.distanceFromGoal(swarm, (Agent) a);
+//
+//            stringBuilder.append(String.format("%d,%d,%b,%.4f,%.4f,%.4f,%.4f,%.4f,%.4f,%.4f\n",
+//                    currentStep, i, signal, a.position.lastLoc.x, a.position.lastLoc.y,
+//                    a.position.loc.x, a.position.loc.y, dir.x, dir.y, disFromLeader));
+//        }
+//        simulationReportWriter.write(stringBuilder.toString());
+//        simulationReportWriter.flush();
+//    }
 
-                swarm.steps_lookahead_v));
-
-        stringBuilder.append("Step, agent, Signal?, lastX, lastY, X, Y, dirX, dirY, disFromLeader, signal utility, no signal utility\n");
-        simulationReportWriter.write(stringBuilder.toString());
-    }
-
-    private void updateReportFile(SimState state) {
-        SignalingSwarmGame swarm = (SignalingSwarmGame) state;
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append(String.format(",,%b,,,,,,,,%.4f,%.4f\n", swarm.isLeaderSignaled,
-                swarm.leaderAgent.totalSignalUtility, swarm.leaderAgent.totalNoSignalUtility));
-
-        for (int i = 0; i < swarm.agents.allObjects.numObjs; i++) {
-            BaseAgent a = (BaseAgent) swarm.agents.allObjects.get(i);
-
-            if (a instanceof Leader && currentStep != 0)
-                continue;
-
-            boolean signal = (a instanceof Leader) ? swarm.isLeaderSignaled : ((Agent) a).isAgentAcceptSignalCorrectly;
-            Double2D dir = a.position.getMovementDirection();
-            double disFromLeader = (a instanceof Leader) ? 0 : AgentMovementCalculator.distanceFromGoal(swarm, (Agent) a);
-
-            stringBuilder.append(String.format("%d,%d,%b,%.4f,%.4f,%.4f,%.4f,%.4f,%.4f,%.4f\n",
-                    currentStep, i, signal, a.position.lastLoc.x, a.position.lastLoc.y,
-                    a.position.loc.x, a.position.loc.y, dir.x, dir.y, disFromLeader));
-        }
-        simulationReportWriter.write(stringBuilder.toString());
-        simulationReportWriter.flush();
-    }
 }
