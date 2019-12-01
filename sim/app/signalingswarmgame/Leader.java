@@ -57,7 +57,6 @@ public class Leader extends BaseAgent {
             Double2D misu = AgentMovementCalculator.getAgentNextPositionByState(swarm, entry.getKey(), AgentState.MisunderstoodSignal);
             Double2D nosig = AgentMovementCalculator.getAgentNextPositionByState(swarm, entry.getKey(), AgentState.NoSignal);
 
-            Map<AgentState, AgentPosition> nextPositions = new HashMap<>();
             updatedAcptPositions.put(entry.getKey(), new AgentPosition(acpt,entry.getValue().loc));
             updatedMisuPositions.put(entry.getKey(), new AgentPosition(misu,entry.getValue().loc));
             updatedNoSigPositions.put(entry.getKey(), new AgentPosition(nosig,entry.getValue().loc));
@@ -114,8 +113,8 @@ public class Leader extends BaseAgent {
 
         double signalUtility = 0;
 
-        for (int i = 0; i < Math.pow(2,swarm.numAgents); i++) {
-            boolean[] isSignalAccepted = getBinaryPermutation(i, swarm.numAgents);
+        for (int i = 0; i < Math.pow(2,swarm.sight_size_v); i++) {
+            boolean[] isSignalAccepted = getBinaryPermutation(i, swarm.sight_size_v);
             Map<Agent, AgentPosition> agentsNextPositions = getSwarmPositionsByOptions(swarm, isSignalAccepted,possiblePositions);
 
             Pair<Double, Double> nextStepOptionUtility = getLookaheadUtility(swarm, agentsNextPositions, leaderPosition, stepsLookahead-1);
@@ -157,13 +156,19 @@ public class Leader extends BaseAgent {
 
     private Map<Agent, AgentPosition> getSwarmPositionsByOptions(SignalingSwarmGame swarm, boolean[] isSignalAccepted, Map<AgentState, Map<Agent, AgentPosition>> possiblePositions) {
         Map<Agent, AgentPosition> positions = new HashMap<>();
-
-        for (int i = 0; i < swarm.numAgents; i++) {
-            BaseAgent agent = (BaseAgent) swarm.agents.allObjects.objs[i+1];
+        BaseAgent[] AgentsInSight = AgentMovementCalculator.getAgentNeighborsByState(swarm, this, AgentState.NoSignal);
+        for (int i = 0; i <AgentsInSight.length; i++) {
+            BaseAgent agent = AgentsInSight[i];
 //            if(agent instanceof Leader) continue;
             AgentState agentState = isSignalAccepted[i]? AgentState.AcceptedSignal: AgentState.MisunderstoodSignal;
                 positions.put((Agent)agent, possiblePositions.get(agentState).get(agent));
-            }
+       }
+        for (int i = 0; i < swarm.agents.allObjects.numObjs; i++) {
+            BaseAgent a = (BaseAgent) swarm.agents.allObjects.objs[i];
+            if(a instanceof Leader || positions.containsKey(a))
+                continue;
+            positions.put((Agent)a, possiblePositions.get(AgentState.NoSignal).get(a));
+        }
 
         return positions;
     }

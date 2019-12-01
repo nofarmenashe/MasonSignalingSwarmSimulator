@@ -12,7 +12,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="mason" target="1.8" />
+      <module name="mason" target="1.9" />
     </bytecodeTargetLevel>
   </component>
 </project>
