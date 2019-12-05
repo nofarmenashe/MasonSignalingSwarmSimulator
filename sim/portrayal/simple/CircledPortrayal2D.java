@@ -75,7 +75,7 @@ public class CircledPortrayal2D extends OvalPortrayal2D
     
     /** Draw a circle of radius scale = 2.0, dr = 0, in blue.  Draw the circle regardless of selection.
         If child is null, then the underlying model object is presumed to be a Portrayal2D and will be used. */
-    public CircledPortrayal2D(SimplePortrayal2D child)
+    public CircledPortrayal2D(SimplePortrayal2D child, int i, int sight_radius_v, boolean b)
         {
         this(child, Color.blue, false);
         }

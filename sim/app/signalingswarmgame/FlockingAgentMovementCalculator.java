@@ -63,9 +63,18 @@ public class FlockingAgentMovementCalculator extends AgentMovementCalculator{
 
         if (state != AgentState.NoSignal && ((Agent)agent).influencingLeader != null)
             return new ArrayList<>(Arrays.asList(((Agent)agent).influencingLeader));
+
+        if(swarm.sight_radius_v == 0)
+            return getNeighborsBySightSize(swarm, agent, filterLeaders);
+
+        List<BaseAgent> neighborsInSight = getNeighborsBySightRadius(swarm, agent, filterLeaders);
+        return neighborsInSight;
+    }
+
+    private List<BaseAgent> getNeighborsBySightSize(SignalingSwarmGame swarm, BaseAgent agent, boolean filterLeaders) {
         ArrayList<BaseAgent> neighbors = new ArrayList<>();
 
-        for (int i = 0; i < swarm.agents.allObjects.numObjs; i++) { //TODO: filter neighbors out of sight zone
+        for (int i = 0; i < swarm.agents.allObjects.numObjs; i++) {
             BaseAgent otherAgent = (BaseAgent) swarm.agents.allObjects.objs[i];
 //            double dist = getDistanceBetweenPoints(agent.position.loc, otherAgent.position.loc);
             if (otherAgent != agent && (!filterLeaders || otherAgent instanceof Agent))
@@ -75,8 +84,20 @@ public class FlockingAgentMovementCalculator extends AgentMovementCalculator{
         neighbors.sort((a1, a2) -> (int) (100 * (getDistanceBetweenPoints(agent.position.loc, ((BaseAgent)a1).position.loc) -
                         getDistanceBetweenPoints(agent.position.loc, ((BaseAgent)a2).position.loc))));
 
-        List<BaseAgent> neighborsInSight =  neighbors.subList(0,
+        return neighbors.subList(0,
                 Math.min(swarm.sight_size_v, neighbors.size()));
-        return neighborsInSight;
+    }
+
+    private List<BaseAgent> getNeighborsBySightRadius(SignalingSwarmGame swarm, BaseAgent agent, boolean filterLeaders) {
+        ArrayList<BaseAgent> neighbors = new ArrayList<>();
+
+        for (int i = 0; i < swarm.agents.allObjects.numObjs; i++) {
+            BaseAgent otherAgent = (BaseAgent) swarm.agents.allObjects.objs[i];
+            double dist = getDistanceBetweenPoints(agent.position.loc, otherAgent.position.loc);
+            if (otherAgent != agent && (!filterLeaders || otherAgent instanceof Agent) && dist <= swarm.getSightRadius())
+                neighbors.add(otherAgent);
+        }
+
+        return neighbors;
     }
 }

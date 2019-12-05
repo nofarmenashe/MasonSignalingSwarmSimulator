@@ -39,33 +39,33 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private String signalsList;
 
     public static void main(String[] args) {
-        int n = 15;
+        int n = 8;
         int p = 7;
         int l = 1;
-        int s = 7;
+//        int s = 7;
 
-//        SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
-//        Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
+        SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
+        Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
 ////        for (int l = 1; l <= 3; l++) {
-//            sgwui.setParams(n, p / 10.0, l);
+            sgwui.setParams(n, p / 10.0, l);
 ////            ((Console) simConsole).pressPlay();
-////            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {}
+//            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {}
 ////        }
-            for (int i = 0; i < 40; i++) {
-                SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
-                Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-                for (int leaders = 1; leaders < 6; leaders += 2) {
-////            for (int l = 1; l <= 3; l++) {
-//                for (int p = 9; p > 0; p--) {
-//                    for (int n = 1; n <= 20; n+=3) {
-//                    for (int s = 1; s <= n; s+=3) {
-                    sgwui.setParams(n, leaders, p / 10.0, l, s);
-////                            sgwui.setParams(n, p / 10.0, l);
-                            ((Console) simConsole).pressPlay();
-                            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
-                            }
-                }
-            }
+//            for (int i = 0; i < 40; i++) {
+//                SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
+//                Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
+//                for (int leaders = 1; leaders < 6; leaders += 2) {
+//////            for (int l = 1; l <= 3; l++) {
+////                for (int p = 9; p > 0; p--) {
+////                    for (int n = 1; n <= 20; n+=3) {
+////                    for (int s = 1; s <= n; s+=3) {
+//                    sgwui.setParams(n, leaders, p / 10.0, l, s);
+//////                            sgwui.setParams(n, p / 10.0, l);
+//                            ((Console) simConsole).pressPlay();
+//                            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+//                            }
+//                }
+//            }
 //                    }
 //                }
 //            }
@@ -267,6 +267,8 @@ public class SignalingSwarmGameWithUI extends GUIState {
         Color color = Color.black;
 
         for (int x = 0; x < swarm.agents.allObjects.numObjs; x++) {
+            String name = swarm.agents.allObjects.objs[x].toString();
+            name = name.substring(name.lastIndexOf('@'));
             int shape = OrientedPortrayal2D.SHAPE_COMPASS;
 
             if (swarm.agents.allObjects.objs[x] instanceof Leader)
@@ -277,7 +279,11 @@ public class SignalingSwarmGameWithUI extends GUIState {
                     new OrientedPortrayal2D(
                             new SimplePortrayal2D(), 0, 2.0, color,
                             shape), agentsPortrayal, 100);
-            agentsPortrayal.setPortrayalForObject(swarm.agents.allObjects.objs[x], new AdjustablePortrayal2D(new MovablePortrayal2D(basic)));
+            agentsPortrayal.setPortrayalForObject(swarm.agents.allObjects.objs[x],
+                    new AdjustablePortrayal2D(
+                            new MovablePortrayal2D(
+                                    new CircledPortrayal2D(
+                                            new LabelledPortrayal2D(basic, name), 0, swarm.sight_radius_v * 2, Color.BLUE, false))));
             trailsPortrayal.setPortrayalForObject(swarm.agents.allObjects.objs[x], basic);
             signalsPortrayal.setPortrayalForObject(swarm.agents.allObjects.objs[x], new OvalPortrayal2D(color));
 

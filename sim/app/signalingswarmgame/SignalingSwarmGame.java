@@ -20,7 +20,7 @@ public class SignalingSwarmGame extends SimState {
     //region Signaling Model Params
 
     public int numAgents = 2;
-    public int numLeaders = 2;
+    public int numLeaders = 1;
     public double jump = 1;  // how far do we move in a timestep?
     public SwarmType swarmType = SwarmType.Flocking;
 
@@ -32,6 +32,7 @@ public class SignalingSwarmGame extends SimState {
     public boolean are_agents_independent_v = false;
     public double leader_influence_v = 1;
     public int steps_lookahead_v = 2;
+    public double sight_radius_v = 20.0;
     //endregion
 
     //region Simulation Fields
@@ -91,6 +92,14 @@ public class SignalingSwarmGame extends SimState {
 
     public void setSightSize(int sightSize) {
         sight_size_v = sightSize;
+    }
+
+    public double getSightRadius() {
+        return sight_radius_v;
+    }
+
+    public void setSightRadius(double sightRadius) {
+        sight_radius_v = sightRadius;
     }
     //endregion
 
