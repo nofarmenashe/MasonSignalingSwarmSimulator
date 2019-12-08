@@ -91,11 +91,17 @@ public class FlockingAgentMovementCalculator extends AgentMovementCalculator{
     private List<BaseAgent> getNeighborsBySightRadius(SignalingSwarmGame swarm, BaseAgent agent, boolean filterLeaders) {
         ArrayList<BaseAgent> neighbors = new ArrayList<>();
 
-        for (int i = 0; i < swarm.agents.allObjects.numObjs; i++) {
-            BaseAgent otherAgent = (BaseAgent) swarm.agents.allObjects.objs[i];
+        for (Agent otherAgent: swarm.swarmAgents) {
             double dist = getDistanceBetweenPoints(agent.position.loc, otherAgent.position.loc);
-            if (otherAgent != agent && (!filterLeaders || otherAgent instanceof Agent) && dist <= swarm.getSightRadius())
+            if (otherAgent != agent && dist <= swarm.getSightRadius())
                 neighbors.add(otherAgent);
+        }
+        if(!filterLeaders){
+            for (Leader leader: swarm.leaderAgents) {
+                double dist = getDistanceBetweenPoints(agent.position.loc, leader.position.loc);
+                if (leader != agent && dist <= swarm.getSightRadius())
+                    neighbors.add(leader);
+            }
         }
 
         return neighbors;

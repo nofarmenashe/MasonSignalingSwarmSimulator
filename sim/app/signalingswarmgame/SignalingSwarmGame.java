@@ -4,8 +4,7 @@ import sim.engine.*;
 import sim.util.*;
 import sim.field.continuous.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SignalingSwarmGame extends SimState {
 
@@ -20,7 +19,7 @@ public class SignalingSwarmGame extends SimState {
     //region Signaling Model Params
 
     public int numAgents = 2;
-    public int numLeaders = 1;
+    public int numLeaders = 3;
     public double jump = 1;  // how far do we move in a timestep?
     public SwarmType swarmType = SwarmType.Flocking;
 
@@ -137,19 +136,158 @@ public class SignalingSwarmGame extends SimState {
         Double2D endPoint = new Double2D(random.nextDouble() * width, random.nextDouble() * height);
         Double2D leadersDirection = AgentMovementCalculator.getDirectionBetweenPoints(startPoint, endPoint);
 
-        for (int x = 0; x < numLeaders; x++) {
-            Leader leader = new Leader();
-            locateLeader(leader, leadersDirection);
-            leaderAgents.add(leader);
-        }
-
-        // make a bunch of agents and schedule 'em
+        // make a bunch of agents
         for (int x = 0; x < numAgents; x++) {
             Agent agent = new Agent();
             locateAgent(agent);
             swarmAgents.add(agent);
         }
 
+//        InitializeLeadersPositionsRandomly(leadersDirection);
+        initializeLeadersPositionsGraphApproach(leadersDirection);
+
+        putAndScheduleAgentsInScreen();
+    }
+
+    //region Locate Agents
+
+    private void putAndScheduleAgentsInScreen() {
+        for (Leader leader: leaderAgents) {
+            agents.setObjectLocation(leader, leader.position.loc);
+            schedule.scheduleRepeating(schedule.EPOCH, 1, leader);
+        }
+        for (Agent agent: swarmAgents) {
+            agents.setObjectLocation(agent, agent.position.loc);
+            schedule.scheduleRepeating(schedule.EPOCH, 1, agent);
+        }
+    }
+
+    private void initializeLeadersPositionsGraphApproach(Double2D leadersDirection) {
+        List<Double2D> possiblePositions = possibleLeaderLocations();
+        List<List<Double2D>> allPositionsCombinations = new ArrayList<>();
+        int topScore = 0;
+        List<Double2D> topPositions = null;
+
+
+        generateAllSubGroups(possiblePositions, numLeaders, new ArrayList<>(), allPositionsCombinations);
+
+        for(List<Double2D> leaderLocations: allPositionsCombinations){
+            int possibilityScore = getPossibilityScore(leadersDirection, leaderLocations);
+
+            if(possibilityScore > topScore)
+            {
+                topScore = possibilityScore;
+                topPositions = leaderLocations;
+            }
+        }
+        if(topPositions == null) {
+            InitializeLeadersPositionsRandomly(leadersDirection);
+            return;
+        }
+
+        for (int j = 0; j < numLeaders; j++) {
+            Leader leader = leaderAgents.get(j);
+            leader.position = new AgentPosition(
+                    topPositions.get(j).subtract(leadersDirection.multiply(jump)), topPositions.get(j));
+        }
+
+    }
+
+    private int getPossibilityScore(Double2D leadersDirection, List<Double2D> leaderLocations) {
+        List<BaseAgent> directNeighbors = new ArrayList<>();
+        List<BaseAgent> indirectNeighbors = new ArrayList<>();
+        List<BaseAgent> agentsToSearch = new ArrayList<>();
+        int directConn = 0;
+        int indirectconn = 0;
+
+
+        for (int j = 0; j < numLeaders; j++) {
+            Leader leader = leaderAgents.get(j);
+            leader.position = new AgentPosition(
+                    leaderLocations.get(j).subtract(leadersDirection.multiply(jump)), leaderLocations.get(j));
+            for(BaseAgent neighbor : AgentMovementCalculator.getAgentNeighbors(this, leader, true)) {
+                directConn++;
+                if (!directNeighbors.contains(neighbor))
+                    directNeighbors.add(neighbor);
+            }
+        }
+
+        for(BaseAgent a :directNeighbors){
+            for(BaseAgent neighbor : AgentMovementCalculator.getAgentNeighbors(this, a, true)) {
+                indirectconn++;
+                if (!directNeighbors.contains(neighbor) && !indirectNeighbors.contains(neighbor)) {
+                    indirectNeighbors.add(neighbor);
+                    if (!agentsToSearch.contains(neighbor))
+                        agentsToSearch.add(neighbor);
+                }
+            }
+        }
+
+        while(agentsToSearch.size() > 0){
+            List<BaseAgent> nextStepAgentToSearch = new ArrayList<>();
+            for (BaseAgent a: agentsToSearch) {
+                for (BaseAgent neighbor : AgentMovementCalculator.getAgentNeighbors(this, a, true)) {
+                    indirectconn++;
+                    if (!directNeighbors.contains(neighbor) && !indirectNeighbors.contains(neighbor)) {
+                        indirectNeighbors.add(neighbor);
+                        nextStepAgentToSearch.add(neighbor);
+                    }
+                }
+            }
+            agentsToSearch = nextStepAgentToSearch;
+        }
+
+        return ((directNeighbors.size() + indirectNeighbors.size()) * 1000) +
+                                ((directConn + indirectconn) * 100) +
+                                (directConn * 10) +
+                                indirectconn;
+    }
+
+    private void generateAllSubGroups(List<Double2D> possiblePositions, int subgroupSize, List<Double2D> currentComb, List<List<Double2D>> combinations){
+        if(subgroupSize == 0){
+            if(currentComb.size() > 0)
+                combinations.add(currentComb);
+            return;
+        }
+
+        for(int i = 0; i < possiblePositions.size(); i++){
+            List<Double2D> newComb = new ArrayList<>(currentComb);
+            newComb.add(possiblePositions.get(i));
+            List<Double2D> newPossiblePositions = possiblePositions.subList(i + 1, possiblePositions.size());
+            generateAllSubGroups(
+                    newPossiblePositions,
+                    subgroupSize - 1, newComb, combinations);
+        }
+    }
+
+    private List<Double2D> possibleLeaderLocations() {
+        List<Double2D> consideredPoints = new ArrayList<>();
+        List<Agent> examinedAgents = new ArrayList<>();
+
+        for (Agent agent: swarmAgents){
+            examinedAgents.add(agent);
+            consideredPoints.add(new Double2D(agent.position.loc.x + 1, agent.position.loc.y + 1));
+            List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(this, agent,true);
+
+            for (BaseAgent neighbor: neighbors) {
+                if(examinedAgents.contains(neighbor)) continue;
+
+                consideredPoints.add(new Double2D(
+                        (agent.position.loc.x + neighbor.position.loc.x)/2,
+                        (agent.position.loc.y + neighbor.position.loc.y)/2
+                ));
+            }
+
+        }
+        return consideredPoints;
+    }
+
+    private void InitializeLeadersPositionsRandomly(Double2D leadersDirection) {
+        for (int x = 0; x < numLeaders; x++) {
+            Leader leader = new Leader();
+            locateLeader(leader, leadersDirection);
+            leaderAgents.add(leader);
+        }
     }
 
     private void locateAgent(BaseAgent agent) {
@@ -158,9 +296,6 @@ public class SignalingSwarmGame extends SimState {
 
         agent.position = new AgentPosition(loc, lastLoc);
         agent.currentPhysicalPosition = new AgentPosition(loc, lastLoc);
-
-        agents.setObjectLocation(agent, agent.position.loc);
-        schedule.scheduleRepeating(schedule.EPOCH, 1, agent);
     }
 
     private void locateLeader(BaseAgent agent, Double2D direction) {
@@ -168,10 +303,8 @@ public class SignalingSwarmGame extends SimState {
 
         agent.position = new AgentPosition(lastLoc, direction, jump);
         agent.currentPhysicalPosition = new AgentPosition(agent.position.loc, lastLoc);
-
-        agents.setObjectLocation(agent, agent.position.loc);
-        schedule.scheduleRepeating(schedule.EPOCH, 1, agent);
     }
+//endregion
 
     //region Retrieve Info to Report
 
