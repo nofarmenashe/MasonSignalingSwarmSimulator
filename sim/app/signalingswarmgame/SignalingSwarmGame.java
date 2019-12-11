@@ -137,6 +137,11 @@ public class SignalingSwarmGame extends SimState {
         Double2D leadersDirection = AgentMovementCalculator.getDirectionBetweenPoints(startPoint, endPoint);
 
         // make a bunch of agents
+        for (int x = 0; x < numLeaders; x++) {
+            Leader leader = new Leader();
+//            locateLeader(leader, leadersDirection);
+            leaderAgents.add(leader);
+        }
         for (int x = 0; x < numAgents; x++) {
             Agent agent = new Agent();
             locateAgent(agent);
@@ -283,11 +288,8 @@ public class SignalingSwarmGame extends SimState {
     }
 
     private void InitializeLeadersPositionsRandomly(Double2D leadersDirection) {
-        for (int x = 0; x < numLeaders; x++) {
-            Leader leader = new Leader();
+        for (Leader leader : leaderAgents)
             locateLeader(leader, leadersDirection);
-            leaderAgents.add(leader);
-        }
     }
 
     private void locateAgent(BaseAgent agent) {

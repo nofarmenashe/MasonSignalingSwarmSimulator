@@ -39,7 +39,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private String signalsList;
 
     public static void main(String[] args) {
-        int n = 8;
+        int n = 6;
         int p = 7;
         int l = 1;
 //        int s = 7;
@@ -182,7 +182,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
     private void updateSimulationSetReportFile() {
         SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
-        long avgStepTime = sumStepsTime / currentStep;
+        long avgStepTime = currentStep == 0? 0 : sumStepsTime / currentStep;
         double convergancePercentage = swarm.convergencePercentage();
         double lostPercentage = swarm.lostPercentage();
 
