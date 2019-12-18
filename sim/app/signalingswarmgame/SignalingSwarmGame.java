@@ -5,6 +5,7 @@ import sim.util.*;
 import sim.field.continuous.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SignalingSwarmGame extends SimState {
 
@@ -22,6 +23,7 @@ public class SignalingSwarmGame extends SimState {
     public int numLeaders = 3;
     public double jump = 1;  // how far do we move in a timestep?
     public SwarmType swarmType = SwarmType.Flocking;
+    public LeaderPositioningAlgo leaderPositioningAlgo = LeaderPositioningAlgo.Random;
 
     public double prevStepRate = 0.5;
 
@@ -148,8 +150,16 @@ public class SignalingSwarmGame extends SimState {
             swarmAgents.add(agent);
         }
 
-//        InitializeLeadersPositionsRandomly(leadersDirection);
-        initializeLeadersPositionsGraphApproach(leadersDirection);
+        switch(leaderPositioningAlgo) {
+            case Error:
+                initializeLeadersPositionsErrorApproach(leadersDirection);
+                break;
+            case Graph:
+                initializeLeadersPositionsGraphApproach(leadersDirection);
+                break;
+            default:
+                initializeLeadersPositionsRandomly(leadersDirection);
+        }
 
         putAndScheduleAgentsInScreen();
     }
@@ -165,6 +175,33 @@ public class SignalingSwarmGame extends SimState {
             agents.setObjectLocation(agent, agent.position.loc);
             schedule.scheduleRepeating(schedule.EPOCH, 1, agent);
         }
+    }
+
+    private void initializeLeadersPositionsErrorApproach(Double2D leadersDirection) {
+        Map<BaseAgent, Double> agentsToErrorRate = new HashMap<>();
+
+        for(Agent agent: swarmAgents) {
+            double error = AgentMovementCalculator.distanceFromGoal(this, agent);
+            List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(this, agent,true);
+            for (BaseAgent neighbor: neighbors)
+                error += AgentMovementCalculator.distanceFromGoal(this, (Agent)neighbor);
+
+            agentsToErrorRate.put(agent, error);
+        }
+
+
+        List<Double2D> topErrorAgentsPositions = agentsToErrorRate.entrySet().stream().sorted(
+                Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .limit(numLeaders)
+                .map(x -> x.getKey().position.loc).collect(Collectors.toList());
+
+        for (int j = 0; j < numLeaders; j++) {
+            Leader leader = leaderAgents.get(j);
+            Double2D leadersPos = new Double2D(topErrorAgentsPositions.get(j).x, topErrorAgentsPositions.get(j).y);
+            leader.position = new AgentPosition(
+                    leadersPos.subtract(leadersDirection.multiply(jump)), leadersPos);
+        }
+
     }
 
     private void initializeLeadersPositionsGraphApproach(Double2D leadersDirection) {
@@ -186,7 +223,7 @@ public class SignalingSwarmGame extends SimState {
             }
         }
         if(topPositions == null) {
-            InitializeLeadersPositionsRandomly(leadersDirection);
+            initializeLeadersPositionsRandomly(leadersDirection);
             return;
         }
 
@@ -287,7 +324,7 @@ public class SignalingSwarmGame extends SimState {
         return consideredPoints;
     }
 
-    private void InitializeLeadersPositionsRandomly(Double2D leadersDirection) {
+    private void initializeLeadersPositionsRandomly(Double2D leadersDirection) {
         for (Leader leader : leaderAgents)
             locateLeader(leader, leadersDirection);
     }

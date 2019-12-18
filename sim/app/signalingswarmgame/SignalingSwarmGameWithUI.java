@@ -39,33 +39,43 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private String signalsList;
 
     public static void main(String[] args) {
-        int n = 6;
+        int n = 8;
         int p = 7;
         int l = 1;
 //        int s = 7;
 
-        SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
-        Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
+//        SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
+//        Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
 ////        for (int l = 1; l <= 3; l++) {
-            sgwui.setParams(n, p / 10.0, l);
+//            sgwui.setParams(n, p / 10.0, l);
 ////            ((Console) simConsole).pressPlay();
 //            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {}
 ////        }
-//            for (int i = 0; i < 40; i++) {
-//                SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
-//                Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-//                for (int leaders = 1; leaders < 6; leaders += 2) {
+            for (int i = 0; i < 40; i++) {
+                SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
+                Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
+                for (int leaders = 1; leaders < 6; leaders += 2) {
 //////            for (int l = 1; l <= 3; l++) {
 ////                for (int p = 9; p > 0; p--) {
 ////                    for (int n = 1; n <= 20; n+=3) {
 ////                    for (int s = 1; s <= n; s+=3) {
 //                    sgwui.setParams(n, leaders, p / 10.0, l, s);
-//////                            sgwui.setParams(n, p / 10.0, l);
-//                            ((Console) simConsole).pressPlay();
-//                            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
-//                            }
-//                }
-//            }
+                    sgwui.setParams(n, leaders, LeaderPositioningAlgo.Random, p / 10.0, l);
+                    ((Console) simConsole).pressPlay();
+                    while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+                    }
+
+                    sgwui.setParams(n, leaders, LeaderPositioningAlgo.Graph, p / 10.0, l);
+                    ((Console) simConsole).pressPlay();
+                    while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+                    }
+
+                    sgwui.setParams(n, leaders, LeaderPositioningAlgo.Error, p / 10.0, l);
+                    ((Console) simConsole).pressPlay();
+                    while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+                    }
+                }
+            }
 //                    }
 //                }
 //            }
@@ -81,12 +91,13 @@ public class SignalingSwarmGameWithUI extends GUIState {
     ContinuousPortrayal2D signalsPortrayal = new ContinuousPortrayal2D();
 
 
-    public void setParams(int n, int leaders, double p, int l, int s) {
+    public void setParams(int n, int leaders, LeaderPositioningAlgo posAlgo, double p, int l) {
         ((SignalingSwarmGame) state).setAcceptLeadersSignalCorrectly(p);
         ((SignalingSwarmGame) state).numAgents = n;
         ((SignalingSwarmGame) state).numLeaders = leaders;
         ((SignalingSwarmGame) state).setStepsLookahead(l);
-        ((SignalingSwarmGame) state).setSightSize(s);
+        ((SignalingSwarmGame) state).leaderPositioningAlgo = posAlgo;
+
     }
 
     public void setParams(int n, double p, int l) {

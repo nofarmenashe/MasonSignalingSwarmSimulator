@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba6a4305-9228-4c5e-8e9a-85349c229156" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioningAlgo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +35,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="184" column="47" selection-start-line="184" selection-start-column="47" selection-end-line="184" selection-end-column="47" />
+            <state relative-caret-position="51">
+              <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3256#3257#0" expanded="true" />
+                <element signature="e#4332#4333#0" expanded="true" />
+                <element signature="e#4415#4416#0" expanded="true" />
+                <element signature="e#4502#4503#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,7 +64,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
+            <state relative-caret-position="289">
               <caret line="29" column="32" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="32" />
               <folding>
                 <element signature="e#511#512#0" expanded="true" />
@@ -71,8 +78,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
+            <state relative-caret-position="1734">
               <caret line="106" selection-start-line="106" selection-end-line="106" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,18 +90,64 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="244" selection-start-line="244" selection-end-line="244" />
+            <state relative-caret-position="255">
+              <caret line="160" column="17" selection-start-line="160" selection-start-column="17" selection-end-line="160" selection-end-column="17" />
               <folding>
-                <element signature="e#926#952#0" />
-                <element signature="e#1128#1165#0" />
+                <element signature="imports" expanded="true" />
                 <element signature="e#2490#2503#0" />
                 <element signature="e#2509#2602#0" />
                 <element signature="e#2678#2890#0" />
-                <element signature="e#8606#9456#0" />
-                <element signature="e#9739#10116#0" />
-                <marker date="1576041956318" expanded="true" signature="4242:10213" ph="..." />
+                <element signature="e#3722#3867#1" />
+                <element signature="e#3912#4030#1" />
+                <element signature="e#4331#4476#1" />
+                <element signature="e#4516#4658#1" />
+                <element signature="e#4670#5812#0" />
+                <element signature="e#5145#5413#1" />
+                <element signature="e#5295#5403#1" />
+                <element signature="e#5447#5544#1" />
+                <element signature="e#5591#5805#1" />
+                <element signature="e#6200#6674#1" />
+                <element signature="e#6511#6664#1" />
+                <element signature="e#6717#7156#1" />
+                <element signature="e#6814#7146#1" />
+                <element signature="e#6946#7132#1" />
+                <element signature="e#7198#7794#1" />
+                <element signature="e#7317#7732#1" />
+                <element signature="e#7419#7718#1" />
+                <element signature="e#7559#7700#1" />
+                <element signature="e#8408#8785#1" />
+                <element signature="e#9295#9597#1" />
+                <element signature="e#9653#9830#0" />
+                <element signature="e#9836#10213#0" />
+                <element signature="e#10219#10548#0" />
+                <element signature="e#10566#10598#0" />
+                <element signature="e#10604#10896#0" />
+                <element signature="e#10715#10838#1" />
+                <element signature="e#10902#11307#0" />
+                <element signature="e#11003#11252#1" />
+                <element signature="e#11021#11084#0" />
+                <element signature="e#11313#11518#0" />
+                <element signature="e#11388#11491#1" />
+                <element signature="e#11540#11658#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioningAlgo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="33" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -192,6 +248,7 @@
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java" />
         <option value="$PROJECT_DIR$/.project" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/CombinationsCreator.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioningAlgo.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java" />
       </list>
@@ -211,16 +268,18 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="888" />
-    <option name="width" value="1044" />
-    <option name="height" value="1104" />
+    <option name="x" value="1018" />
+    <option name="y" value="-11" />
+    <option name="width" value="912" />
+    <option name="height" value="1103" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="PackagesPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <showMembers ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -243,8 +302,35 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
+              <item name="sim" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
+              <item name="sim" type="462c0819:PsiDirectoryNode" />
+              <item name="signalingswarmgame" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
+              <item name="sim" type="462c0819:PsiDirectoryNode" />
+              <item name="signalingswarmgame" type="462c0819:PsiDirectoryNode" />
+              <item name="LeaderPositioningAlgo" type="1a9f42e2:ClassTreeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -252,7 +338,7 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="masonsignalingswarmsimulator" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576044581922" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576686347226" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -355,9 +441,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Makefile.jar" />
-        <item itemvalue="Makefile.clean" />
         <item itemvalue="Makefile.jar (1)" />
+        <item itemvalue="Makefile.clean" />
         <item itemvalue="Makefile.all (1)" />
+        <item itemvalue="Makefile.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -423,7 +510,7 @@
     <frame x="86" y="-7" width="1201" height="735" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" weight="0.2936021" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.15775636" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -432,14 +519,14 @@
       <window_info id="Favorites" order="6" sideWeight="0.5014663" side_tool="true" weight="0.40174672" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4992722" visible="true" weight="0.41791046" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.5041459" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992722" weight="0.41791046" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32669982" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.496361" weight="0.32504147" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.503639" side_tool="true" weight="0.32589287" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3283582" />
+      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.3283582" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.33167496" />
       <window_info anchor="bottom" id="Inspection Results" order="11" sideWeight="0.72634643" weight="0.54464287" />
       <window_info anchor="bottom" id="Problems" order="12" sideWeight="0.6448326" weight="0.4724689" />
@@ -540,19 +627,19 @@
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java</url>
-          <line>200</line>
+          <line>211</line>
           <properties />
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java</url>
-          <line>92</line>
+          <line>103</line>
           <properties />
           <option name="timeStamp" value="147" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java</url>
-          <line>244</line>
+          <line>281</line>
           <properties />
           <option name="timeStamp" value="170" />
         </line-breakpoint>
@@ -625,7 +712,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml" />
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -759,13 +845,6 @@
     <entry file="file://$PROJECT_DIR$/masonsignalingswarmsimulator.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/concurrent/TimeUnit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2533">
@@ -886,17 +965,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/CombinationsCreator.java" />
-    <entry file="file://$PROJECT_DIR$/sim/portrayal/simple/AdjustablePortrayal2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="51" column="11" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
-          <folding>
-            <element signature="e#2266#2267#0" expanded="true" />
-            <element signature="e#2304#2305#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sim/util/SimpleProperties.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8058">
@@ -920,7 +988,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="629">
           <caret line="37" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
@@ -932,9 +1000,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sim/portrayal/simple/AdjustablePortrayal2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="51" column="11" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
+          <folding>
+            <element signature="e#2266#2267#0" expanded="true" />
+            <element signature="e#2304#2305#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
+        <state relative-caret-position="289">
           <caret line="29" column="32" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="32" />
           <folding>
             <element signature="e#511#512#0" expanded="true" />
@@ -946,32 +1025,84 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
+        <state relative-caret-position="1734">
           <caret line="106" selection-start-line="106" selection-end-line="106" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioningAlgo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="33" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="244" selection-start-line="244" selection-end-line="244" />
+        <state relative-caret-position="255">
+          <caret line="160" column="17" selection-start-line="160" selection-start-column="17" selection-end-line="160" selection-end-column="17" />
           <folding>
-            <element signature="e#926#952#0" />
-            <element signature="e#1128#1165#0" />
+            <element signature="imports" expanded="true" />
             <element signature="e#2490#2503#0" />
             <element signature="e#2509#2602#0" />
             <element signature="e#2678#2890#0" />
-            <element signature="e#8606#9456#0" />
-            <element signature="e#9739#10116#0" />
-            <marker date="1576041956318" expanded="true" signature="4242:10213" ph="..." />
+            <element signature="e#3722#3867#1" />
+            <element signature="e#3912#4030#1" />
+            <element signature="e#4331#4476#1" />
+            <element signature="e#4516#4658#1" />
+            <element signature="e#4670#5812#0" />
+            <element signature="e#5145#5413#1" />
+            <element signature="e#5295#5403#1" />
+            <element signature="e#5447#5544#1" />
+            <element signature="e#5591#5805#1" />
+            <element signature="e#6200#6674#1" />
+            <element signature="e#6511#6664#1" />
+            <element signature="e#6717#7156#1" />
+            <element signature="e#6814#7146#1" />
+            <element signature="e#6946#7132#1" />
+            <element signature="e#7198#7794#1" />
+            <element signature="e#7317#7732#1" />
+            <element signature="e#7419#7718#1" />
+            <element signature="e#7559#7700#1" />
+            <element signature="e#8408#8785#1" />
+            <element signature="e#9295#9597#1" />
+            <element signature="e#9653#9830#0" />
+            <element signature="e#9836#10213#0" />
+            <element signature="e#10219#10548#0" />
+            <element signature="e#10566#10598#0" />
+            <element signature="e#10604#10896#0" />
+            <element signature="e#10715#10838#1" />
+            <element signature="e#10902#11307#0" />
+            <element signature="e#11003#11252#1" />
+            <element signature="e#11021#11084#0" />
+            <element signature="e#11313#11518#0" />
+            <element signature="e#11388#11491#1" />
+            <element signature="e#11540#11658#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="184" column="47" selection-start-line="184" selection-start-column="47" selection-end-line="184" selection-end-column="47" />
+        <state relative-caret-position="51">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3256#3257#0" expanded="true" />
+            <element signature="e#4332#4333#0" expanded="true" />
+            <element signature="e#4415#4416#0" expanded="true" />
+            <element signature="e#4502#4503#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
