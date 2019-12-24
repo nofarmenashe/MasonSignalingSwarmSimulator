@@ -178,28 +178,40 @@ public class SignalingSwarmGame extends SimState {
     }
 
     private void initializeLeadersPositionsErrorApproach(Double2D leadersDirection) {
-        Map<BaseAgent, Double> agentsToErrorRate = new HashMap<>();
+        Map<BaseAgent, Double> topLevelAgentsToErrorRate = new HashMap<>();
+        Map<BaseAgent, Double> secondLevelAgentsToErrorRate = new HashMap<>();
 
         for(Agent agent: swarmAgents) {
             double error = AgentMovementCalculator.distanceFromGoal(this, agent);
             List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(this, agent,true);
             for (BaseAgent neighbor: neighbors)
                 error += AgentMovementCalculator.distanceFromGoal(this, (Agent)neighbor);
-
-            agentsToErrorRate.put(agent, error);
+            for (BaseAgent neighbor: neighbors) {
+                if (topLevelAgentsToErrorRate.containsKey(neighbor) && topLevelAgentsToErrorRate.get(neighbor) < error){
+                    secondLevelAgentsToErrorRate.put(neighbor, topLevelAgentsToErrorRate.remove(neighbor));
+                    topLevelAgentsToErrorRate.put(agent,error);
+                }
+            }
+            if(neighbors.size() == 0) topLevelAgentsToErrorRate.put(agent,error);
+            if(!topLevelAgentsToErrorRate.containsKey(agent)) secondLevelAgentsToErrorRate.put(agent,error);
         }
 
 
-        List<Double2D> topErrorAgentsPositions = agentsToErrorRate.entrySet().stream().sorted(
+        List<Double2D> topErrorAgentsPositions = topLevelAgentsToErrorRate.entrySet().stream().sorted(
                 Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .limit(numLeaders)
+                .map(x -> x.getKey().position.loc).collect(Collectors.toList()).subList(0,
+                        Math.min(numLeaders, topLevelAgentsToErrorRate.size()));
+        List<Double2D> secondErrorAgentsPositions = topLevelAgentsToErrorRate.entrySet().stream().sorted(
+                Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .map(x -> x.getKey().position.loc).collect(Collectors.toList());
+        if(topErrorAgentsPositions.size() < numLeaders)
+            topErrorAgentsPositions.addAll(secondErrorAgentsPositions.subList(0, numLeaders - topErrorAgentsPositions.size()));
 
         for (int j = 0; j < numLeaders; j++) {
             Leader leader = leaderAgents.get(j);
             Double2D leadersPos = new Double2D(topErrorAgentsPositions.get(j).x, topErrorAgentsPositions.get(j).y);
             leader.position = new AgentPosition(
-                    leadersPos.subtract(leadersDirection.multiply(jump)), leadersPos);
+                    leadersPos, leadersPos.subtract(leadersDirection.multiply(jump)));
         }
 
     }
@@ -230,7 +242,7 @@ public class SignalingSwarmGame extends SimState {
         for (int j = 0; j < numLeaders; j++) {
             Leader leader = leaderAgents.get(j);
             leader.position = new AgentPosition(
-                    topPositions.get(j).subtract(leadersDirection.multiply(jump)), topPositions.get(j));
+                    topPositions.get(j),topPositions.get(j).subtract(leadersDirection.multiply(jump)));
         }
 
     }
