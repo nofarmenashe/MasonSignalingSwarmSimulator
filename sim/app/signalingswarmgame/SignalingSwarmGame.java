@@ -178,40 +178,50 @@ public class SignalingSwarmGame extends SimState {
     }
 
     private void initializeLeadersPositionsErrorApproach(Double2D leadersDirection) {
-        Map<BaseAgent, Double> topLevelAgentsToErrorRate = new HashMap<>();
-        Map<BaseAgent, Double> secondLevelAgentsToErrorRate = new HashMap<>();
+        Map<BaseAgent, Double> agentsToErrorRate = new HashMap<>();
+        List<BaseAgent> selectedAgents = new ArrayList<>();
+        List<BaseAgent> secondLevelAgents = new ArrayList<>();
+        Map<BaseAgent, List<BaseAgent>> agentsToNeighbors = new HashMap<>();
 
         for(Agent agent: swarmAgents) {
-            double error = AgentMovementCalculator.distanceFromGoal(this, agent);
-            List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(this, agent,true);
-            for (BaseAgent neighbor: neighbors)
-                error += AgentMovementCalculator.distanceFromGoal(this, (Agent)neighbor);
-            for (BaseAgent neighbor: neighbors) {
-                if (topLevelAgentsToErrorRate.containsKey(neighbor) && topLevelAgentsToErrorRate.get(neighbor) < error){
-                    secondLevelAgentsToErrorRate.put(neighbor, topLevelAgentsToErrorRate.remove(neighbor));
-                    topLevelAgentsToErrorRate.put(agent,error);
-                }
-            }
-            if(neighbors.size() == 0) topLevelAgentsToErrorRate.put(agent,error);
-            if(!topLevelAgentsToErrorRate.containsKey(agent)) secondLevelAgentsToErrorRate.put(agent,error);
+            List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(this, agent, true);
+            double error = AgentMovementCalculator.calculateAngleBetweenDirections(leadersDirection, agent.position.getMovementDirection());
+            for (BaseAgent neighbor : neighbors)
+                error += AgentMovementCalculator.calculateAngleBetweenDirections(leadersDirection, neighbor.position.getMovementDirection());
+            agentsToErrorRate.put(agent, error);
+            agentsToNeighbors.put(agent, neighbors);
         }
 
+        List<BaseAgent> orderedAgentsbyErrors = agentsToErrorRate.entrySet().stream().sorted(
+                Map.Entry.comparingByValue(Comparator.reverseOrder())).map(x -> x.getKey()).collect(Collectors.toList());
 
-        List<Double2D> topErrorAgentsPositions = topLevelAgentsToErrorRate.entrySet().stream().sorted(
-                Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .map(x -> x.getKey().position.loc).collect(Collectors.toList()).subList(0,
-                        Math.min(numLeaders, topLevelAgentsToErrorRate.size()));
-        List<Double2D> secondErrorAgentsPositions = topLevelAgentsToErrorRate.entrySet().stream().sorted(
-                Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .map(x -> x.getKey().position.loc).collect(Collectors.toList());
-        if(topErrorAgentsPositions.size() < numLeaders)
-            topErrorAgentsPositions.addAll(secondErrorAgentsPositions.subList(0, numLeaders - topErrorAgentsPositions.size()));
+        while(selectedAgents.size() < numLeaders){
+            if(orderedAgentsbyErrors.size() > 0) {
+                BaseAgent topErrorAgent = orderedAgentsbyErrors.remove(0);
+                List<BaseAgent> neighbors = agentsToNeighbors.get(topErrorAgent);
+                boolean neighborChosen = false;
+                for (BaseAgent neighbor : neighbors) {
+                    if (selectedAgents.contains(neighbor)) {
+                        neighborChosen = true;
+                        secondLevelAgents.add(topErrorAgent);
+                    }
+                }
+                if(!neighborChosen)
+                    selectedAgents.add(topErrorAgent);
+            }
+            else {
+                selectedAgents.addAll(secondLevelAgents.subList(0, numLeaders - secondLevelAgents.size()));
+            }
+        }
+
+        List<Double2D> selectedAgentsLoc = selectedAgents.stream().map(x -> x.position.loc).collect(Collectors.toList());
 
         for (int j = 0; j < numLeaders; j++) {
             Leader leader = leaderAgents.get(j);
-            Double2D leadersPos = new Double2D(topErrorAgentsPositions.get(j).x, topErrorAgentsPositions.get(j).y);
+            Double2D leadersPos = new Double2D(selectedAgentsLoc.get(j).x + 1, selectedAgentsLoc.get(j).y + 1);
             leader.position = new AgentPosition(
                     leadersPos, leadersPos.subtract(leadersDirection.multiply(jump)));
+            leader.currentPhysicalPosition = new AgentPosition(leader.position);
         }
 
     }
@@ -234,15 +244,17 @@ public class SignalingSwarmGame extends SimState {
                 topPositions = leaderLocations;
             }
         }
-        if(topPositions == null) {
-            initializeLeadersPositionsRandomly(leadersDirection);
-            return;
-        }
+//        if(topPositions == null) {
+//            initializeLeadersPositionsRandomly(leadersDirection);
+//            return;
+//        }
 
         for (int j = 0; j < numLeaders; j++) {
             Leader leader = leaderAgents.get(j);
             leader.position = new AgentPosition(
                     topPositions.get(j),topPositions.get(j).subtract(leadersDirection.multiply(jump)));
+            leader.currentPhysicalPosition = new AgentPosition(leader.position);
+
         }
 
     }
@@ -372,8 +384,14 @@ public class SignalingSwarmGame extends SimState {
         int lostCounter = 0;
         for (Agent agent: swarmAgents) {
                 //Todo: define lost agent for multiple leader and fix condition
-//                if (AgentMovementCalculator.getDistanceBetweenPoints(leaderAgent.position.loc, agent.position.loc) > 40)
-                    lostCounter++;
+            double minDistanceFromLeader = Integer.MAX_VALUE;
+            for(Leader leader: leaderAgents) {
+                double dis = AgentMovementCalculator.getDistanceBetweenPoints(leader.position.loc, agent.position.loc);
+                if ( dis < minDistanceFromLeader)
+                minDistanceFromLeader = dis;
+            }
+            if(minDistanceFromLeader > sight_radius_v * 2)
+                lostCounter++;
         }
         return lostCounter / (double) numAgents;
     }

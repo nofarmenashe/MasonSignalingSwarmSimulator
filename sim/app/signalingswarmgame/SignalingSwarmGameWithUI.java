@@ -17,6 +17,7 @@ import sim.portrayal.simple.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,9 +39,11 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private String[] agentsDistancesList;
     private String signalsList;
 
+    public static int index = 11;
+
     public static void main(String[] args) {
         int n = 8;
-        int p = 7;
+        int p = 10;
         int l = 1;
 //        int s = 7;
 
@@ -51,7 +54,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
 ////            ((Console) simConsole).pressPlay();
 //            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {}
 ////        }
-            for (int i = 0; i < 40; i++) {
+            while (index < 40) {
                 SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
                 Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
                 for (int leaders = 1; leaders < 6; leaders += 2) {
@@ -75,6 +78,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
                     while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
                     }
                 }
+                index++;
             }
 //                    }
 //                }
@@ -131,6 +135,15 @@ public class SignalingSwarmGameWithUI extends GUIState {
         signalsList = ",,,";
 
         createReportsPrintWriter();
+
+        SignalingSwarmGame swarm = (SignalingSwarmGame) state;
+            try {
+                File snapshotFile = new File(String.format("newReports/snapshot_%s_%d_%d.png",
+                        swarm.leaderPositioningAlgo.name(), swarm.numLeaders, index));
+                display.takeSnapshot(snapshotFile, 2);
+            } catch (IOException e) {
+                System.out.println("failed taking snapshot");
+            }
 //        appendSimulatorParameters(state);
 //        updateReportFile(state);
     }
@@ -197,9 +210,10 @@ public class SignalingSwarmGameWithUI extends GUIState {
         double convergancePercentage = swarm.convergencePercentage();
         double lostPercentage = swarm.lostPercentage();
 
-        StringBuilder sb = new StringBuilder(String.format("%d, %d, %.2f, %d, %d, %d, %d, %d, %d, %.2f, %.2f\n",
+        StringBuilder sb = new StringBuilder(String.format("%d, %d, %s, %.2f, %d, %d, %d, %d, %d, %d, %.2f, %.2f\n",
                 swarm.numAgents,
                 swarm.numLeaders,
+                swarm.leaderPositioningAlgo.name(),
                 swarm.getAcceptLeadersSignalCorrectly(),
                 swarm.getStepsLookahead(),
                 swarm.getSightSize(),
@@ -233,6 +247,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
 //        updateDistFile(state);
 //        updateReportFile(super.state);
         SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
+
         if (swarm.currentStepSignalsCounter > 0) {
             signalsCount += swarm.currentStepSignalsCounter;
 
