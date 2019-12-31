@@ -20,6 +20,10 @@ public abstract class AgentMovementCalculator {
                                                 AgentState state,
                                                 boolean filterLeaders);
 
+    abstract List<BaseAgent> agentNeighborsByIntersection(SignalingSwarmGame swarm,
+                                                   BaseAgent agent,
+                                                   boolean filterLeaders);
+
     abstract boolean checkStopCriteria(SignalingSwarmGame swarm, Agent agent);
 
     abstract double distanceFromLeader(SignalingSwarmGame swarm, Agent agent);
@@ -32,6 +36,10 @@ public abstract class AgentMovementCalculator {
         return (agent instanceof Leader)?
                 agent.position.getMovementDirection():
                 getInstance().agentNextDirectionByState(swarm,(Agent)agent,state);
+    }
+
+    public static List<BaseAgent> getAgentIntersectingNeighbors(SignalingSwarmGame swarm, BaseAgent agent, boolean filterLeaders){
+        return getInstance().agentNeighborsByIntersection(swarm,agent, filterLeaders);
     }
 
     public static List<BaseAgent> getAgentNeighbors(SignalingSwarmGame swarm, BaseAgent agent, boolean filterLeaders){

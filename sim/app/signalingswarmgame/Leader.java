@@ -30,7 +30,7 @@ public class Leader extends BaseAgent {
         Map<Agent, AgentPosition> agentsToCurrentPosition = getAgentsCurrentPositions(swarm);
         Pair<Double, Double> utility = LeaderUtilityCalculator.calculateUtility(swarm, this, agentsToCurrentPosition, position, swarm.getStepsLookahead());
 
-        isLeaderSignaled = utility.fst > utility.snd;
+        isLeaderSignaled = utility.fst >= utility.snd;
         if(isLeaderSignaled) {
             sendSignalToInfluencedAgents(swarm);
             swarm.currentStepSignalsCounter++;

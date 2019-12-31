@@ -1,5 +1,6 @@
 package sim.app.signalingswarmgame;
 
+import com.sun.tools.javac.util.Pair;
 import sim.engine.*;
 import sim.util.*;
 import sim.field.continuous.*;
@@ -8,7 +9,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class SignalingSwarmGame extends SimState {
-
+    public static double EPSILON = 0.01;
     //region Mason Parameters
 
     private static final long serialVersionUID = 1;
@@ -151,6 +152,9 @@ public class SignalingSwarmGame extends SimState {
         }
 
         switch(leaderPositioningAlgo) {
+            case Intersection:
+                initializeLeadersPositionsIntersectionsApproach(leadersDirection);
+                break;
             case Error:
                 initializeLeadersPositionsErrorApproach(leadersDirection);
                 break;
@@ -177,10 +181,135 @@ public class SignalingSwarmGame extends SimState {
         }
     }
 
+    private void initializeLeadersPositionsIntersectionsApproach(Double2D leadersDirection) {
+        List<List<BaseAgent>> intersectingAgentsGroups  = createIntersectingGroups(leadersDirection);
+        List<List<Double2D>> optionalPointsPerGroup = new ArrayList<>();
+        List<Double2D> selectedLoc =new ArrayList<>();
+        for (List<BaseAgent> group: intersectingAgentsGroups)
+            optionalPointsPerGroup.add(getPointInIntersectionArea(group));
+
+        int groupIndex = 0;
+        while(selectedLoc.size() < numLeaders){
+            if(optionalPointsPerGroup.get(groupIndex).size() > 0)
+                selectedLoc.add(optionalPointsPerGroup.get(groupIndex).remove(0));
+
+            groupIndex = (groupIndex + 1) % intersectingAgentsGroups.size();
+        }
+
+        LocateLeadersInPositions(leadersDirection, selectedLoc);
+
+    }
+
+    private List<Double2D> getPointInIntersectionArea(List<BaseAgent> group) {
+        Map<Double2D, Integer> pointsToIntersectionSize = new HashMap<>();
+        if(group.size() == 1)
+            return new ArrayList<>(Arrays.asList(group.get(0).position.loc));
+        for(BaseAgent a: group){
+            for(BaseAgent b: group){
+                if(a == b) continue;
+                List<Double2D> intersect = intersectTwoCircles(a.position.loc, b.position.loc);
+                int pointAIntSize = 0;
+                int pointBIntSize = 0;
+                for(BaseAgent c: group){
+                    if (AgentMovementCalculator.getDistanceBetweenPoints(intersect.get(0), c.position.loc) <= sight_radius_v + EPSILON)
+                            pointAIntSize++;
+                    if (AgentMovementCalculator.getDistanceBetweenPoints(intersect.get(1), c.position.loc) <= sight_radius_v + EPSILON)
+                        pointBIntSize++;
+                }
+                pointsToIntersectionSize.put(intersect.get(0), pointAIntSize);
+                pointsToIntersectionSize.put(intersect.get(1), pointBIntSize);
+            }
+        }
+        return pointsToIntersectionSize.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(kvp -> kvp.getKey()).collect(Collectors.toList());
+    }
+
+    private List<Double2D> intersectTwoCircles(Double2D loc1, Double2D loc2) {
+        double centerdx = loc1.x- loc2.x;
+        double centerdy = loc1.y - loc2.y;
+        double R = Math.sqrt(centerdx * centerdx + centerdy * centerdy);
+
+        // intersection(s) should exist
+
+        double R2 = R*R;
+        double c = Math.sqrt(4 * (sight_radius_v*sight_radius_v) / R2 - 1);
+
+        double fx = (loc1.x + loc2.x) / 2;
+        double gx = c * (loc2.y - loc1.y) / 2;
+        double ix1 = fx + gx;
+        double ix2 = fx - gx;
+
+        double fy = (loc1.y+loc2.y) / 2;
+        double gy = c * (loc1.x - loc2.x) / 2;
+        double iy1 = fy + gy;
+        double iy2 = fy - gy;
+
+        // note if gy == 0 and gx == 0 then the circles are tangent and there is only one solution
+        // but that one solution will just be duplicated as the code is currently written
+        return new ArrayList<>(Arrays.asList(new Double2D(ix1,iy1),
+                new Double2D(ix2, iy2)));
+    }
+
+    private List<List<BaseAgent>>  createIntersectingGroups(Double2D leadersDirection) {
+        List<List<BaseAgent>> intersectingAgentsGroups = new ArrayList<>();
+        Map<BaseAgent, Double> agentToError = new HashMap<>();
+
+        for(BaseAgent agent: swarmAgents)
+        {
+            List<BaseAgent> neighbors = AgentMovementCalculator.getAgentIntersectingNeighbors(this, agent, true);
+            List<BaseAgent> neighborsLeft = new ArrayList<>(neighbors);
+
+            agentToError.put(agent,
+                    AgentMovementCalculator.calculateAngleBetweenDirections(leadersDirection, agent.position.getMovementDirection()));
+
+            for(List<BaseAgent> group: intersectingAgentsGroups){
+                neighborsLeft.removeAll(group);
+                if(group.contains(agent)) continue;
+                if(neighbors.containsAll(group))
+                   group.add(agent);
+
+           }
+
+                for (BaseAgent neighbor : neighborsLeft)
+                    if(agentToError.containsKey(neighbor))
+                        intersectingAgentsGroups.add(new ArrayList<>(Arrays.asList(agent, neighbor)));
+
+            if(neighbors.isEmpty() || intersectingAgentsGroups.isEmpty()){
+                intersectingAgentsGroups.add(new ArrayList<>(Arrays.asList(agent)));
+                continue;
+            }
+        }
+
+        intersectingAgentsGroups = intersectingAgentsGroups.stream()
+                .map(group -> groupError(group, agentToError))
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).map(kvp -> kvp.getKey())
+                .collect(Collectors.toList());
+
+        return intersectingAgentsGroups;
+    }
+
+    private Map.Entry<List<BaseAgent>,Double> groupError(List<BaseAgent> group, Map<BaseAgent, Double> agentToError) {
+        double error = 0;
+        for(BaseAgent a: group)
+            error += agentToError.get(a);
+        return Map.entry(group, error);
+    }
+
+    private void LocateLeadersInPositions(Double2D leadersDirection, List<Double2D> selectedAgentsLoc) {
+        for (int j = 0; j < numLeaders; j++) {
+            Leader leader = leaderAgents.get(j);
+            Double2D leadersPos = new Double2D(selectedAgentsLoc.get(j).x, selectedAgentsLoc.get(j).y);
+            leader.position = new AgentPosition(
+                    leadersPos, leadersPos.subtract(leadersDirection.multiply(jump)));
+            leader.currentPhysicalPosition = new AgentPosition(leader.position);
+        }
+    }
+
     private void initializeLeadersPositionsErrorApproach(Double2D leadersDirection) {
         Map<BaseAgent, Double> agentsToErrorRate = new HashMap<>();
         List<BaseAgent> selectedAgents = new ArrayList<>();
-        List<BaseAgent> secondLevelAgents = new ArrayList<>();
+        List<BaseAgent> testedAgents = new ArrayList<>();
         Map<BaseAgent, List<BaseAgent>> agentsToNeighbors = new HashMap<>();
 
         for(Agent agent: swarmAgents) {
@@ -196,26 +325,26 @@ public class SignalingSwarmGame extends SimState {
                 Map.Entry.comparingByValue(Comparator.reverseOrder())).map(x -> x.getKey()).collect(Collectors.toList());
 
         while(selectedAgents.size() < numLeaders){
-            if(orderedAgentsbyErrors.size() > 0) {
-                BaseAgent topErrorAgent = orderedAgentsbyErrors.remove(0);
-                List<BaseAgent> neighbors = agentsToNeighbors.get(topErrorAgent);
-                boolean neighborChosen = false;
-                for (BaseAgent neighbor : neighbors) {
-                    if (selectedAgents.contains(neighbor)) {
-                        neighborChosen = true;
-                        secondLevelAgents.add(topErrorAgent);
-                    }
+            BaseAgent topErrorAgent = orderedAgentsbyErrors.remove(0);
+            List<BaseAgent> neighbors = agentsToNeighbors.get(topErrorAgent);
+            for (BaseAgent neighbor : neighbors) {
+                if (selectedAgents.contains(neighbor) && !testedAgents.contains(topErrorAgent)) {
+                    orderedAgentsbyErrors.add(topErrorAgent);
+                    break;
                 }
-                if(!neighborChosen)
-                    selectedAgents.add(topErrorAgent);
             }
-            else {
-                selectedAgents.addAll(secondLevelAgents.subList(0, numLeaders - secondLevelAgents.size()));
-            }
+            if(!orderedAgentsbyErrors.contains(topErrorAgent))
+                selectedAgents.add(topErrorAgent);
+            testedAgents.add(topErrorAgent);
         }
 
         List<Double2D> selectedAgentsLoc = selectedAgents.stream().map(x -> x.position.loc).collect(Collectors.toList());
 
+        locateLeadersInPositions(leadersDirection, selectedAgentsLoc);
+
+    }
+
+    private void locateLeadersInPositions(Double2D leadersDirection, List<Double2D> selectedAgentsLoc) {
         for (int j = 0; j < numLeaders; j++) {
             Leader leader = leaderAgents.get(j);
             Double2D leadersPos = new Double2D(selectedAgentsLoc.get(j).x + 1, selectedAgentsLoc.get(j).y + 1);
@@ -223,7 +352,6 @@ public class SignalingSwarmGame extends SimState {
                     leadersPos, leadersPos.subtract(leadersDirection.multiply(jump)));
             leader.currentPhysicalPosition = new AgentPosition(leader.position);
         }
-
     }
 
     private void initializeLeadersPositionsGraphApproach(Double2D leadersDirection) {

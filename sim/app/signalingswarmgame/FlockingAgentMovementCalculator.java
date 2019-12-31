@@ -67,9 +67,15 @@ public class FlockingAgentMovementCalculator extends AgentMovementCalculator{
         if(swarm.sight_radius_v == 0)
             return getNeighborsBySightSize(swarm, agent, filterLeaders);
 
-        List<BaseAgent> neighborsInSight = getNeighborsBySightRadius(swarm, agent, filterLeaders);
+        List<BaseAgent> neighborsInSight = getNeighborsBySightRadius(swarm, agent, filterLeaders , false);
         return neighborsInSight;
     }
+
+    @Override
+    List<BaseAgent> agentNeighborsByIntersection(SignalingSwarmGame swarm, BaseAgent agent, boolean filterLeaders) {
+        return getNeighborsBySightRadius(swarm, agent, filterLeaders, true);
+    }
+
 
     private List<BaseAgent> getNeighborsBySightSize(SignalingSwarmGame swarm, BaseAgent agent, boolean filterLeaders) {
         ArrayList<BaseAgent> neighbors = new ArrayList<>();
@@ -88,18 +94,18 @@ public class FlockingAgentMovementCalculator extends AgentMovementCalculator{
                 Math.min(swarm.sight_size_v, neighbors.size()));
     }
 
-    private List<BaseAgent> getNeighborsBySightRadius(SignalingSwarmGame swarm, BaseAgent agent, boolean filterLeaders) {
+    private List<BaseAgent> getNeighborsBySightRadius(SignalingSwarmGame swarm, BaseAgent agent, boolean filterLeaders, boolean intersection) {
         ArrayList<BaseAgent> neighbors = new ArrayList<>();
 
         for (Agent otherAgent: swarm.swarmAgents) {
             double dist = getDistanceBetweenPoints(agent.position.loc, otherAgent.position.loc);
-            if (otherAgent != agent && dist <= swarm.getSightRadius())
+            if (otherAgent != agent && dist <= (intersection? 2 : 1) * swarm.getSightRadius())
                 neighbors.add(otherAgent);
         }
         if(!filterLeaders){
             for (Leader leader: swarm.leaderAgents) {
                 double dist = getDistanceBetweenPoints(agent.position.loc, leader.position.loc);
-                if (leader != agent && dist <= swarm.getSightRadius())
+                if (leader != agent && dist <=  (intersection? 2 : 1) * swarm.getSightRadius())
                     neighbors.add(leader);
             }
         }

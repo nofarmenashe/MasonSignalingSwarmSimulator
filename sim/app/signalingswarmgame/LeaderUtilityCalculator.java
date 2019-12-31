@@ -66,7 +66,7 @@ public abstract class LeaderUtilityCalculator {
             double optionUtility = currStepOptionUtility +
                     (Next_STEP_RATE * Math.max(nextStepOptionUtility.fst, nextStepOptionUtility.snd));
 
-            double optionProbability = getOptionProbability(optionIndex, swarm.p_signal_accecptness_v);
+            double optionProbability = getOptionProbability(optionIndex, agentsInSight.size(), swarm.p_signal_accecptness_v);
 
             signalUtility += optionProbability * optionUtility;
         }
@@ -104,13 +104,14 @@ public abstract class LeaderUtilityCalculator {
             agent.position = new AgentPosition(agent.currentPhysicalPosition);
     }
 
-    private static double getOptionProbability(int optionIndex, double p_signal_accecptness_v) {
+    private static double getOptionProbability(int optionIndex, int optionSize, double p_signal_accecptness_v) {
         double probability = 1;
-        while(optionIndex > 0){
+        while(optionSize > 0){
             probability = (optionIndex % 2 == 1)?
                 probability *  p_signal_accecptness_v:  probability *  (1 - p_signal_accecptness_v);
 
             optionIndex = optionIndex / 2;
+            optionSize--;
         }
         return probability;
     }
