@@ -29,7 +29,6 @@ public class SignalingSwarmGameWithUI extends GUIState {
     public static PrintWriter simulationDistReportWriter;
     public static PrintWriter simulationSetReportWriter;
 
-    public static boolean isCurrentGameFinished;
     private String gameStatistics = "";
 
     private int currentStep;
@@ -39,57 +38,41 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private String[] agentsDistancesList;
     private String signalsList;
 
-    public static int index = 0;
+    public static int index = 24;
 
     public static void main(String[] args) {
         int n = 8;
         int p = 10;
         int l = 1;
-//        int leaders = 3;
-//        int s = 7;
-
-//        SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
-//        Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-////        for (int l = 1; l <= 3; l++) {
-//            sgwui.setParams(n, p / 10.0, l);
-////            ((Console) simConsole).pressPlay();
-//            while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {}
-////        }
-            while (index < 40) {
-                SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
-                Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-                for (int leaders = 1; leaders < 8; leaders += 2) {
-//////            for (int l = 1; l <= 3; l++) {
-////                for (int p = 9; p > 0; p--) {
-////                    for (int n = 1; n <= 20; n+=3) {
-////                    for (int s = 1; s <= n; s+=3) {
-//                    sgwui.setParams(n, leaders, p / 10.0, l, s);
-
-                    sgwui.setParams(n, leaders, LeaderPositioningAlgo.Random, p / 10.0, l);
-                    ((Console) simConsole).pressPlay();
-                    while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
-                    }
-
-                    sgwui.setParams(n, leaders, LeaderPositioningAlgo.Graph, p / 10.0, l);
-                    ((Console) simConsole).pressPlay();
-                    while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
-                    }
-
-                    sgwui.setParams(n, leaders, LeaderPositioningAlgo.Error, p / 10.0, l);
-                    ((Console) simConsole).pressPlay();
-                    while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
-                    }
-
-                    sgwui.setParams(n, leaders, LeaderPositioningAlgo.Intersection, p / 10.0, l);
-                    ((Console) simConsole).pressPlay();
-                    while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
-                    }
+        while (index < 40) {
+            SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
+            Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
+            for (int leaders = 1; leaders < 8; leaders += 2) {
+                sgwui.setParams(n, leaders, LeaderPositioningAlgo.Intersection, p / 10.0, l);
+                ((Console) simConsole).pressPlay();
+                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
                 }
-                index++;
-//            }
-                    }
-//                }
+                sgwui.setParams(n, leaders, LeaderPositioningAlgo.Random, p / 10.0, l);
+                ((Console) simConsole).pressPlay();
+                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+                }
+
+                sgwui.setParams(n, leaders, LeaderPositioningAlgo.Graph, p / 10.0, l);
+                ((Console) simConsole).pressPlay();
+                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+                }
+
+                sgwui.setParams(n, leaders, LeaderPositioningAlgo.Error, p / 10.0, l);
+                ((Console) simConsole).pressPlay();
+                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+                }
+
             }
+            index++;
+//            }
+                }
+//                }
+        }
 //        }
 
     public Object getSimulationInspectedObject() {
@@ -189,10 +172,6 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
     public void finish() {
         super.finish();
-        updateSimulationSetReportFile();
-//        updateSimulationDistReportFile();
-
-        isCurrentGameFinished = true;
     }
 
     private void updateSimulationDistReportFile() {
@@ -217,7 +196,8 @@ public class SignalingSwarmGameWithUI extends GUIState {
         double convergancePercentage = swarm.convergencePercentage();
         double lostPercentage = swarm.lostPercentage();
 
-        StringBuilder sb = new StringBuilder(String.format("%d, %d, %s, %.2f, %d, %d, %d, %d, %d, %d, %.2f, %.2f\n",
+        StringBuilder sb = new StringBuilder(String.format("%d, %d, %d, %s, %.2f, %d, %d, %d, %d, %d, %d, %.2f, %.2f\n",
+                index,
                 swarm.numAgents,
                 swarm.numLeaders,
                 swarm.leaderPositioningAlgo.name(),
@@ -250,10 +230,19 @@ public class SignalingSwarmGameWithUI extends GUIState {
         sumStepsTime += timeElapsed;
 
         updatePortrayalsColors();
+        SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
+        if(currentStep == 10 || currentStep == 30){
+            try {
+                File snapshotFile = new File(String.format("newReports/snapshot_%d_%d_%s _%d.png",
+                        index, swarm.numLeaders, swarm.leaderPositioningAlgo.name(), currentStep));
+                display.takeSnapshot(snapshotFile, 2);
+            } catch (IOException e) {
+                System.out.println("failed taking snapshot");
+            }
+        }
         currentStep++;
 //        updateDistFile(state);
 //        updateReportFile(super.state);
-        SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
 
         if (swarm.currentStepSignalsCounter > 0) {
             signalsCount += swarm.currentStepSignalsCounter;
@@ -265,7 +254,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
 
         if (swarm.swarmReachedGoal() || currentStep >= 50000) {
-//            simulationReportWriter.close();
+            updateSimulationSetReportFile();
             finish();
         }
 

@@ -5,7 +5,7 @@ import sim.util.Double2D;
 import java.util.List;
 
 public abstract class AgentMovementCalculator {
-    public static final double EPSILON = 0.000000001;
+    public static final double EPSILON = 0.01;
 
     private static AgentMovementCalculator calculatorInstance;
 

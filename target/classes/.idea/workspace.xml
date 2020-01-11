@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ba6a4305-9228-4c5e-8e9a-85349c229156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newReports/simulationSetResults - Copy.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioningAlgo.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioningAlgo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderUtilityCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderUtilityCalculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" afterDir="false" />
@@ -39,14 +35,39 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="127">
+              <caret line="254" column="48" selection-start-line="254" selection-start-column="48" selection-end-line="254" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Error _30.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/newReports/simulationSetResults.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="449">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
-              <caret line="39" column="12" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="12" />
+            <state relative-caret-position="-369">
+              <caret line="205" column="53" selection-start-line="205" selection-start-column="53" selection-end-line="205" selection-end-column="53" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#300#325#0" />
                 <element signature="e#464#495#0" />
-                <element signature="e#2691#2704#0" />
+                <element signature="e#2113#2114#0" expanded="true" />
+                <element signature="e#2165#2166#0" expanded="true" />
                 <element signature="e#2710#2803#0" />
                 <element signature="e#2879#3091#0" />
                 <element signature="e#3923#4068#1" />
@@ -54,117 +75,12 @@
                 <element signature="e#4271#4754#0" />
                 <element signature="e#4923#5068#1" />
                 <element signature="e#5108#5250#1" />
-                <element signature="e#5262#6105#0" />
-                <element signature="e#5794#6032#1" />
-                <element signature="e#6111#7465#0" />
-                <element signature="e#6400#7248#1" />
-                <element signature="e#6437#7238#1" />
-                <element signature="e#6689#7066#1" />
-                <element signature="e#7471#8452#0" />
-                <element signature="e#8156#8246#0" />
-                <element signature="e#8458#10122#0" />
-                <element signature="e#8733#9790#1" />
-                <element signature="e#9158#9359#1" />
-                <element signature="e#9654#9780#1" />
-                <element signature="e#10128#10388#0" />
-                <element signature="e#10394#10927#0" />
-                <element signature="e#10540#10921#1" />
-                <element signature="e#10937#12927#0" />
-                <element signature="e#11322#11869#1" />
-                <element signature="e#12136#12725#1" />
-                <element signature="e#12448#12659#1" />
-                <element signature="e#12509#12641#1" />
-                <element signature="e#12895#13436#0" />
-                <element signature="e#13041#13430#1" />
-                <element signature="e#13442#14673#0" />
-                <element signature="e#13917#14185#1" />
-                <element signature="e#14067#14175#1" />
-                <element signature="e#14186#14222#0" />
-                <element signature="e#14371#14666#1" />
-                <element signature="e#14679#16908#0" />
-                <element signature="e#15061#15535#1" />
-                <element signature="e#15372#15525#1" />
-                <element signature="e#15578#16017#1" />
-                <element signature="e#15675#16007#1" />
-                <element signature="e#15807#15993#1" />
-                <element signature="e#16059#16655#1" />
-                <element signature="e#16178#16593#1" />
-                <element signature="e#16280#16579#1" />
-                <element signature="e#16420#16561#1" />
-                <element signature="e#16914#17652#0" />
-                <element signature="e#17093#17210#1" />
-                <element signature="e#17269#17646#1" />
-                <element signature="e#17658#18508#0" />
-                <element signature="e#17865#18469#1" />
-                <element signature="e#18156#18458#1" />
-                <element signature="e#18514#18691#0" />
-                <element signature="e#18697#19074#0" />
-                <element signature="e#19080#19409#0" />
-                <element signature="e#19655#19687#0" />
-                <element signature="e#19465#19757#0" />
-                <element signature="e#19576#19699#1" />
-                <element signature="e#19763#20438#0" />
-                <element signature="e#19864#20383#1" />
-                <element signature="e#20053#20283#1" />
-                <element signature="e#20444#20649#0" />
-                <element signature="e#20519#20622#1" />
-                <element signature="e#20671#20789#0" />
+                <element signature="e#6417#7907#0" />
+                <element signature="e#7913#8894#0" />
+                <element signature="e#8900#10532#0" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="59" column="85" selection-start-line="59" selection-start-column="85" selection-end-line="59" selection-end-column="85" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Intersection.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newReports/simulationSetResults.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="40" selection-start-line="40" selection-end-line="43" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_5_Intersection.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/newReports/snapshot_30_7_Random.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_5_Graph.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_7_Intersection.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Graph.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Error.png">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -178,36 +94,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>firstSigna</find>
-      <find>calculateSingleStepUtility</find>
-      <find>agent.</find>
-      <find>gra</find>
-      <find>take</find>
-      <find>agentsToErrorRate</find>
-      <find>finish</find>
-      <find>Cos</find>
-      <find>posi</find>
-      <find>distanceFromGoal</find>
-      <find>sin</find>
-      <find>lost</find>
-      <find>error</find>
-      <find>leaderDire</find>
-      <find>* 10</find>
-      <find>START</find>
-      <find>createIntersectingGroups</find>
       <find>value</find>
       <find>0,0</find>
       <find>getSwarmPositionsByOptions</find>
-      <find>getPointInIntersectionArea</find>
       <find>agentNeighborsByState</find>
       <find>sna</find>
-      <find>set</find>
       <find>currentStepSignalsCounter</find>
       <find>signalsCount</find>
       <find>getOptionProbability</find>
       <find>seed</find>
       <find>rever</find>
+      <find>grou</find>
+      <find>createIntersectingGroups</find>
+      <find>initializeLeadersPositionsIntersectionsApproach</find>
+      <find>crea</find>
+      <find>agentToError</find>
+      <find>getPointInIntersectionArea</find>
+      <find>create</find>
       <find>step</find>
+      <find>== 2</find>
+      <find>== 10</find>
+      <find>influe</find>
+      <find>influencingLeader</find>
+      <find>sight</find>
+      <find>area</find>
+      <find>SignalingSwarmGame</find>
+      <find>index</find>
+      <find>set</find>
+      <find>snapsho</find>
+      <find>index =</find>
+      <find>== 100</find>
     </findStrings>
     <replaceStrings>
       <replace>SignalingSwarmGame</replace>
@@ -260,10 +176,10 @@
         <option value="$PROJECT_DIR$/.project" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/CombinationsCreator.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioningAlgo.java" />
-        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java" />
-        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderUtilityCalculator.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java" />
         <option value="$PROJECT_DIR$/newReports/simulationSetResults.csv" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java" />
@@ -284,10 +200,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1018" />
-    <option name="y" value="-11" />
+    <option name="x" value="1017" />
+    <option name="y" value="-12" />
     <option name="width" value="912" />
-    <option name="height" value="1103" />
+    <option name="height" value="1104" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -295,6 +211,28 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
+              <item name="mason" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
+              <item name="mason" type="616d4139:PackageViewModuleNode" />
+              <item name="sim" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
+              <item name="mason" type="616d4139:PackageViewModuleNode" />
+              <item name="sim" type="1f31426a:PackageElementNode" />
+              <item name="app.signalingswarmgame" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -327,28 +265,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="mason" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="mason" type="616d4139:PackageViewModuleNode" />
-              <item name="sim" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="mason" type="616d4139:PackageViewModuleNode" />
-              <item name="sim" type="1f31426a:PackageElementNode" />
-              <item name="app.signalingswarmgame" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope" />
     </panes>
   </component>
@@ -357,7 +273,7 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="masonsignalingswarmsimulator" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577807235410" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578497509800" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -534,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577630151403</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="position with intersection">
+      <created>1577815483691</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1577815483691</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -549,7 +472,7 @@
   <component name="ToolWindowManager">
     <frame x="86" y="-7" width="1201" height="735" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8772803" visible="true" weight="0.26730937" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8772803" visible="true" weight="0.28308502" />
       <window_info id="Structure" order="1" sideWeight="0.22910216" side_tool="true" weight="0.2322524" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -558,8 +481,8 @@
       <window_info id="Favorites" order="6" sideWeight="0.5014663" side_tool="true" weight="0.40174672" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992722" weight="0.50912106" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.53067994" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992722" weight="0.23548922" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4411277" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32669982" />
@@ -581,7 +504,7 @@
       <window_info anchor="right" id="Palette&#9;" order="9" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8772803" visible="true" weight="0.26730937" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8772803" visible="true" weight="0.28308502" />
       <window_info id="Structure" order="1" sideWeight="0.22910216" side_tool="true" weight="0.2322524" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -590,8 +513,8 @@
       <window_info id="Favorites" order="6" sideWeight="0.5014663" side_tool="true" weight="0.40174672" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992722" visible="true" weight="0.50912106" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.53067994" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992722" visible="true" weight="0.23548922" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4411277" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32669982" />
@@ -662,14 +585,15 @@
     <MESSAGE value="INITIALIZE LEADERS LOCATIONS - Graph and Error MODEL" />
     <MESSAGE value="fix error model to take first not connected" />
     <MESSAGE value="error position of individuals" />
-    <option name="LAST_COMMIT_MESSAGE" value="error position of individuals" />
+    <MESSAGE value="position with intersection" />
+    <option name="LAST_COMMIT_MESSAGE" value="position with intersection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java</url>
-          <line>389</line>
+          <line>401</line>
           <properties class="sim.app.signalingswarmgame.SignalingSwarmGame" method="getPossibilityScore">
             <option name="EMULATED" value="true" />
           </properties>
@@ -677,7 +601,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java</url>
-          <line>288</line>
+          <line>300</line>
           <properties />
           <option name="timeStamp" value="182" />
         </line-breakpoint>
@@ -689,33 +613,33 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java</url>
-          <line>185</line>
-          <properties />
-          <option name="timeStamp" value="186" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java</url>
-          <line>190</line>
-          <properties />
-          <option name="timeStamp" value="187" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java</url>
-          <line>203</line>
+          <line>213</line>
           <properties />
           <option name="timeStamp" value="188" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java</url>
-          <line>218</line>
+          <line>230</line>
           <properties />
           <option name="timeStamp" value="189" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java</url>
-          <line>243</line>
+          <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java</url>
+          <line>295</line>
           <properties />
-          <option name="timeStamp" value="191" />
+          <option name="timeStamp" value="194" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java</url>
+          <line>191</line>
+          <properties />
+          <option name="timeStamp" value="195" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java</url>
+          <line>196</line>
+          <properties />
+          <option name="timeStamp" value="196" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -786,171 +710,132 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_Intersection_1_1.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Graph.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_Intersection_3_1.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Intersection.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_Intersection_5_3.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Intersection _2.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Intersection _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_Intersection_3_4.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_3_Graph.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_Intersection_5_4.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_1_Graph _2.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_7_Intersection _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_Intersection_1_0.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_1_Intersection _2.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_7_Intersection.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_Intersection_3_0.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_3_Intersection _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_Intersection_5_0.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_3_Intersection.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_Intersection_7_0.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_3_Graph.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_7_Graph.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_1_Intersection.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_5_Intersection.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_1_Graph.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="17" column="50" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="60" column="44" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
-          <folding>
-            <element signature="method#checkStopCriteria#0;class#FlockingAgentMovementCalculator#0" />
-            <element signature="method#distanceFromLeader#0;class#FlockingAgentMovementCalculator#0" />
-            <element signature="method#agentNextDirectionByState#0;class#FlockingAgentMovementCalculator#0" />
-            <element signature="e#1339#1982#1" />
-            <element signature="e#1580#1772#1" />
-            <element signature="e#1790#1972#1" />
-            <element signature="e#2121#2309#1" />
-            <element signature="method#getNeighborsBySightSize#0;class#FlockingAgentMovementCalculator#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/engine/Schedule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="801" selection-start-line="801" selection-end-line="801" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="30" column="65" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderUtilityCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_7_Graph.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_3_Intersection _2.png" />
     <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_1_Error.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_1_Graph.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_3_Random _10.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_1_Intersection _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_1_Intersection.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_1_Random.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_1_Graph _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_3_Error.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_1_Graph.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_3_Graph.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_3_Intersection.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_3_Random.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_3_Error.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_5_Error.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_3_Error _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_5_Graph.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_3_Graph.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_5_Random.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_3_Graph _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_3_Intersection.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_3_Intersection _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/display/GUIState.java">
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="238" column="63" lean-forward="true" selection-start-line="238" selection-start-column="63" selection-end-line="238" selection-end-column="63" />
+        <state relative-caret-position="68">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_3_Graph.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_1_Random.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_3_Random.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_5_Intersection.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_3_Error.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_5_Graph.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Random.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_5_Error.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_3_Intersection.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_5_Error _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_6_5_Graph.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_5_Graph _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_6_5_Error.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_5_Intersection _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_6_5_Intersection.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_7_Intersection _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_6_5_Random.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_7_Random.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_6_3_Error.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_5_Intersection.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_6_3_Graph.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_21_3_Intersection _10.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_6_3_Intersection.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_21_3_Intersection.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="39" column="12" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="12" />
+        <state relative-caret-position="-369">
+          <caret line="205" column="53" selection-start-line="205" selection-start-column="53" selection-end-line="205" selection-end-column="53" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#300#325#0" />
             <element signature="e#464#495#0" />
-            <element signature="e#2691#2704#0" />
+            <element signature="e#2113#2114#0" expanded="true" />
+            <element signature="e#2165#2166#0" expanded="true" />
             <element signature="e#2710#2803#0" />
             <element signature="e#2879#3091#0" />
             <element signature="e#3923#4068#1" />
@@ -958,99 +843,50 @@
             <element signature="e#4271#4754#0" />
             <element signature="e#4923#5068#1" />
             <element signature="e#5108#5250#1" />
-            <element signature="e#5262#6105#0" />
-            <element signature="e#5794#6032#1" />
-            <element signature="e#6111#7465#0" />
-            <element signature="e#6400#7248#1" />
-            <element signature="e#6437#7238#1" />
-            <element signature="e#6689#7066#1" />
-            <element signature="e#7471#8452#0" />
-            <element signature="e#8156#8246#0" />
-            <element signature="e#8458#10122#0" />
-            <element signature="e#8733#9790#1" />
-            <element signature="e#9158#9359#1" />
-            <element signature="e#9654#9780#1" />
-            <element signature="e#10128#10388#0" />
-            <element signature="e#10394#10927#0" />
-            <element signature="e#10540#10921#1" />
-            <element signature="e#10937#12927#0" />
-            <element signature="e#11322#11869#1" />
-            <element signature="e#12136#12725#1" />
-            <element signature="e#12448#12659#1" />
-            <element signature="e#12509#12641#1" />
-            <element signature="e#12895#13436#0" />
-            <element signature="e#13041#13430#1" />
-            <element signature="e#13442#14673#0" />
-            <element signature="e#13917#14185#1" />
-            <element signature="e#14067#14175#1" />
-            <element signature="e#14186#14222#0" />
-            <element signature="e#14371#14666#1" />
-            <element signature="e#14679#16908#0" />
-            <element signature="e#15061#15535#1" />
-            <element signature="e#15372#15525#1" />
-            <element signature="e#15578#16017#1" />
-            <element signature="e#15675#16007#1" />
-            <element signature="e#15807#15993#1" />
-            <element signature="e#16059#16655#1" />
-            <element signature="e#16178#16593#1" />
-            <element signature="e#16280#16579#1" />
-            <element signature="e#16420#16561#1" />
-            <element signature="e#16914#17652#0" />
-            <element signature="e#17093#17210#1" />
-            <element signature="e#17269#17646#1" />
-            <element signature="e#17658#18508#0" />
-            <element signature="e#17865#18469#1" />
-            <element signature="e#18156#18458#1" />
-            <element signature="e#18514#18691#0" />
-            <element signature="e#18697#19074#0" />
-            <element signature="e#19080#19409#0" />
-            <element signature="e#19655#19687#0" />
-            <element signature="e#19465#19757#0" />
-            <element signature="e#19576#19699#1" />
-            <element signature="e#19763#20438#0" />
-            <element signature="e#19864#20383#1" />
-            <element signature="e#20053#20283#1" />
-            <element signature="e#20444#20649#0" />
-            <element signature="e#20519#20622#1" />
-            <element signature="e#20671#20789#0" />
+            <element signature="e#6417#7907#0" />
+            <element signature="e#7913#8894#0" />
+            <element signature="e#8900#10532#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Graph.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_1_Graph.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Error.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_1_Intersection.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Intersection.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_3_1_Intersection _10.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Random _100.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Random _10.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Random.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Graph _100.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="59" column="85" selection-start-line="59" selection-start-column="85" selection-end-line="59" selection-end-column="85" />
+        <state relative-caret-position="127">
+          <caret line="254" column="48" selection-start-line="254" selection-start-column="48" selection-end-line="254" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_7_Intersection.png">
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_Error _30.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/newReports/simulationSetResults.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="40" selection-start-line="40" selection-end-line="43" selection-end-column="68" />
+        <state relative-caret-position="449">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_5_Graph.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_5_Intersection.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_30_7_Random.png">
-      <provider selected="true" editor-type-id="images" />
     </entry>
   </component>
   <component name="masterDetails">
