@@ -35,6 +35,7 @@ public class SignalingSwarmGame extends SimState {
     public double leader_influence_v = 1;
     public int steps_lookahead_v = 2;
     public double sight_radius_v = 10.0;
+    public double neighbor_discount_factor_v = 0;
     //endregion
 
     //region Simulation Fields
@@ -96,6 +97,15 @@ public class SignalingSwarmGame extends SimState {
         sight_size_v = sightSize;
     }
 
+    public double getNeighborDiscountFactor() {
+        return neighbor_discount_factor_v;
+    }
+
+    public void setNeighborDiscountFactor(double discountFactor) {
+        neighbor_discount_factor_v = discountFactor;
+    }
+
+
     public double getSightRadius() {
         return sight_radius_v;
     }
@@ -152,7 +162,8 @@ public class SignalingSwarmGame extends SimState {
         }
 
         switch(leaderPositioningAlgo) {
-            case Intersection:
+           case Intersection:
+           case IndirectIntersection:
                 initializeLeadersPositionsIntersectionsApproach(leadersDirection);
                 break;
             case Error:
@@ -183,12 +194,15 @@ public class SignalingSwarmGame extends SimState {
 
     private void initializeLeadersPositionsIntersectionsApproach(Double2D leadersDirection) {
         Map<BaseAgent, Double> agentToError = new HashMap<>();
+        Map<BaseAgent, List<BaseAgent>> agentToNeighbors = new HashMap<>();
 
-        for(BaseAgent agent: swarmAgents)
+        for(BaseAgent agent: swarmAgents) {
             agentToError.put(agent,
                     AgentMovementCalculator.calculateAngleBetweenDirections(leadersDirection, agent.position.getMovementDirection()));
+            agentToNeighbors.put(agent, AgentMovementCalculator.getAgentNeighbors(this, agent, true));
+        }
 
-        List<List<BaseAgent>> intersectingAgentsGroups  = createIntersectingGroups(leadersDirection, agentToError);
+        List<List<BaseAgent>> intersectingAgentsGroups  = createIntersectingGroups(leadersDirection, agentToError, agentToNeighbors);
         List<List<Double2D>> optionalPointsPerGroup = new ArrayList<>();
         List<Double2D> selectedLoc =new ArrayList<>();
         for (List<BaseAgent> group: intersectingAgentsGroups)
@@ -264,20 +278,22 @@ public class SignalingSwarmGame extends SimState {
                 new Double2D(ix2, iy2)));
     }
 
-    private List<List<BaseAgent>>  createIntersectingGroups(Double2D leadersDirection,  Map<BaseAgent, Double> agentToError) {
+    private List<List<BaseAgent>>  createIntersectingGroups(Double2D leadersDirection,  Map<BaseAgent, Double> agentToError, Map<BaseAgent,
+            List<BaseAgent>> agentToNeighbors) {
         List<List<BaseAgent>> intersectingAgentsGroups = new ArrayList<>();
         List<BaseAgent> testedAgents = new ArrayList<>();
         for(BaseAgent agent: swarmAgents)
         {
             testedAgents.add(agent);
-            List<BaseAgent> neighbors = AgentMovementCalculator.getAgentIntersectingNeighbors(this, agent, true);
-            List<BaseAgent> neighborsLeft = new ArrayList<>(neighbors);
+            List<BaseAgent> intersectionNeighbors = AgentMovementCalculator.getAgentIntersectingNeighbors(this, agent, true);
+            List<BaseAgent> sightNeighbors = AgentMovementCalculator.getAgentNeighbors(this, agent, true);
+            List<BaseAgent> neighborsLeft = new ArrayList<>(intersectionNeighbors);
 
             for(List<BaseAgent> group: intersectingAgentsGroups){
                 if(group.contains(agent)) {
                     neighborsLeft.removeAll(group);
                 }
-                if(neighbors.containsAll(group)) {
+                if(intersectionNeighbors.containsAll(group)) {
                     group.add(agent);
                     neighborsLeft.removeAll(group);
                 }
@@ -287,24 +303,33 @@ public class SignalingSwarmGame extends SimState {
                 if(testedAgents.contains(neighbor))
                     intersectingAgentsGroups.add(new ArrayList<>(Arrays.asList(agent, neighbor)));
 
-            if(intersectingAgentsGroups.isEmpty() || neighbors.isEmpty()){
+            if(intersectingAgentsGroups.isEmpty() || intersectionNeighbors.isEmpty()){
                 intersectingAgentsGroups.add(new ArrayList<>(Arrays.asList(agent)));
                 continue;
             }
         }
 
         intersectingAgentsGroups = intersectingAgentsGroups.stream()
-                .map(group -> groupError(group, agentToError))
+                .map(group -> groupError(group, agentToError, agentToNeighbors))
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).map(kvp -> kvp.getKey())
                 .collect(Collectors.toList());
 
         return intersectingAgentsGroups;
     }
 
-    private Map.Entry<List<BaseAgent>,Double> groupError(List<BaseAgent> group, Map<BaseAgent, Double> agentToError) {
+    private Map.Entry<List<BaseAgent>,Double> groupError(List<BaseAgent> group,
+                                                         Map<BaseAgent, Double> agentToError, Map<BaseAgent,
+                                                         List<BaseAgent>> agentToNeighbors) {
         double error = 0;
-        for(BaseAgent a: group)
+        for(BaseAgent a: group){
             error += agentToError.get(a);
+            if(agentToNeighbors != null){
+                for(BaseAgent n: agentToNeighbors.get(a))
+                    if(!group.contains(n))
+                        error += getNeighborDiscountFactor() * agentToError.get(n);
+            }
+        }
+
         return Map.entry(group, error);
     }
 
@@ -495,7 +520,7 @@ public class SignalingSwarmGame extends SimState {
 
     private void locateAgent(BaseAgent agent) {
         Double2D lastLoc = new Double2D(random.nextDouble() * width, random.nextDouble() * height);
-        Double2D loc = new Double2D(random.nextDouble() * width, random.nextDouble() * height);
+        Double2D loc = new Double2D(random.nextDouble() * width,  height / 2);
 
         agent.position = new AgentPosition(loc, lastLoc);
         agent.currentPhysicalPosition = new AgentPosition(loc, lastLoc);

@@ -4,5 +4,6 @@ public enum LeaderPositioningAlgo {
     Random,
     Graph,
     Error,
-    Intersection
+    Intersection,
+    IndirectIntersection
 }
