@@ -1,9 +1,10 @@
 package sim.app.signalingswarmgame;
 
-public enum LeaderPositioningAlgo {
+public enum LeaderPositioningApproach {
     Random,
     Graph,
     Error,
     Intersection,
-    IndirectIntersection
+    IndirectIntersection,
+    GA
 }
