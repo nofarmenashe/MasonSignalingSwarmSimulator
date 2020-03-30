@@ -28,22 +28,8 @@ public abstract class BaseAgent implements Steppable, sim.portrayal.Oriented2D {
 
     public abstract void step(SimState state);
 
-//    protected Double2D getNextStepLocation(SignalingSwarmGame swarm, Double2D currentLoc){
-//        return getNextStepLocation(swarm, position.getMovementDirection(), currentLoc);
-//    }
-
 
     protected Double2D getNextStepLocation(SignalingSwarmGame swarm, Double2D nextDirection, Double2D currentLoc){
         return currentLoc.add(nextDirection.multiply(swarm.jump));
-    }
-
-    public boolean isCurrentAgentInfluencedByLeader(SignalingSwarmGame swarm){
-        if(swarm.influencedAgents == null)
-            return false;
-
-        for (BaseAgent influencedAgent: swarm.influencedAgents)
-            if(influencedAgent == this)
-                return true;
-        return false;
     }
 }
