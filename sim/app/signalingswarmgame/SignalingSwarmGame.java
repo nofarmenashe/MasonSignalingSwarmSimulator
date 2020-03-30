@@ -38,6 +38,7 @@ public class SignalingSwarmGame extends SimState {
     public double leader_influence_v = 1;
     public int steps_lookahead_v = 2;
     public double sight_radius_v = 11.0;
+    public double signal_radius_v = Double.MAX_VALUE;
     public double neighbor_discount_factor_v = 0;
     //endregion
 
@@ -114,6 +115,14 @@ public class SignalingSwarmGame extends SimState {
 
     public void setSightRadius(double sightRadius) {
         sight_radius_v = sightRadius;
+    }
+
+    public double getSignalRadius() {
+        return signal_radius_v;
+    }
+
+    public void setSignalRadius(double signalRadius) {
+        signal_radius_v = signalRadius;
     }
     //endregion
 

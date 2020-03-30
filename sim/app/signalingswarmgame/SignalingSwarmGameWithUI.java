@@ -38,39 +38,47 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private String[] agentsDistancesList;
     private String signalsList;
 
-    public static int index = 0;
+    public static int index = 30;
 
     public static void main(String[] args) throws InterruptedException {
-        int n = 7;
-        int p = 10;
+//        int n = 7;
+//        int p = 10;
         int l = 1;
-//        int leaders = 1;
-        while (index < 100) {
+        int leaders = 1;
+        while (index < 50) {
             System.out.println(index);
             SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
             Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-            for (int leaders = 7; leaders > 0; leaders -= 2) {
-                System.out.println(leaders);
+            for (int n = 1; n <= 15; n+=3) {
+                for (int p = 1; p < 10; p+=2) {
+            for (int sight = 5; sight <= 30; sight += 5) {
+//            for (int leaders = 7; leaders > 0; leaders -= 2) {
+//                System.out.println(leaders);
 
-            sgwui.setParams(n, leaders, LeaderPositioningApproach.GA, p / 10.0, l);
+                sgwui.setParams(n, leaders, sight, LeaderPositioningApproach.Random, p / 10.0, l);
                 ((Console) simConsole).pressPlay();
-                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) { }
+                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+                }
 
-                sgwui.setParams(n, leaders, LeaderPositioningApproach.Intersection, p / 10.0, l);
-                ((Console) simConsole).pressPlay();
-                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) { }
-
-            sgwui.setParams(n, leaders, LeaderPositioningApproach.IndirectIntersection, p / 10.0, l, 0.1);
-                ((Console) simConsole).pressPlay();
-                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) { }
-
-                sgwui.setParams(n, leaders, LeaderPositioningApproach.IndirectIntersection, p / 10.0, l, 0.5);
-                ((Console) simConsole).pressPlay();
-                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) { }
-
-                sgwui.setParams(n, leaders, LeaderPositioningApproach.IndirectIntersection, p / 10.0, l, 1);
-                ((Console) simConsole).pressPlay();
-                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) { }
+//            sgwui.setParams(n, leaders, LeaderPositioningApproach.GA, p / 10.0, l);
+//                ((Console) simConsole).pressPlay();
+//                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) { }
+//
+//                sgwui.setParams(n, leaders, LeaderPositioningApproach.Intersection, p / 10.0, l);
+//                ((Console) simConsole).pressPlay();
+//                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) { }
+//
+//            sgwui.setParams(n, leaders, LeaderPositioningApproach.IndirectIntersection, p / 10.0, l, 0.1);
+//                ((Console) simConsole).pressPlay();
+//                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) { }
+//
+//                sgwui.setParams(n, leaders, LeaderPositioningApproach.IndirectIntersection, p / 10.0, l, 0.5);
+//                ((Console) simConsole).pressPlay();
+//                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) { }
+//
+//                sgwui.setParams(n, leaders, LeaderPositioningApproach.IndirectIntersection, p / 10.0, l, 1);
+//                ((Console) simConsole).pressPlay();
+//                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) { }
 
                 System.out.println("----");
 
@@ -88,15 +96,16 @@ public class SignalingSwarmGameWithUI extends GUIState {
 //                ((Console) simConsole).pressPlay();
 //                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
 //                }
-
+            }
+            }
             }
             System.out.println("finish round " + index);
             index++;
 //            }
-        }
+//        }
 //                }
         }
-//        }
+        }
 
     public Object getSimulationInspectedObject() {
         return state;
@@ -105,6 +114,20 @@ public class SignalingSwarmGameWithUI extends GUIState {
     ContinuousPortrayal2D agentsPortrayal = new ContinuousPortrayal2D();
     ContinuousPortrayal2D trailsPortrayal = new ContinuousPortrayal2D();
     ContinuousPortrayal2D signalsPortrayal = new ContinuousPortrayal2D();
+
+    public void setParams(int n, int leaders,double sight, LeaderPositioningApproach posAlgo, double p, int l) {
+        System.out.println("########Set Params#####");
+        ((SignalingSwarmGame) state).setAcceptLeadersSignalCorrectly(p);
+        ((SignalingSwarmGame) state).numAgents = n;
+        ((SignalingSwarmGame) state).steps_lookahead_v = l;
+        ((SignalingSwarmGame) state).numLeaders = leaders;
+        ((SignalingSwarmGame) state).setSightRadius(sight);
+        ((SignalingSwarmGame) state).leaderPositioningApproach = posAlgo;
+        ((SignalingSwarmGame) state).initSimulation();
+        System.out.println("########End Set Params#####");
+
+
+    }
 
     public void setParams(int n, int leaders, LeaderPositioningApproach posAlgo, double p, int l, double ngbrFactor) {
         System.out.println("########Set Params#####");
@@ -164,13 +187,13 @@ public class SignalingSwarmGameWithUI extends GUIState {
         createReportsPrintWriter();
 
         SignalingSwarmGame swarm = (SignalingSwarmGame) state;
-            try {
-                File snapshotFile = new File(String.format("newReports/snapshot_%d_%d_%.2f_%s.png",
-                        index, swarm.numLeaders, swarm.neighbor_discount_factor_v, swarm.leaderPositioningApproach.name()));
-                display.takeSnapshot(snapshotFile, 2);
-            } catch (IOException e) {
-                System.out.println("failed taking snapshot");
-            }
+//            try {
+//                File snapshotFile = new File(String.format("newReports/snapshot_%d_%d_%.2f_%s.png",
+//                        index, swarm.numLeaders, swarm.neighbor_discount_factor_v, swarm.leaderPositioningApproach.name()));
+//                display.takeSnapshot(snapshotFile, 2);
+//            } catch (IOException e) {
+//                System.out.println("failed taking snapshot");
+//            }
 //        appendSimulatorParameters(state);
 //        updateReportFile(state);
     }
@@ -233,7 +256,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
         double convergancePercentage = swarm.convergencePercentage();
         double lostPercentage = swarm.lostPercentage();
 
-        StringBuilder sb = new StringBuilder(String.format("%d, %d, %d, %s, %.2f, %.2f, %d, %d, %d, %d, %d, %d, %.2f, %.2f\n",
+        StringBuilder sb = new StringBuilder(String.format("%d, %d, %d, %s, %.2f, %.2f, %d, %d, %.2f, %d, %d, %d, %d, %.2f, %.2f\n",
                 index,
                 swarm.numAgents,
                 swarm.numLeaders,
@@ -242,6 +265,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
                 swarm.getAcceptLeadersSignalCorrectly(),
                 swarm.getStepsLookahead(),
                 swarm.getSightSize(),
+                swarm.getSightRadius() / swarm.width,
                 firstSignalStep,
                 signalsCount,
                 currentStep,

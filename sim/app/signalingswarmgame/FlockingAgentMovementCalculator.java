@@ -105,7 +105,8 @@ public class FlockingAgentMovementCalculator extends AgentMovementCalculator{
         if(!filterLeaders){
             for (Leader leader: swarm.leaderAgents) {
                 double dist = getDistanceBetweenPoints(agent.position.loc, leader.position.loc);
-                if (leader != agent && dist <=  (intersection? 2 : 1) * swarm.getSightRadius())
+                double maxDistRadius = (intersection? 2 : 1) * (agent instanceof Leader? swarm.getSignalRadius(): swarm.getSightRadius());
+                if (leader != agent && dist <=  maxDistRadius)
                     neighbors.add(leader);
             }
         }
