@@ -31,27 +31,27 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
     private String gameStatistics = "";
 
-    private int currentStep;
     private int signalsCount;
     private int firstSignalStep;
     private Long sumStepsTime;
     private String[] agentsDistancesList;
     private String signalsList;
 
-    public static int index = 30;
+    public static int index = 0;
 
     public static void main(String[] args) throws InterruptedException {
 //        int n = 7;
-//        int p = 10;
+        int p = 10;
         int l = 1;
+        int sight = 10;
         int leaders = 1;
         while (index < 50) {
             System.out.println(index);
             SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
             Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-            for (int n = 1; n <= 15; n+=3) {
-                for (int p = 1; p < 10; p+=2) {
-            for (int sight = 5; sight <= 30; sight += 5) {
+            for (int n = 2; n <= 15; n+=3) {
+//                for (int p = 1; p < 10; p+=2) {
+//            for (int sight = 5; sight <= 30; sight += 5) {
 //            for (int leaders = 7; leaders > 0; leaders -= 2) {
 //                System.out.println(leaders);
 
@@ -96,8 +96,8 @@ public class SignalingSwarmGameWithUI extends GUIState {
 //                ((Console) simConsole).pressPlay();
 //                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
 //                }
-            }
-            }
+//            }
+//            }
             }
             System.out.println("finish round " + index);
             index++;
@@ -177,7 +177,6 @@ public class SignalingSwarmGameWithUI extends GUIState {
         super.start();
         setupPortrayals();
 
-        currentStep = 0;
         firstSignalStep = 0;
         signalsCount = 0;
         sumStepsTime = Long.valueOf(0);
@@ -232,6 +231,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
     public void finish() {
         super.finish();
+
     }
 
     private void updateSimulationDistReportFile() {
@@ -252,7 +252,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
 
     private void updateSimulationSetReportFile() {
         SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
-        long avgStepTime = currentStep == 0? 0 : sumStepsTime / currentStep;
+        long avgStepTime = swarm.currentStep == 0? 0 : sumStepsTime / swarm.currentStep;
         double convergancePercentage = swarm.convergencePercentage();
         double lostPercentage = swarm.lostPercentage();
 
@@ -268,7 +268,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
                 swarm.getSightRadius() / swarm.width,
                 firstSignalStep,
                 signalsCount,
-                currentStep,
+                swarm.currentStep,
                 avgStepTime,
                 convergancePercentage,
                 lostPercentage));
@@ -302,7 +302,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
 //                System.out.println("failed taking snapshot");
 //            }
 //        }
-        currentStep++;
+        swarm.currentStep++;
 //        updateDistFile(state);
 //        updateReportFile(super.state);
 
@@ -310,13 +310,20 @@ public class SignalingSwarmGameWithUI extends GUIState {
             signalsCount += swarm.currentStepSignalsCounter;
 
             if (firstSignalStep == 0)
-                firstSignalStep = currentStep;
+                firstSignalStep = swarm.currentStep;
 
         }
 
 
-        if (swarm.swarmReachedGoal() || currentStep >= 10000) {
+        if (swarm.swarmReachedGoal() || swarm.currentStep >= 50000) {
             updateSimulationSetReportFile();
+            try {
+                File snapshotFile = new File(String.format("newReports/snapshot_%d_%d_%.2f.png",
+                        index, swarm.numAgents, swarm.getStdDev(swarm.getSwarmDistances())));
+                display.takeSnapshot(snapshotFile, 2);
+            } catch (IOException e) {
+                System.out.println("failed taking snapshot");
+            }
             finish();
         }
 

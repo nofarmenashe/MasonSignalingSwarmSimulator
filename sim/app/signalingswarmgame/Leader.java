@@ -26,19 +26,38 @@ public class Leader extends BaseAgent {
 
     public void step(SimState state) {
         final SignalingSwarmGame swarm = (SignalingSwarmGame) state;
-
-        Map<Agent, AgentPosition> agentsToCurrentPosition = getAgentsCurrentPositions(swarm);
-        Pair<Double, Double> utility = LeaderUtilityCalculator.calculateUtility(swarm, this, agentsToCurrentPosition, position, swarm.getStepsLookahead());
-
-        isLeaderSignaled = utility.fst >= utility.snd;
-        if(isLeaderSignaled) {
-            sendSignalToInfluencedAgents(swarm);
-            swarm.currentStepSignalsCounter++;
+        double maxNegihbors = 0;
+        Agent selectedAgent = null;
+        for (Agent agent : swarm.swarmAgents) {
+            List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(swarm, agent, true);
+            if(neighbors.size() > maxNegihbors){
+                maxNegihbors = neighbors.size();
+                selectedAgent = agent;
+            }
         }
+        if(selectedAgent == null) selectedAgent = swarm.swarmAgents.get(swarm.random.nextInt(swarm.numLeaders));
+        Double2D desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints(position.loc, selectedAgent.position.loc);
 
-        currentPhysicalPosition.updatePosition(swarm.jump);
+        if(AgentMovementCalculator.getDistanceBetweenPoints(selectedAgent.position.loc, position.loc) < 10) {
+            isLeaderSignaled = true;
+            sendSignalToInfluencedAgents(swarm);
+        }
+        else{
+            isLeaderSignaled = false;
+        }
+//        Map<Agent, AgentPosition> agentsToCurrentPosition = getAgentsCurrentPositions(swarm);
+//        Pair<Double, Double> utility = LeaderUtilityCalculator.calculateUtility(swarm, this, agentsToCurrentPosition, position, swarm.getStepsLookahead());
+//
+//        isLeaderSignaled = utility.fst >= utility.snd;
+//        if(isLeaderSignaled) {
+//            sendSignalToInfluencedAgents(swarm);
+//            swarm.currentStepSignalsCounter++;
+//        }
+
+        currentPhysicalPosition.updatePosition(getNextStepLocation(swarm, desiredDirection, currentPhysicalPosition.loc));
         position = new AgentPosition(currentPhysicalPosition);
-        swarm.agents.setObjectLocation(this, position.loc);
+
+        swarm.agents.setObjectLocation(this, currentPhysicalPosition.loc);
 
     }
 
@@ -59,15 +78,15 @@ public class Leader extends BaseAgent {
 
         return currentLeaderDist < currentInfluencerDist;
     }
-
-    private Map<Agent, AgentPosition> getAgentsCurrentPositions(SignalingSwarmGame swarm) {
-        Map<Agent, AgentPosition> positionsMap = new HashMap<>();
-        for (int i = 0; i < swarm.agents.allObjects.numObjs; i++) {
-            BaseAgent agent = (BaseAgent) swarm.agents.allObjects.objs[i];
-            if(agent instanceof Leader)
-                continue;
-            positionsMap.put((Agent)agent, agent.position);
-        }
-        return positionsMap;
-    }
+//
+//    private Map<Agent, AgentPosition> getAgentsCurrentPositions(SignalingSwarmGame swarm) {
+//        Map<Agent, AgentPosition> positionsMap = new HashMap<>();
+//        for (int i = 0; i < swarm.agents.allObjects.numObjs; i++) {
+//            BaseAgent agent = (BaseAgent) swarm.agents.allObjects.objs[i];
+//            if(agent instanceof Leader)
+//                continue;
+//            positionsMap.put((Agent)agent, agent.position);
+//        }
+//        return positionsMap;
+//    }
 }

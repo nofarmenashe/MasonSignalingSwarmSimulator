@@ -15,6 +15,8 @@ public class SignalingSwarmGame extends SimState {
     private static final long serialVersionUID = 1;
     public double width = 100;
     public double height = 100;
+    public double varianceThreshold = 15;
+    public int currentStep = 0;
 
     //endregion
 
@@ -31,6 +33,7 @@ public class SignalingSwarmGame extends SimState {
 
     public double prevStepRate = 0.5;
 
+    public int steps_per_direction_v = 5;
     public int sight_size_v = numAgents;
     public double p_signal_accecptness_v = 0.6;
     public double initial_alpha_v = 0;
@@ -124,6 +127,14 @@ public class SignalingSwarmGame extends SimState {
     public void setSignalRadius(double signalRadius) {
         signal_radius_v = signalRadius;
     }
+
+    public int getStepsPerDir() {
+        return steps_per_direction_v;
+    }
+
+    public void setStepsPerDir(int steps) {
+        steps_per_direction_v = steps;
+    }
     //endregion
 
     //region Ctor
@@ -150,8 +161,8 @@ public class SignalingSwarmGame extends SimState {
         swarmAgents = new ArrayList<Agent>();
 
         // set random shared direction to leaders
-        Double2D startPoint = new Double2D(1,  0);
-        Double2D endPoint = new Double2D(1, 1);
+        Double2D startPoint = new Double2D(random.nextDouble(),  random.nextDouble());
+        Double2D endPoint = new Double2D(random.nextDouble(), random.nextDouble());
         leadersDirection = AgentMovementCalculator.getDirectionBetweenPoints(startPoint, endPoint);
 
         for (int x = 0; x < numAgents; x++) {
@@ -298,11 +309,46 @@ public class SignalingSwarmGame extends SimState {
     }
 
     public boolean swarmReachedGoal() {
-        for (Agent agent: swarmAgents) {
-                if (!AgentMovementCalculator.isAgentReachedGoal(this, agent)) return false;
-        }
-        return true;
+        List<Double> distances = getSwarmDistances();
+        return (Collections.min(distances) >= 50 /*&& getStdDev(distances) <= 15*/);
     }
+
+    public List<Double> getSwarmDistances() {
+        List<Double> distances = new ArrayList<>();
+        if(swarmAgents == null) return distances;
+            for (Agent agent : swarmAgents) {
+                for (Agent agent2 : swarmAgents) {
+                    if (agent == agent2) continue;
+                    double dis = AgentMovementCalculator.getDistanceBetweenPoints(
+                            agent.position.loc, agent2.position.loc);
+                    distances.add(dis);
+                }
+            }
+
+        System.out.println(getStdDev(distances));
+        return distances;
+    }
+
+    double getMean(List<Double> data) {
+        double sum = 0.0;
+        for(double a : data)
+            sum += a;
+        return sum / data.size();
+    }
+
+    double getVariance(List<Double> data) {
+        double mean = getMean(data);
+        double temp = 0;
+        for(double a : data)
+            temp += (a - mean)*(a - mean);
+        return temp / (data.size() - 1);
+    }
+
+    double getStdDev(List<Double> data) {
+        return Math.sqrt(getVariance(data));
+    }
+
+
     //endregion
 
     public static void main(String[] args) {
