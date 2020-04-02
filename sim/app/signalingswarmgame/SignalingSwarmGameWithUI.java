@@ -38,7 +38,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private String[] agentsDistancesList;
     private String signalsList;
 
-    public static int index = 30;
+    public static int index = 0;
 
     public static void main(String[] args) throws InterruptedException {
 //        int n = 7;
@@ -122,6 +122,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
         ((SignalingSwarmGame) state).steps_lookahead_v = l;
         ((SignalingSwarmGame) state).numLeaders = leaders;
         ((SignalingSwarmGame) state).setSightRadius(sight);
+        ((SignalingSwarmGame) state).setSignalRadius(sight);
         ((SignalingSwarmGame) state).leaderPositioningApproach = posAlgo;
         ((SignalingSwarmGame) state).initSimulation();
         System.out.println("########End Set Params#####");
