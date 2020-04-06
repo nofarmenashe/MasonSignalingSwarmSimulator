@@ -13,8 +13,8 @@ public class SignalingSwarmGame extends SimState {
     //region Mason Parameters
 
     private static final long serialVersionUID = 1;
-    public double width = 100;
-    public double height = 100;
+    public double width = 500;
+    public double height = 500;
     public double varianceThreshold = 15;
     public int currentStep = 0;
 
@@ -43,11 +43,14 @@ public class SignalingSwarmGame extends SimState {
     public double sight_radius_v = 11.0;
     public double signal_radius_v = Double.MAX_VALUE;
     public double neighbor_discount_factor_v = 0;
+    public int dt = 50;
     //endregion
 
     //region Simulation Fields
 
     public int currentStepSignalsCounter = 0;
+    public double currentAreaCoverage = 0;
+    public double currentAvgNearestNeighborDis = 0;
 
     public Continuous2D agents;
     public List<Leader> leaderAgents;
@@ -159,7 +162,7 @@ public class SignalingSwarmGame extends SimState {
     public void initSimulation(){
         System.out.println("_____Init Start_____");
         swarmAgents = new ArrayList<Agent>();
-
+        currentStep = 0;
         // set random shared direction to leaders
         Double2D startPoint = new Double2D(random.nextDouble(),  random.nextDouble());
         Double2D endPoint = new Double2D(random.nextDouble(), random.nextDouble());
@@ -310,22 +313,35 @@ public class SignalingSwarmGame extends SimState {
 
     public boolean swarmReachedGoal() {
         List<Double> distances = getSwarmDistances();
-        return (Collections.min(distances) >= 50 /*&& getStdDev(distances) <= 15*/);
+        Double2D[] convexHull = ConvexHull.coverPolygon(getAgentsLoc(), numAgents);
+        System.out.println(getMean(distances));
+        currentAreaCoverage = ConvexHull.polygonArea(convexHull) / (height * width);
+        currentAvgNearestNeighborDis = getMean(distances);
+        return (currentAreaCoverage >= 0.7 &&  currentAvgNearestNeighborDis >= 50);
+    }
+
+    private Double2D[] getAgentsLoc() {
+        Double2D[] locations = new Double2D[numAgents];
+        for(int i = 0; i < numAgents; i++)
+            locations[i] = swarmAgents.get(i).position.loc;
+        return locations;
     }
 
     public List<Double> getSwarmDistances() {
         List<Double> distances = new ArrayList<>();
         if(swarmAgents == null) return distances;
             for (Agent agent : swarmAgents) {
+                double minDis = width;
                 for (Agent agent2 : swarmAgents) {
                     if (agent == agent2) continue;
                     double dis = AgentMovementCalculator.getDistanceBetweenPoints(
                             agent.position.loc, agent2.position.loc);
-                    distances.add(dis);
+                    if(dis < minDis) minDis = dis;
+//                    distances.add(dis);
                 }
+                distances.add(minDis);
             }
 
-        System.out.println(getStdDev(distances));
         return distances;
     }
 
