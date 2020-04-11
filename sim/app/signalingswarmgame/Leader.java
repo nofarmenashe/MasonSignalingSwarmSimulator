@@ -16,8 +16,10 @@ import java.util.Map;
 
 public class Leader extends BaseAgent {
     public boolean isLeaderSignaled;
+    public int leaderIndex;
 
-    public Leader() {
+    public Leader(int index) {
+        leaderIndex = index;
     }
 
     public Leader(Double2D loc, Double2D lastLoc) {
@@ -25,26 +27,36 @@ public class Leader extends BaseAgent {
     }
 
     public void step(SimState state) {
+        Double2D desiredDirection;
         final SignalingSwarmGame swarm = (SignalingSwarmGame) state;
-        double maxNegihbors = 0;
-        Agent selectedAgent = null;
-        for (Agent agent : swarm.swarmAgents) {
-            List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(swarm, agent, true);
-            if(neighbors.size() > maxNegihbors){
-                maxNegihbors = neighbors.size();
-                selectedAgent = agent;
-            }
-        }
-        if(selectedAgent == null) selectedAgent = swarm.swarmAgents.get(swarm.random.nextInt(swarm.numLeaders));
-        Double2D desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints(position.loc, selectedAgent.position.loc);
+       //
+//        if(leaderIndex == 0)
+//            swarm.setAgentsPairsDistances();
 
-        if(AgentMovementCalculator.getDistanceBetweenPoints(selectedAgent.position.loc, position.loc) < 10) {
+        desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints(position.loc, swarm.desiredLeadersLocations.get(leaderIndex % swarm.desiredLeadersLocations.size()));
+        System.out.println(leaderIndex + " - " + leaderIndex % swarm.desiredLeadersLocations.size());
+        if(AgentMovementCalculator.getDistanceBetweenPoints( swarm.desiredLeadersLocations.get(leaderIndex % swarm.desiredLeadersLocations.size()), position.loc) < 10) {
             isLeaderSignaled = true;
+            desiredDirection = new Double2D(0,0);
             sendSignalToInfluencedAgents(swarm);
         }
-        else{
-            isLeaderSignaled = false;
-        }
+
+//        double maxNegihbors = 0;
+//        Agent selectedAgent = null;
+//        for (Agent agent : swarm.swarmAgents) {
+//            List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(swarm, agent, true);
+//            if(neighbors.size() > maxNegihbors){
+//                maxNegihbors = neighbors.size();
+//                selectedAgent = agent;
+//            }
+//        }
+//        if(selectedAgent == null) selectedAgent = swarm.swarmAgents.get(swarm.random.nextInt(swarm.numLeaders));
+//        Double2D desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints(position.loc, selectedAgent.position.loc);
+//
+
+//        else{
+//            isLeaderSignaled = false;
+//        }
 //        Map<Agent, AgentPosition> agentsToCurrentPosition = getAgentsCurrentPositions(swarm);
 //        Pair<Double, Double> utility = LeaderUtilityCalculator.calculateUtility(swarm, this, agentsToCurrentPosition, position, swarm.getStepsLookahead());
 //

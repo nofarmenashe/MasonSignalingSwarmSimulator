@@ -40,25 +40,26 @@ public class SignalingSwarmGameWithUI extends GUIState {
     public static int index = 0;
 
     public static void main(String[] args) throws InterruptedException {
-//        int n = 10;
-        int p = 10;
+//        int n = 20;
+//        int p = 10;
         int l = 1;
-//        int sight = 20;
-        int leaders = 0;
+        int sight = 20;
+        int dt = 30;
+        int leaders = 1;
         while (index < 50) {
             System.out.println(index);
             SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
             Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
             for (int n = 5; n <= 30; n += 5) {
-                for (int sight = 10; sight <= 50; sight += 10) {
-                    for(int dt = 10; dt <= 50; dt += 20){
+//                for (int sight = 10; sight <= 50; sight += 10) {
+                    for(int p = 0; p <= 10; p +=2){
                         sgwui.setParams(n, leaders, sight, LeaderPositioningApproach.Random, p / 10.0, l, dt);
                         ((Console) simConsole).pressPlay();
                         while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
                         }
 
                     }
-                }
+//                }
             }
             System.out.println("finish round " + index);
             index++;
@@ -80,6 +81,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
         ((SignalingSwarmGame) state).steps_lookahead_v = l;
         ((SignalingSwarmGame) state).numLeaders = leaders;
         ((SignalingSwarmGame) state).setSightRadius(sight);
+        ((SignalingSwarmGame) state).setSignalRadius(2 * sight);
         ((SignalingSwarmGame) state).leaderPositioningApproach = posAlgo;
         ((SignalingSwarmGame) state).dt = dt;
         ((SignalingSwarmGame) state).initSimulation();
@@ -260,6 +262,8 @@ public class SignalingSwarmGameWithUI extends GUIState {
     }
 
     public boolean step() {
+        SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
+        swarm.setAgentsPairsDistances();
         long startTime = System.nanoTime();
         //Measure execution time for this method
         boolean result = super.step();
@@ -269,7 +273,6 @@ public class SignalingSwarmGameWithUI extends GUIState {
         sumStepsTime += timeElapsed;
 
         updatePortrayalsColors();
-        SignalingSwarmGame swarm = (SignalingSwarmGame) super.state;
 //        if(currentStep == 10 || currentStep == 30){
 //            try {
 //                File snapshotFile = new File(String.format("newReports/snapshot_%d_%d_%s _%d.png",
@@ -295,8 +298,8 @@ public class SignalingSwarmGameWithUI extends GUIState {
         if (swarm.swarmReachedGoal() || swarm.currentStep >= 10000) {
             updateSimulationSetReportFile();
             try {
-                File snapshotFile = new File(String.format("newReports/snapshot_%d_%d_%.2f_%d.png",
-                        index, swarm.numAgents, swarm.sight_radius_v, swarm.dt));
+                File snapshotFile = new File(String.format("newReports/snapshot_%d_%d_%.2f_%.2f.png",
+                        index, swarm.numAgents, swarm.sight_radius_v, swarm.p_signal_accecptness_v));
                 display.takeSnapshot(snapshotFile, 2);
             } catch (IOException e) {
                 System.out.println("failed taking snapshot");
@@ -351,7 +354,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
                     new AdjustablePortrayal2D(
                             new MovablePortrayal2D(
                                     new CircledPortrayal2D(
-                                            new LabelledPortrayal2D(basic, name), 0, swarm.sight_radius_v * 2, Color.BLUE, false))));
+                                            new LabelledPortrayal2D(basic, name), 0, swarm.agents.allObjects.objs[x] instanceof Leader? swarm.signal_radius_v * 2: swarm.sight_radius_v * 2, Color.BLUE, false))));
             trailsPortrayal.setPortrayalForObject(swarm.agents.allObjects.objs[x], basic);
             signalsPortrayal.setPortrayalForObject(swarm.agents.allObjects.objs[x], new OvalPortrayal2D(color));
 

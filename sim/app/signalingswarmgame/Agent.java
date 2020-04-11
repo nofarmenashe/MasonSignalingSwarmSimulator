@@ -27,15 +27,15 @@ public class Agent extends BaseAgent {
 		Double2D desiredDirection;
 		final SignalingSwarmGame swarm = (SignalingSwarmGame) state;
 
-//		if(influencingLeader != null){
-//			isAgentAcceptSignalCorrectly = swarm.random.nextDouble() < swarm.getAcceptLeadersSignalCorrectly();
-//			if(isAgentAcceptSignalCorrectly)
-//				desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints(influencingLeader.position.loc, position.loc);
-//			else
-//				desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints( position.loc, influencingLeader.position.loc);
-//
-//		}
-        if(position.loc.x < 10) desiredDirection = new Double2D(1,0);
+		if(influencingLeader != null){
+			isAgentAcceptSignalCorrectly = swarm.random.nextDouble() < swarm.getAcceptLeadersSignalCorrectly();
+			if(isAgentAcceptSignalCorrectly)
+				desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints(influencingLeader.position.loc, position.loc);
+			else
+				desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints( position.loc, influencingLeader.position.loc);
+
+		}
+        else if(position.loc.x < 10) desiredDirection = new Double2D(1,0);
         else if(position.loc.x > swarm.width - 10) desiredDirection = new Double2D(-1,0);
         else if(position.loc.y < 10) desiredDirection = new Double2D(0,1);
         else if(position.loc.y > swarm.height - 10) desiredDirection = new Double2D(0,-1);
