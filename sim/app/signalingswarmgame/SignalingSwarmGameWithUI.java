@@ -46,20 +46,25 @@ public class SignalingSwarmGameWithUI extends GUIState {
         int sight = 20;
         int dt = 30;
         int leaders = 1;
-        while (index < 50) {
+        while (index < 100) {
             System.out.println(index);
             SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
             Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-            for (int n = 5; n <= 30; n += 5) {
+            for (int n = 5; n <= 11; n += 5) {
 //                for (int sight = 10; sight <= 50; sight += 10) {
-                    for(int p = 0; p <= 10; p +=2){
-                        sgwui.setParams(n, leaders, sight, LeaderPositioningApproach.Random, p / 10.0, l, dt);
-                        ((Console) simConsole).pressPlay();
-                        while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
-                        }
+                sgwui.setParams(n, 0, sight, LeaderPositioningApproach.Random, 1, l, dt);
+                ((Console) simConsole).pressPlay();
+                while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+                }
 
+                for(int p = 0; p <= 10; p +=2){
+                    sgwui.setParams(n, leaders, sight, LeaderPositioningApproach.Random, p / 10.0, l, dt);
+                    ((Console) simConsole).pressPlay();
+                    while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
                     }
-//                }
+
+//                    }
+                }
             }
             System.out.println("finish round " + index);
             index++;

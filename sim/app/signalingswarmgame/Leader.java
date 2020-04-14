@@ -10,9 +10,11 @@ import com.sun.tools.javac.util.Pair;
 import sim.engine.*;
 import sim.util.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Leader extends BaseAgent {
     public boolean isLeaderSignaled;
@@ -29,48 +31,46 @@ public class Leader extends BaseAgent {
     public void step(SimState state) {
         Double2D desiredDirection;
         final SignalingSwarmGame swarm = (SignalingSwarmGame) state;
-       //
 //        if(leaderIndex == 0)
 //            swarm.setAgentsPairsDistances();
+        Double2D desiredLocation = getBestLocation(swarm.desiredLeaderLocations);
+        if(desiredLocation == null)
+            desiredLocation = new Double2D(swarm.random.nextDouble() * swarm.width, swarm.random.nextDouble() * swarm.height);
 
-        desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints(position.loc, swarm.desiredLeadersLocations.get(leaderIndex % swarm.desiredLeadersLocations.size()));
-        System.out.println(leaderIndex + " - " + leaderIndex % swarm.desiredLeadersLocations.size());
-        if(AgentMovementCalculator.getDistanceBetweenPoints( swarm.desiredLeadersLocations.get(leaderIndex % swarm.desiredLeadersLocations.size()), position.loc) < 10) {
+        desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints(position.loc, desiredLocation);
+
+        double dist = AgentMovementCalculator.getDistanceBetweenPoints( desiredLocation, position.loc);
+        if(dist < swarm.signal_radius_v) {
             isLeaderSignaled = true;
-            desiredDirection = new Double2D(0,0);
             sendSignalToInfluencedAgents(swarm);
         }
-
-//        double maxNegihbors = 0;
-//        Agent selectedAgent = null;
-//        for (Agent agent : swarm.swarmAgents) {
-//            List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(swarm, agent, true);
-//            if(neighbors.size() > maxNegihbors){
-//                maxNegihbors = neighbors.size();
-//                selectedAgent = agent;
-//            }
-//        }
-//        if(selectedAgent == null) selectedAgent = swarm.swarmAgents.get(swarm.random.nextInt(swarm.numLeaders));
-//        Double2D desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints(position.loc, selectedAgent.position.loc);
-//
-
-//        else{
-//            isLeaderSignaled = false;
-//        }
-//        Map<Agent, AgentPosition> agentsToCurrentPosition = getAgentsCurrentPositions(swarm);
-//        Pair<Double, Double> utility = LeaderUtilityCalculator.calculateUtility(swarm, this, agentsToCurrentPosition, position, swarm.getStepsLookahead());
-//
-//        isLeaderSignaled = utility.fst >= utility.snd;
-//        if(isLeaderSignaled) {
-//            sendSignalToInfluencedAgents(swarm);
-//            swarm.currentStepSignalsCounter++;
-//        }
+        else
+            isLeaderSignaled = false;
 
         currentPhysicalPosition.updatePosition(getNextStepLocation(swarm, desiredDirection, currentPhysicalPosition.loc));
         position = new AgentPosition(currentPhysicalPosition);
 
         swarm.agents.setObjectLocation(this, currentPhysicalPosition.loc);
+    }
 
+    private Double2D getBestLocation(List<Pair<Double2D,Double2D>> leaderLocations) {
+        double minDist = Integer.MAX_VALUE;
+        Double2D selectedLocation = null;
+        for (Pair<Double2D,Double2D> pair: leaderLocations) {
+            double distFromLoc1 = AgentMovementCalculator.getDistanceBetweenPoints(position.loc, pair.fst);
+            double distFromLoc2 = AgentMovementCalculator.getDistanceBetweenPoints(position.loc, pair.snd);
+            double dist = Math.min(distFromLoc1,distFromLoc2);
+            Double2D loc = distFromLoc1 == dist? pair.fst : pair.snd;
+            if (minDist > dist) {
+                minDist = dist;
+                selectedLocation = loc;
+            }
+        }
+
+            if(selectedLocation != null)
+             leaderLocations.remove(selectedLocation);
+
+            return selectedLocation;
     }
 
     private void sendSignalToInfluencedAgents(SignalingSwarmGame swarm) {

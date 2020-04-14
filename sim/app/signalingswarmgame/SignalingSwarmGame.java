@@ -57,7 +57,7 @@ public class SignalingSwarmGame extends SimState {
     public List<Leader> leaderAgents;
     public List<Agent> swarmAgents;
 
-    public List<Double2D> desiredLeadersLocations;
+    public List<Pair<Double2D,Double2D>> desiredLeaderLocations;
     //endregion
 
     //region Get/Set Inspector Properties
@@ -350,7 +350,7 @@ public class SignalingSwarmGame extends SimState {
 
     public void setAgentsPairsDistances(){
         Map<Integer,Integer> selectedPairs = new HashMap<>();
-        Map<Double2D, Double> desiredPairLocToDistance = new HashMap<>();
+        Map<Pair<Double2D,Double2D>, Double> desiredPairLocToDistance = new HashMap<>();
         for (int i = 0; i < numAgents; i++) {
             Agent agent = swarmAgents.get(i);
             List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(this, agent, true);
@@ -364,18 +364,20 @@ public class SignalingSwarmGame extends SimState {
                 if(minDist > dist && selectedPairs.getOrDefault(j,-1) != i ){
                     minDist = dist;
                     Double2D directionBetweenPair = AgentMovementCalculator.getDirectionBetweenPoints(agent.position.loc, agent2.position.loc);
-                    closestAgentLoc = agent.position.loc.add(directionBetweenPair.multiply(5));
+                    Double2D agentLoc1 = agent.position.loc.add(directionBetweenPair.multiply(5));
+                    Double2D agentLoc2 = agent2.position.loc.add(directionBetweenPair.multiply(-5));
                     pair = new Pair<>(i,j);
+                    selectedPairs.put(pair.fst, pair.snd);
+                    desiredPairLocToDistance.put(new Pair(agentLoc1, agentLoc2), minDist);
                 }
             }
-            if(pair!= null) {
-                selectedPairs.put(pair.fst, pair.snd);
-                desiredPairLocToDistance.put(closestAgentLoc, minDist);
-            }
+//            if(pair!= null) {
+//                selectedPairs.put(pair.fst, pair.snd);
+//                desiredPairLocToDistance.put(closestAgentLoc, minDist);
+//            }
         }
-        desiredLeadersLocations = desiredPairLocToDistance.entrySet().stream().sorted(Map.Entry.comparingByValue())
-                .map(kvp -> kvp.getKey()).collect(Collectors.toList());
-        System.out.println(selectedPairs);
+        desiredLeaderLocations = desiredPairLocToDistance.entrySet().stream().sorted(Map.Entry.comparingByValue())
+                .map(kvp -> kvp.getKey()).collect(Collectors.toList()).subList(0, Math.min(numLeaders, desiredPairLocToDistance.size()));
     }
 
 
