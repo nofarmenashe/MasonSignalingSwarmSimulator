@@ -33,14 +33,14 @@ public class Leader extends BaseAgent {
         final SignalingSwarmGame swarm = (SignalingSwarmGame) state;
 //        if(leaderIndex == 0)
 //            swarm.setAgentsPairsDistances();
-        Double2D desiredLocation = getBestLocation(swarm.desiredLeaderLocations);
+        Double2D desiredLocation = getBestLocation(swarm);
         if(desiredLocation == null)
             desiredLocation = new Double2D(swarm.random.nextDouble() * swarm.width, swarm.random.nextDouble() * swarm.height);
 
         desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints(position.loc, desiredLocation);
 
         double dist = AgentMovementCalculator.getDistanceBetweenPoints( desiredLocation, position.loc);
-        if(dist < swarm.signal_radius_v) {
+        if(dist < 5) {
             isLeaderSignaled = true;
             sendSignalToInfluencedAgents(swarm);
         }
@@ -53,24 +53,17 @@ public class Leader extends BaseAgent {
         swarm.agents.setObjectLocation(this, currentPhysicalPosition.loc);
     }
 
-    private Double2D getBestLocation(List<Pair<Double2D,Double2D>> leaderLocations) {
-        double minDist = Integer.MAX_VALUE;
+    private Double2D getBestLocation(SignalingSwarmGame swarm) {
+        double maxUtility = Double.NEGATIVE_INFINITY;
         Double2D selectedLocation = null;
-        for (Pair<Double2D,Double2D> pair: leaderLocations) {
-            double distFromLoc1 = AgentMovementCalculator.getDistanceBetweenPoints(position.loc, pair.fst);
-            double distFromLoc2 = AgentMovementCalculator.getDistanceBetweenPoints(position.loc, pair.snd);
-            double dist = Math.min(distFromLoc1,distFromLoc2);
-            Double2D loc = distFromLoc1 == dist? pair.fst : pair.snd;
-            if (minDist > dist) {
-                minDist = dist;
-                selectedLocation = loc;
+        for (Agent a: swarm.swarmAgents) {
+            Pair<Double2D,Double> locationToUtility = DispersionUtilityCalculation.getAgentUtility(swarm, a);
+            if (maxUtility < locationToUtility.snd) {
+                maxUtility = locationToUtility.snd;
+                selectedLocation = locationToUtility.fst;
             }
         }
-
-            if(selectedLocation != null)
-             leaderLocations.remove(selectedLocation);
-
-            return selectedLocation;
+        return selectedLocation;
     }
 
     private void sendSignalToInfluencedAgents(SignalingSwarmGame swarm) {

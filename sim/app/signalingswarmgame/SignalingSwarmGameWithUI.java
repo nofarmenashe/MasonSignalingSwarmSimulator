@@ -46,7 +46,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
         int sight = 20;
         int dt = 30;
         int leaders = 1;
-        while (index < 100) {
+        while (index < 150) {
             System.out.println(index);
             SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
             Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
