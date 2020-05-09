@@ -45,6 +45,7 @@ public class SignalingSwarmGame extends SimState {
     public double signal_radius_v = 2 * sight_radius_v;
     public double neighbor_discount_factor_v = 0;
     public int dt = 50;
+    public double avgDistThreshold;
     //endregion
 
     //region Simulation Fields
@@ -57,7 +58,7 @@ public class SignalingSwarmGame extends SimState {
     public List<Leader> leaderAgents;
     public List<Agent> swarmAgents;
 
-    public List<Pair<Double2D,Double2D>> desiredLeaderLocations;
+    public Map<Agent, Double2D> desiredLeaderLocations;
     //endregion
 
     //region Get/Set Inspector Properties
@@ -163,12 +164,22 @@ public class SignalingSwarmGame extends SimState {
     }
 
     public void initSimulation(){
+        width = 500;
+        height = 500;
+        sight_radius_v = 20;
+        signal_radius_v = 2 * sight_radius_v;
+
+        random.setSeed(seed());
+
+        double gridRowsCols = Math.ceil(Math.sqrt(numAgents));
+        avgDistThreshold = width / gridRowsCols;
+        System.out.println("threshold " + avgDistThreshold);
         System.out.println("_____Init Start_____");
         swarmAgents = new ArrayList<Agent>();
         currentStep = 0;
         // set random shared direction to leaders
-        Double2D startPoint = new Double2D(random.nextDouble(),  random.nextDouble());
-        Double2D endPoint = new Double2D(random.nextDouble(), random.nextDouble());
+        Double2D startPoint = new Double2D(1,  0);
+        Double2D endPoint = new Double2D(1, 1);
         leadersDirection = AgentMovementCalculator.getDirectionBetweenPoints(startPoint, endPoint);
 
         for (int x = 0; x < numAgents; x++) {
@@ -320,12 +331,13 @@ public class SignalingSwarmGame extends SimState {
 //        System.out.println(getMean(distances));
         currentAreaCoverage = ConvexHull.polygonArea(convexHull) / (height * width);
         currentAvgNearestNeighborDis = getMean(distances);
-        return (currentAreaCoverage >= 0.7 &&  currentAvgNearestNeighborDis >= 50);
+        return false;
+//        return (currentAreaCoverage >= 0.75 &&  currentAvgNearestNeighborDis >= avgDistThreshold);
     }
 
     private Double2D[] getAgentsLoc() {
         Double2D[] locations = new Double2D[numAgents];
-        for(int i = 0; i < numAgents; i++)
+        for(int i = 0; i < swarmAgents.size(); i++)
             locations[i] = swarmAgents.get(i).position.loc;
         return locations;
     }
@@ -348,37 +360,37 @@ public class SignalingSwarmGame extends SimState {
         return distances;
     }
 
-    public void setAgentsPairsDistances(){
-        Map<Integer,Integer> selectedPairs = new HashMap<>();
-        Map<Pair<Double2D,Double2D>, Double> desiredPairLocToDistance = new HashMap<>();
-        for (int i = 0; i < numAgents; i++) {
-            Agent agent = swarmAgents.get(i);
-            List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(this, agent, true);
-            Double2D closestAgentLoc = null;
-            double minDist = Integer.MAX_VALUE;
-            Pair<Integer,Integer> pair = null;
-            for (int j = 0; j < numAgents; j++) {
-                Agent agent2 = swarmAgents.get(j);
-                if(neighbors.contains(agent2) || agent == agent2) continue;
-                double dist = AgentMovementCalculator.getDistanceBetweenPoints(agent.position.loc, agent2.position.loc);
-                if(minDist > dist && selectedPairs.getOrDefault(j,-1) != i ){
-                    minDist = dist;
-                    Double2D directionBetweenPair = AgentMovementCalculator.getDirectionBetweenPoints(agent.position.loc, agent2.position.loc);
-                    Double2D agentLoc1 = agent.position.loc.add(directionBetweenPair.multiply(5));
-                    Double2D agentLoc2 = agent2.position.loc.add(directionBetweenPair.multiply(-5));
-                    pair = new Pair<>(i,j);
-                    selectedPairs.put(pair.fst, pair.snd);
-                    desiredPairLocToDistance.put(new Pair(agentLoc1, agentLoc2), minDist);
-                }
-            }
-//            if(pair!= null) {
-//                selectedPairs.put(pair.fst, pair.snd);
-//                desiredPairLocToDistance.put(closestAgentLoc, minDist);
+//    public void setAgentsPairsDistances(){
+//        Map<Integer,Integer> selectedPairs = new HashMap<>();
+//        Map<Pair<Double2D,Double2D>, Double> desiredPairLocToDistance = new HashMap<>();
+//        for (int i = 0; i < numAgents; i++) {
+//            Agent agent = swarmAgents.get(i);
+//            List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(this, agent, true);
+//            Double2D closestAgentLoc = null;
+//            double minDist = Integer.MAX_VALUE;
+//            Pair<Integer,Integer> pair = null;
+//            for (int j = 0; j < numAgents; j++) {
+//                Agent agent2 = swarmAgents.get(j);
+//                if(neighbors.contains(agent2) || agent == agent2) continue;
+//                double dist = AgentMovementCalculator.getDistanceBetweenPoints(agent.position.loc, agent2.position.loc);
+//                if(minDist > dist && selectedPairs.getOrDefault(j,-1) != i ){
+//                    minDist = dist;
+//                    Double2D directionBetweenPair = AgentMovementCalculator.getDirectionBetweenPoints(agent.position.loc, agent2.position.loc);
+//                    Double2D agentLoc1 = agent.position.loc.add(directionBetweenPair.multiply(5));
+//                    Double2D agentLoc2 = agent2.position.loc.add(directionBetweenPair.multiply(-5));
+//                    pair = new Pair<>(i,j);
+//                    selectedPairs.put(pair.fst, pair.snd);
+//                    desiredPairLocToDistance.put(new Pair(agentLoc1, agentLoc2), minDist);
+//                }
 //            }
-        }
-        desiredLeaderLocations = desiredPairLocToDistance.entrySet().stream().sorted(Map.Entry.comparingByValue())
-                .map(kvp -> kvp.getKey()).collect(Collectors.toList()).subList(0, Math.min(numLeaders, desiredPairLocToDistance.size()));
-    }
+////            if(pair!= null) {
+////                selectedPairs.put(pair.fst, pair.snd);
+////                desiredPairLocToDistance.put(closestAgentLoc, minDist);
+////            }
+//        }
+//        desiredLeaderLocations = desiredPairLocToDistance.entrySet().stream().sorted(Map.Entry.comparingByValue())
+//                .map(kvp -> kvp.getKey()).collect(Collectors.toList()).subList(0, Math.min(numLeaders, desiredPairLocToDistance.size()));
+//    }
 
 
     double getMean(List<Double> data) {

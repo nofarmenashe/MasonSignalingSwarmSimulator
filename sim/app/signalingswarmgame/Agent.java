@@ -33,12 +33,12 @@ public class Agent extends BaseAgent {
 				desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints(influencingLeader.position.loc, position.loc);
 			else
 				desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints( position.loc, influencingLeader.position.loc);
-			directionStepCounter = -swarm.dt;
+			directionStepCounter = 0;
 		}
-        else if(position.loc.x < 10) desiredDirection = new Double2D(1,0);
-        else if(position.loc.x > swarm.width - 10) desiredDirection = new Double2D(-1,0);
-        else if(position.loc.y < 10) desiredDirection = new Double2D(0,1);
-        else if(position.loc.y > swarm.height - 10) desiredDirection = new Double2D(0,-1);
+        else if(position.loc.x < 2) desiredDirection = new Double2D(1,0);
+        else if(position.loc.x > swarm.width - 2) desiredDirection = new Double2D(-1,0);
+        else if(position.loc.y < 2) desiredDirection = new Double2D(0,1);
+        else if(position.loc.y > swarm.height - 2) desiredDirection = new Double2D(0,-1);
         else {
             //Potential Forces
             List<BaseAgent> neighbors = AgentMovementCalculator.getAgentNeighbors(swarm, this, true);

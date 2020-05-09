@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 public class Leader extends BaseAgent {
     public boolean isLeaderSignaled;
     public int leaderIndex;
+    public Agent prevFocusedAgent = null;
 
     public Leader(int index) {
         leaderIndex = index;
@@ -30,17 +31,23 @@ public class Leader extends BaseAgent {
 
     public void step(SimState state) {
         Double2D desiredDirection;
+        Double2D desiredLocation;
         final SignalingSwarmGame swarm = (SignalingSwarmGame) state;
-//        if(leaderIndex == 0)
-//            swarm.setAgentsPairsDistances();
-        Double2D desiredLocation = getBestLocation(swarm);
-        if(desiredLocation == null)
-            desiredLocation = new Double2D(swarm.random.nextDouble() * swarm.width, swarm.random.nextDouble() * swarm.height);
 
+        Agent desiredAgent = getBestAgentToFocus(swarm);
+        if(desiredAgent == null) {
+            System.out.println("No agent selected " + swarm.desiredLeaderLocations);
+            desiredLocation = new Double2D(swarm.random.nextDouble() * swarm.width, swarm.random.nextDouble() * swarm.height);
+        } else {
+            desiredLocation = swarm.desiredLeaderLocations.get(desiredAgent);
+            swarm.desiredLeaderLocations.remove(desiredAgent);
+
+        }
+        prevFocusedAgent = desiredAgent;
         desiredDirection = AgentMovementCalculator.getDirectionBetweenPoints(position.loc, desiredLocation);
 
         double dist = AgentMovementCalculator.getDistanceBetweenPoints( desiredLocation, position.loc);
-        if(dist < 5) {
+        if(dist < swarm.signal_radius_v && !isLeaderInOtherDirection(desiredLocation, desiredAgent)) {
             isLeaderSignaled = true;
             sendSignalToInfluencedAgents(swarm);
         }
@@ -53,17 +60,27 @@ public class Leader extends BaseAgent {
         swarm.agents.setObjectLocation(this, currentPhysicalPosition.loc);
     }
 
-    private Double2D getBestLocation(SignalingSwarmGame swarm) {
-        double maxUtility = Double.NEGATIVE_INFINITY;
-        Double2D selectedLocation = null;
-        for (Agent a: swarm.swarmAgents) {
-            Pair<Double2D,Double> locationToUtility = DispersionUtilityCalculation.getAgentUtility(swarm, a);
-            if (maxUtility < locationToUtility.snd) {
-                maxUtility = locationToUtility.snd;
-                selectedLocation = locationToUtility.fst;
+    private boolean isLeaderInOtherDirection(Double2D selectedLoc, Agent a) {
+        double distToAgent = AgentMovementCalculator.getDistanceBetweenPoints(a.position.loc, position.loc);
+        double distToGoal = AgentMovementCalculator.getDistanceBetweenPoints(selectedLoc, position.loc);
+        return distToAgent < distToGoal;
+    }
+
+    private Agent getBestAgentToFocus(SignalingSwarmGame swarm) {
+        double minDistance = Double.MAX_VALUE;
+        Agent selectedAgent = null;
+        if(swarm.desiredLeaderLocations.containsKey(prevFocusedAgent))
+            return prevFocusedAgent;
+       List<Agent> prevAgents = swarm.leaderAgents.stream().map(leader -> leader.prevFocusedAgent).collect(Collectors.toList());
+        for (Map.Entry<Agent, Double2D> entry: swarm.desiredLeaderLocations.entrySet()) {
+            if(prevAgents.contains(entry.getKey())) continue;
+            double dist = AgentMovementCalculator.getDistanceBetweenPoints(entry.getValue(), position.loc);
+            if (dist < minDistance) {
+                minDistance = dist;
+                selectedAgent = entry.getKey();
             }
         }
-        return selectedLocation;
+        return selectedAgent;
     }
 
     private void sendSignalToInfluencedAgents(SignalingSwarmGame swarm) {
