@@ -24,11 +24,11 @@ public class DispersionUtilityCalculation {
         List<Double> orderedUtilities = locationsToUtility.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .map(kvp-> kvp.getValue()).collect(Collectors.toList());
-        double threshold = (swarm.numLeaders < swarm.numAgents)?
-                2 * orderedUtilities.get(swarm.numLeaders) - orderedUtilities.get(swarm.numLeaders - 1):
-                orderedUtilities.get(swarm.numLeaders - 1)  - 0.2;
+//        double threshold = (swarm.numLeaders < swarm.numAgents)?
+//                3 * orderedUtilities.get(swarm.numLeaders) - (2 * orderedUtilities.get(swarm.numLeaders - 1)):
+          double threshold = Math.min(swarm.getMedian(orderedUtilities), orderedUtilities.get(swarm.numLeaders - 1));
         List<Double2D> selectedLocations =  locationsToUtility.entrySet().stream()
-                .filter(kvp -> kvp.getValue() >= threshold)
+                .filter((kvp) -> kvp.getValue() >= threshold)
                 .map(kvp -> kvp.getKey()).collect(Collectors.toList());
         Map<Agent,Double2D> selectedAgents = (Map<Agent, Double2D>) agentToLocation.entrySet().stream()
                 .filter(kvp -> selectedLocations.contains(kvp.getValue()))
@@ -51,7 +51,7 @@ public class DispersionUtilityCalculation {
                     agent.position.loc, agent2.position.loc);
 
             weightedAvgDirection = weightedAvgDirection.add(direction.multiply(
-                    10*(dist+1)/(dist))
+                    (dist+1)/(dist))
             );
         }
 
@@ -61,13 +61,13 @@ public class DispersionUtilityCalculation {
         Double2D directionToRight = new Double2D(1,0);
         if(weightedAvgDirection.x != 0 && weightedAvgDirection.y != 0) {
             if (agent.position.loc.x >= swarm.width - 2)
-                weightedAvgDirection = weightedAvgDirection.add(directionToRight.multiply(1 /  10*((swarm.width - agent.position.loc.x)+1)/(swarm.width - agent.position.loc.x)));
+                weightedAvgDirection = weightedAvgDirection.add(directionToRight.multiply(1 / ((swarm.width - agent.position.loc.x)+1)/(swarm.width - agent.position.loc.x)));
             if (agent.position.loc.x <= 2)
-                weightedAvgDirection = weightedAvgDirection.add(directionToLeft.multiply(1 /10*((agent.position.loc.x)+1)/agent.position.loc.x));
+                weightedAvgDirection = weightedAvgDirection.add(directionToLeft.multiply(1 / ((agent.position.loc.x)+1)/agent.position.loc.x));
             if (agent.position.loc.y >= swarm.height - 2)
-                weightedAvgDirection = weightedAvgDirection.add(directionToBottom.multiply(1 / 10*((agent.position.loc.x)+1)/agent.position.loc.x));
+                weightedAvgDirection = weightedAvgDirection.add(directionToBottom.multiply(1 / ((agent.position.loc.x)+1)/agent.position.loc.x));
             if (agent.position.loc.y <= 2)
-                weightedAvgDirection = weightedAvgDirection.add(directionToTop.multiply(1 / 10*((swarm.height - agent.position.loc.y)+1)/(swarm.height - agent.position.loc.y)));
+                weightedAvgDirection = weightedAvgDirection.add(directionToTop.multiply(1 / ((swarm.height - agent.position.loc.y)+1)/(swarm.height - agent.position.loc.y)));
         }
         Double2D nextMovementDirection = AgentMovementCalculator.getNormalizedVector(weightedAvgDirection);
 

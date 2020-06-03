@@ -38,34 +38,40 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private String[] agentsDistancesList;
     private String signalsList;
 
-    public static int index = 150;
+    public static int index = 129;
 
     public static void main(String[] args) throws InterruptedException {
-        int n = 15;
+//        int n = 15;
         int l = 1;
         int sight = 10;
         int dt = 30;
-        while (index < 200) {
+        while (index < 150) {
             System.out.println(index);
             SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
             Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
+            for (int n = 5; n <= 30; n +=5) {
                 for (int leaders = 1; leaders <= 5; leaders ++) {
-                    for (int p = 0; p <= 10; p += 2) {
-                        sgwui.setParams(n, leaders, sight, LeaderPositioningApproach.Random, p / 10.0, l, dt);
+                    sgwui.setParams(n, leaders, sight, LeaderPositioningApproach.Random, 1.0, l, dt);
                     ((Console) simConsole).pressPlay();
                     while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
                     }
                 }
+//                    for (int p = 0; p <= 10; p += 2) {
+//                        sgwui.setParams(n, 1, sight, LeaderPositioningApproach.Random, p / 10.0, l, dt);
+//                    ((Console) simConsole).pressPlay();
+//                    while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
+//                    }
+            }
 
 //                for(int p = 0; p <= 10; p +=2){
 //                    sgwui.setParams(n, leaders, sight, LeaderPositioningApproach.Random, p / 10.0, l, dt);
 //                    ((Console) simConsole).pressPlay();
 //                    while (((Console) simConsole).getPlayState() != Console.PS_STOPPED) {
 //                    }
-//
-////                    }
+
+//                    }
 //                }
-            }
+//            }
             System.out.println("finish round " + index);
             index++;
         }
