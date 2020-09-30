@@ -34,22 +34,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java">
+        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
-              <caret line="118" selection-start-line="118" selection-end-line="118" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="50" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="50" />
+            <state relative-caret-position="272">
+              <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -57,35 +45,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="67" column="42" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="42" />
+            <state relative-caret-position="1666">
+              <caret line="102" column="114" selection-start-line="102" selection-start-column="100" selection-end-line="102" selection-end-column="114" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sim/engine/SimState.java">
+        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1615">
-              <caret line="109" column="16" selection-start-line="109" selection-start-column="16" selection-end-line="109" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+            <state relative-caret-position="68">
+              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
               <folding>
-                <element signature="e#4415#4416#0" expanded="true" />
-                <element signature="e#4443#4444#0" expanded="true" />
-                <element signature="e#7040#7041#0" expanded="true" />
-                <element signature="e#7068#7069#0" expanded="true" />
-                <element signature="e#7106#7107#0" expanded="true" />
-                <element signature="e#7155#7156#0" expanded="true" />
-                <element signature="e#9501#9502#0" expanded="true" />
-                <element signature="e#9531#9532#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -94,17 +66,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/newReports/simulationSetResults.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="7176" lean-forward="true" selection-start-line="7176" selection-end-line="7176" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioningApproach.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -112,33 +75,58 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="30" column="68" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="68" />
+            <state relative-caret-position="629">
+              <caret line="49" column="57" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderUtilityCalculator.java">
+        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="57" column="74" selection-start-line="57" selection-start-column="74" selection-end-line="57" selection-end-column="74" />
+            <state relative-caret-position="731">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioning.java">
+        <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Agent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="271" column="25" lean-forward="true" selection-start-line="271" selection-start-column="25" selection-end-line="271" selection-end-column="25" />
+            <state relative-caret-position="408">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Simulator2/MasonSignalingSwarmSimulator/sim/app/signalingswarmgame/BaseAgent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
               <folding>
-                <element signature="method#getPointInIntersectionArea#0;class#LeaderPositioning#0" />
-                <element signature="method#intersectTwoCircles#0;class#LeaderPositioning#0" />
-                <element signature="method#groupError#0;class#LeaderPositioning#0" />
-                <element signature="method#getPossibilityScore#0;class#LeaderPositioning#0" />
-                <element signature="method#generateAllSubGroups#0;class#LeaderPositioning#0" />
-                <element signature="method#possibleLeaderLocations#0;class#LeaderPositioning#0" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Simulator2/MasonSignalingSwarmSimulator/sim/util/Double2D.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Simulator2/MasonSignalingSwarmSimulator/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1309">
+              <caret line="81" selection-start-line="81" selection-end-line="81" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -149,43 +137,43 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="package-info" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>locate a</find>
-      <find>getTimestamp</find>
-      <find>getTi</find>
-      <find>&quot;*</find>
-      <find>finish</find>
-      <find>*</find>
-      <find>*****************</find>
-      <find>*******</find>
-      <find>locate</find>
-      <find>end</find>
-      <find>locateLeadersInPositions</find>
-      <find>setLea</find>
-      <find>initS</find>
-      <find>signa</find>
-      <find>sta</find>
-      <find>game</find>
-      <find>gameRe</find>
-      <find>InterGroups</find>
-      <find>createIntersectingGroups</find>
-      <find>100</find>
-      <find>1000</find>
-      <find>sys</find>
-      <find>inSigh</find>
-      <find>agentNeighborsByState</find>
-      <find>setSigh</find>
-      <find>.csv</find>
-      <find>snap</find>
+      <find>&lt; 1</find>
+      <find>prev</find>
+      <find>setAgentsPairsDistances</find>
+      <find>sorted</find>
+      <find>Collectors.toMap</find>
+      <find>desiredLeaderLocations</find>
+      <find>getTopUtilityPositions</find>
+      <find>getLocInBounderies</find>
+      <find>reached</find>
+      <find>-swarm.dt</find>
+      <find>influencingLeader</find>
+      <find>influencing</find>
+      <find>directionStepCounter</find>
+      <find>dist * dis</find>
+      <find>thre</find>
       <find>10000</find>
-      <find>getNeighborsBySightRadius</find>
-      <find>loo</find>
+      <find>getSwarmDistances</find>
+      <find>thres</find>
+      <find>avgDistThreshold</find>
+      <find>0.75</find>
+      <find>pre</find>
+      <find>sys</find>
+      <find>new si</find>
+      <find>re</find>
+      <find>reache</find>
+      <find>- 1</find>
+      <find>10</find>
+      <find>10*</find>
+      <find>sigh</find>
+      <find>sight</find>
     </findStrings>
     <replaceStrings>
       <replace>SignalingSwarmGame</replace>
@@ -193,11 +181,17 @@
       <replace>p_signal_accecptness_v</replace>
       <replace>last_direction</replace>
       <replace>original_direction</replace>
-      <replace>Double2D</replace>
       <replace>averagedDirection</replace>
       <replace>attractionDirection</replace>
       <replace>temp</replace>
       <replace>Thread.sleep(100)</replace>
+      <replace>varianceThreshold</replace>
+      <replace>neighborsPotentialField</replace>
+      <replace>.position.loc.x</replace>
+      <replace>.position.loc.y</replace>
+      <replace>convexHull</replace>
+      <replace>double</replace>
+      <replace>Double2D</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/sim/app/swarmgame</dir>
@@ -208,7 +202,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="radiusNeighbors" />
+        <entry key="$PROJECT_DIR$" value="dispersionProblem" />
       </map>
     </option>
   </component>
@@ -233,7 +227,6 @@
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/SwarmType.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentLocation.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingLeader.java" />
-        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/Agent.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingLeaderUtilityCalculator.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentPosition.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/BaseAgent.java" />
@@ -243,12 +236,19 @@
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioningAlgo.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/package-info.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioningApproach.java" />
-        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java" />
-        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java" />
-        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java" />
-        <option value="$PROJECT_DIR$/newReports/simulationSetResults.csv" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioning.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/DispersionAgentMovementCalculator.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/DispersionLeaderUtilityCalculator.java" />
+        <option value="$PROJECT_DIR$/ConvexHull.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/ConvexHull.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/DispersionUtilityCaclulation.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/Agent.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/DispersionUtilityCalculation.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java" />
+        <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java" />
+        <option value="$PROJECT_DIR$/newReports/simulationSetResults.csv" />
         <option value="$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java" />
       </list>
     </option>
@@ -266,18 +266,41 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="90" />
-    <option name="width" value="930" />
-    <option name="height" value="1080" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="1944" />
+    <option name="height" value="1104" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
-      <showMembers ProjectPane="true" />
+      <showMembers ProjectPane="false" />
       <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
+              <item name="mason" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
+              <item name="mason" type="616d4139:PackageViewModuleNode" />
+              <item name="sim" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
+              <item name="mason" type="616d4139:PackageViewModuleNode" />
+              <item name="sim" type="1f31426a:PackageElementNode" />
+              <item name="app.signalingswarmgame" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -310,91 +333,13 @@
               <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
               <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
               <item name="sim" type="462c0819:PsiDirectoryNode" />
-              <item name="signalingswarmgame" type="462c0819:PsiDirectoryNode" />
-              <item name="FlockingAgentMovementCalculator" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="sim" type="462c0819:PsiDirectoryNode" />
-              <item name="signalingswarmgame" type="462c0819:PsiDirectoryNode" />
-              <item name="Leader" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="sim" type="462c0819:PsiDirectoryNode" />
-              <item name="signalingswarmgame" type="462c0819:PsiDirectoryNode" />
-              <item name="LeaderPositioning" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="sim" type="462c0819:PsiDirectoryNode" />
-              <item name="signalingswarmgame" type="462c0819:PsiDirectoryNode" />
-              <item name="LeaderPositioningApproach" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="sim" type="462c0819:PsiDirectoryNode" />
-              <item name="signalingswarmgame" type="462c0819:PsiDirectoryNode" />
-              <item name="SignalingSwarmGame" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="sim" type="462c0819:PsiDirectoryNode" />
-              <item name="signalingswarmgame" type="462c0819:PsiDirectoryNode" />
-              <item name="SignalingSwarmGameWithUI" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="sim" type="462c0819:PsiDirectoryNode" />
               <item name="display" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
               <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
               <item name="sim" type="462c0819:PsiDirectoryNode" />
-              <item name="display" type="462c0819:PsiDirectoryNode" />
-              <item name="Console" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="sim" type="462c0819:PsiDirectoryNode" />
-              <item name="display" type="462c0819:PsiDirectoryNode" />
-              <item name="GUIState" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="sim" type="462c0819:PsiDirectoryNode" />
               <item name="engine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="sim" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
-              <item name="Schedule.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="sim" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
-              <item name="Schedule.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-              <item name="Schedule" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasonSignalingSwarmSimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="sim" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
-              <item name="SimState" type="1a9f42e2:ClassTreeNode" />
             </path>
             <path>
               <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
@@ -404,6 +349,35 @@
               <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
               <item name="&lt; 11 &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 11 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 11 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 11 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lang" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 11 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
@@ -425,37 +399,6 @@
               <item name="java.desktop" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="awt" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 11 &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="java.desktop" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="awt" type="462c0819:PsiDirectoryNode" />
-              <item name="Frame" type="1a9f42e2:ClassTreeNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="mason" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="mason" type="616d4139:PackageViewModuleNode" />
-              <item name="sim" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="MasonSignalingSwarmSimulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="mason" type="616d4139:PackageViewModuleNode" />
-              <item name="sim" type="1f31426a:PackageElementNode" />
-              <item name="app.signalingswarmgame" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -469,8 +412,8 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="masonsignalingswarmsimulator" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1585325435009" />
-    <property name="extract.method.default.visibility" value="private" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1601025961399" />
+    <property name="extract.method.default.visibility" value="public" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15136719" />
@@ -667,7 +610,56 @@
       <option name="project" value="LOCAL" />
       <updated>1582210494215</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="limited sensing radius settings">
+      <created>1585544707458</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1585544707458</updated>
+    </task>
+    <task id="LOCAL-00013" summary="dispersion w/o leader">
+      <created>1586185195113</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1586185195113</updated>
+    </task>
+    <task id="LOCAL-00014" summary="dispersion with one leader different p">
+      <created>1586588539540</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1586588539540</updated>
+    </task>
+    <task id="LOCAL-00015" summary="greedy signaling solution">
+      <created>1586873180160</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1586873180160</updated>
+    </task>
+    <task id="LOCAL-00016" summary="utility signaling solution for one leader">
+      <created>1587019239517</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1587019239517</updated>
+    </task>
+    <task id="LOCAL-00017" summary="improved model">
+      <created>1589051031391</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1589051031391</updated>
+    </task>
+    <task id="LOCAL-00018" summary="completed dispersion">
+      <created>1591180782773</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1591180782773</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
@@ -680,9 +672,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="59" y="-7" width="1228" height="735" extended-state="6" />
+    <frame x="59" y="-7" width="1229" height="735" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8772803" visible="true" weight="0.30993152" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8772803" visible="true" weight="0.1950385" />
       <window_info id="Structure" order="1" sideWeight="0.22910216" side_tool="true" weight="0.2322524" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -691,17 +684,17 @@
       <window_info id="Favorites" order="6" sideWeight="0.5014663" side_tool="true" weight="0.40174672" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992722" weight="0.52902156" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4411277" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4992722" visible="true" weight="0.48922056" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.46600333" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32669982" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.496361" weight="0.32504147" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.496361" weight="0.3233831" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.503639" side_tool="true" weight="0.32589287" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3233831" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.33167496" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.66832507" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.33001658" />
       <window_info anchor="bottom" id="Inspection Results" order="11" sideWeight="0.72634643" weight="0.54464287" />
-      <window_info anchor="bottom" id="Problems" order="12" sideWeight="0.6448326" weight="0.47097844" />
+      <window_info anchor="bottom" id="Problems" order="12" sideWeight="0.6448326" weight="0.46932006" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.32896653" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24715163" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
@@ -714,7 +707,7 @@
       <window_info anchor="right" id="Palette&#9;" order="9" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8772803" visible="true" weight="0.28834355" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8772803" visible="true" weight="0.21653879" />
       <window_info id="Structure" order="1" sideWeight="0.22910216" side_tool="true" weight="0.2322524" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -723,22 +716,22 @@
       <window_info id="Favorites" order="6" sideWeight="0.5014663" side_tool="true" weight="0.40174672" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4992722" visible="true" weight="0.55058044" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4411277" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4992722" visible="true" weight="0.38474295" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.46600333" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32669982" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.496361" weight="0.32504147" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.496361" weight="0.3233831" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.503639" side_tool="true" weight="0.32589287" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3897181" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.33167496" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.21558872" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.33001658" />
       <window_info anchor="bottom" id="Inspection Results" order="11" sideWeight="0.72634643" weight="0.54464287" />
-      <window_info anchor="bottom" id="Problems" order="12" sideWeight="0.6448326" weight="0.47097844" />
+      <window_info anchor="bottom" id="Problems" order="12" sideWeight="0.6448326" weight="0.46932006" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.32896653" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Ant Build" order="4" weight="0.24715163" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24715163" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="make" order="5" weight="0.60647774" />
       <window_info anchor="right" id="Maven" order="6" weight="0.32874495" />
       <window_info anchor="right" id="Theme Preview" order="7" />
@@ -758,6 +751,17 @@
               <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
                 <collection />
               </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dispersionProblem" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
               <option name="COLUMN_ORDER">
                 <list>
                   <option value="0" />
@@ -775,7 +779,18 @@
       <map>
         <entry key="Branch">
           <value>
-            <list />
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="dispersionProblem" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
         <entry key="User">
@@ -797,16 +812,41 @@
     <MESSAGE value="error position of individuals" />
     <MESSAGE value="position with intersection" />
     <MESSAGE value="intersection improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="intersection improvements" />
+    <MESSAGE value="limited sensing radius settings" />
+    <MESSAGE value="dispersion w/o leader" />
+    <MESSAGE value="dispersion with one leader different p" />
+    <MESSAGE value="greedy signaling solution" />
+    <MESSAGE value="utility signaling solution for one leader" />
+    <MESSAGE value="improved model" />
+    <MESSAGE value="completed dispersion" />
+    <option name="LAST_COMMIT_MESSAGE" value="completed dispersion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioning.java</url>
-          <line>276</line>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/../Simulator2/MasonSignalingSwarmSimulator/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java</url>
+          <line>286</line>
           <properties />
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/../Simulator2/MasonSignalingSwarmSimulator/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java</url>
+          <line>164</line>
+          <properties />
+          <option name="timeStamp" value="147" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../Simulator2/MasonSignalingSwarmSimulator/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java</url>
+          <line>74</line>
+          <properties />
+          <option name="timeStamp" value="159" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="161" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -818,9 +858,6 @@
       </breakpoints-dialog>
     </breakpoint-manager>
     <watches-manager>
-      <configuration name="Application">
-        <watch expression="index" language="JAVA" />
-      </configuration>
       <configuration name="JarApplication">
         <watch expression="leaderLoc" />
       </configuration>
@@ -839,6 +876,31 @@
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>DispersionUtilityCalculation.getTopUtilityPositions(swarm)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>direction.multiply(1 / dist)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>2 / Math.pow(euclideanDistance, 3)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Math.pow(euclideanDistance, 3)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>distanceVector.multiply(1 / Math.pow(euclideanDistance, 3)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>swarmAgents.get(7).currentPhysicalPosition.getMovementDirection()</expression-string>
         <language-id>JAVA</language-id>
@@ -863,250 +925,232 @@
         <custom-info>sim.app.signalingswarmgame.AgentPosition,sim.app.signalingswarmgame.Leader,java.util.ArrayList,sim.app.signalingswarmgame.SignalingSwarmGame</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>swarmAgents.get(3).currentPhysicalPosition.getMovementDirection()</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>sim.app.signalingswarmgame.AgentPosition,sim.app.signalingswarmgame.Leader,java.util.ArrayList,sim.app.signalingswarmgame.SignalingSwarmGame</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>swarmAgents.get(2).currentPhysicalPosition.getMovementDirection()</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>sim.app.signalingswarmgame.AgentPosition,sim.app.signalingswarmgame.Leader,java.util.ArrayList,sim.app.signalingswarmgame.SignalingSwarmGame</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>swarmAgents.get(1).currentPhysicalPosition.getMovementDirection()</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>sim.app.signalingswarmgame.AgentPosition,sim.app.signalingswarmgame.Leader,java.util.ArrayList,sim.app.signalingswarmgame.SignalingSwarmGame</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>swarmAgents.get(0).currentPhysicalPosition.getMovementDirection()</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>sim.app.signalingswarmgame.AgentPosition,sim.app.signalingswarmgame.Leader,java.util.ArrayList,sim.app.signalingswarmgame.SignalingSwarmGame</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>leaderAgents.get(0).currentPhysicalPosition.getMovementDirection()</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>sim.app.signalingswarmgame.AgentPosition,sim.app.signalingswarmgame.Leader,java.util.ArrayList,sim.app.signalingswarmgame.SignalingSwarmGame</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_3_0.01_IndirectIntersection.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_IndirectIntersection _10.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_IndirectIntersection _30.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_0.01_IndirectIntersection_2.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_0.10_IndirectIntersection_2.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_0.50_IndirectIntersection_2.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_1.00_IndirectIntersection_2.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_0.01_IndirectIntersection.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_1.00_IndirectIntersection.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_0.50_IndirectIntersection.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_0.10_IndirectIntersection.png" />
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/Dictionary.java">
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/DispersionAgentMovementCalculator.java" />
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentPosition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-731">
-          <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/package-info.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/jdk/internal/util/Preconditions.java">
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderUtilityCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        <state relative-caret-position="-136">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/DispersionLeaderUtilityCalculator.java" />
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingLeaderUtilityCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="76" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_25_10.00_1.00.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_3_20.00_1.00.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_5_20.00_1.00.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_3_20.00_0.60.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_20_20.00_0.20.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_8_20.00_0.00.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/simulationSetResults -copy.csv" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_5_10.00_1.00.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_10_20.00_0.00.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_10_20.00_0.20.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_8_20.00_0.40.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_10_10.00_1.00.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_30_20.00_1.00.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_30_20.00_0.80.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_20_20.00_0.00.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_100_10_20.00_0.40.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_100_10_20.00_0.60.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_100_10_20.00_0.80.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_100_30_60.00_1.00.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_101_5_10.00_1.00.png" />
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/stream/Collectors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="1456" column="30" selection-start-line="1456" selection-start-column="30" selection-end-line="1456" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_101_5_20.00_0.20.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_101_5_20.00_0.60.png" />
+    <entry file="file://$PROJECT_DIR$/newReports/snapshot_101_10_20.00_0.00.png" />
+    <entry file="file://$PROJECT_DIR$/sim/display/GUIState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="144" column="22" selection-start-line="144" selection-start-column="22" selection-end-line="144" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ec/util/MersenneTwisterFast.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-546">
-          <caret line="1174" column="15" selection-start-line="1174" selection-start-column="15" selection-end-line="1174" selection-end-column="15" />
+        <state relative-caret-position="289">
+          <caret line="204" column="53" selection-start-line="204" selection-start-column="51" selection-end-line="204" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_1_GA _30.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_1_GA _10.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_1_1_0.00_GA.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_GA _30.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_0.00_GA.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_5_GA _30.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_1_GA _10.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_7_GA _30.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_7_GA _10.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_7_1.00_IndirectIntersection.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_5_IndirectIntersection _10.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_5_1.00_IndirectIntersection.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_3_IndirectIntersection _30.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_1_0.50_IndirectIntersection.png" />
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_2_3_0.10_IndirectIntersection.png" />
-    <entry file="file://$PROJECT_DIR$/sim/engine/Schedule.java">
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/jdk/internal/util/Preconditions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="194" column="39" lean-forward="true" selection-start-line="194" selection-start-column="39" selection-end-line="194" selection-end-column="39" />
+        <state relative-caret-position="612">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/masonsignalingswarmsimulator.xml">
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/stream/Stream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        <state relative-caret-position="-698">
+          <caret line="554" column="22" selection-start-line="554" selection-start-column="22" selection-end-line="554" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/display/Console.java">
+    <entry file="file://$PROJECT_DIR$/newReports/simulationSetResults - p 1.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="2565" column="29" selection-start-line="2565" selection-start-column="17" selection-end-line="2565" selection-end-column="29" />
+        <state relative-caret-position="3574">
+          <caret line="2963" column="81" selection-start-line="2963" selection-start-column="81" selection-end-line="2963" selection-end-column="81" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/display/GUIState.java">
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/Collection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="685" column="19" selection-start-line="685" selection-start-column="19" selection-end-line="685" selection-end-column="19" />
-          <folding>
-            <element signature="e#30935#30936#0" expanded="true" />
-            <element signature="e#30992#30993#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="5372">
+          <caret line="342" column="12" selection-start-line="342" selection-start-column="12" selection-end-line="342" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.desktop/java/awt/Frame.java">
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="791" column="28" selection-start-line="791" selection-start-column="28" selection-end-line="791" selection-end-column="28" />
-          <folding>
-            <element signature="e#26762#26763#0" expanded="true" />
-            <element signature="e#26843#26844#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="8228">
+          <caret line="507" column="13" selection-start-line="507" selection-start-column="13" selection-end-line="507" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_7_0.50_IndirectIntersection.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_7_0.10_IndirectIntersection.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newReports/snapshot_0_7_0.00_GA.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Agent.java">
+    <entry file="file://$PROJECT_DIR$/sim/engine/SimState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="408">
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SwarmType.java">
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/DispersionUtilityCalculation.java" />
+    <entry file="file://$PROJECT_DIR$/../Simulator2/MasonSignalingSwarmSimulator/sim/app/signalingswarmgame/Leader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingLeaderUtilityCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-82">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="118" selection-start-line="118" selection-end-line="118" />
+        <state relative-caret-position="1037">
+          <caret line="114" selection-start-line="114" selection-end-line="114" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="50" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/engine/SimState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="109" column="16" selection-start-line="109" selection-start-column="16" selection-end-line="109" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="68" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderUtilityCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="57" column="74" selection-start-line="57" selection-start-column="74" selection-end-line="57" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioningApproach.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/LeaderPositioning.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="271" column="25" lean-forward="true" selection-start-line="271" selection-start-column="25" selection-end-line="271" selection-end-column="25" />
+        <state relative-caret-position="612">
+          <caret line="179" column="54" selection-start-line="179" selection-start-column="32" selection-end-line="179" selection-end-column="54" />
           <folding>
-            <element signature="method#getPointInIntersectionArea#0;class#LeaderPositioning#0" />
-            <element signature="method#intersectTwoCircles#0;class#LeaderPositioning#0" />
-            <element signature="method#groupError#0;class#LeaderPositioning#0" />
-            <element signature="method#getPossibilityScore#0;class#LeaderPositioning#0" />
-            <element signature="method#generateAllSubGroups#0;class#LeaderPositioning#0" />
-            <element signature="method#possibleLeaderLocations#0;class#LeaderPositioning#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="n#!!doc;n#EPSILON#0;n#LeaderPositioning#0" />
+            <element signature="method#initializeLeadersPositionsGAApproach#0;class#LeaderPositioning#0" />
+            <element signature="method#calculateChromosomeFitness#0;class#LeaderPositioning#0" />
+            <element signature="method#getInitialPossiblePositions#0;class#LeaderPositioning#0" />
+            <element signature="e#14214#14228#0" />
+            <element signature="method#initializeLeadersPositionsErrorApproach#0;class#LeaderPositioning#0" />
+            <element signature="e#16321#16335#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java">
+    <entry file="file://$PROJECT_DIR$/../Simulator2/MasonSignalingSwarmSimulator/sim/app/signalingswarmgame/Agent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+        <state relative-caret-position="340">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           <folding>
-            <element signature="e#4415#4416#0" expanded="true" />
-            <element signature="e#4443#4444#0" expanded="true" />
-            <element signature="e#7040#7041#0" expanded="true" />
-            <element signature="e#7068#7069#0" expanded="true" />
-            <element signature="e#7106#7107#0" expanded="true" />
-            <element signature="e#7155#7156#0" expanded="true" />
-            <element signature="e#9501#9502#0" expanded="true" />
-            <element signature="e#9531#9532#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="67" column="42" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="42" />
+        <state relative-caret-position="1666">
+          <caret line="102" column="114" selection-start-line="102" selection-start-column="100" selection-end-line="102" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Leader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="49" column="57" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/AgentMovementCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/Agent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Simulator2/MasonSignalingSwarmSimulator/sim/app/signalingswarmgame/BaseAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Simulator2/MasonSignalingSwarmSimulator/sim/util/Double2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Simulator2/MasonSignalingSwarmSimulator/sim/app/signalingswarmgame/FlockingAgentMovementCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGameWithUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/app/signalingswarmgame/SignalingSwarmGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/newReports/simulationSetResults.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="7176" lean-forward="true" selection-start-line="7176" selection-end-line="7176" />
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>

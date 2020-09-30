@@ -288,10 +288,10 @@ public class SignalingSwarmGame extends SimState {
             double minDistanceFromLeader = Integer.MAX_VALUE;
             for(Leader leader: leaderAgents) {
                 double dis = AgentMovementCalculator.getDistanceBetweenPoints(leader.position.loc, agent.position.loc);
-                if ( dis < minDistanceFromLeader)
+                if ( dis < minDistanceFromLeader )
                 minDistanceFromLeader = dis;
             }
-            if(minDistanceFromLeader > sight_radius_v * 2)
+            if(AgentMovementCalculator.distanceFromGoal(this, agent) > 0.5)
                 lostCounter++;
         }
         return lostCounter / (double) numAgents;

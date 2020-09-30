@@ -38,20 +38,20 @@ public class SignalingSwarmGameWithUI extends GUIState {
     private String[] agentsDistancesList;
     private String signalsList;
 
-    public static int index = 0;
+    public static int index = 72;
 
     public static void main(String[] args) throws InterruptedException {
 //        int n = 7;
 //        int p = 10;
         int l = 1;
         int leaders = 1;
-        while (index < 50) {
+        while (index < 100) {
             System.out.println(index);
             SignalingSwarmGameWithUI sgwui = new SignalingSwarmGameWithUI();
             Controller simConsole = sgwui.createController();  // randomizes by currentTimeMillis
-            for (int n = 1; n <= 15; n+=3) {
+            for (int n = 4; n <= 15; n+=3) {
                 for (int p = 1; p < 10; p+=2) {
-            for (int sight = 5; sight <= 30; sight += 5) {
+                    for (int sight = 10; sight <= 50; sight += 10) {
 //            for (int leaders = 7; leaders > 0; leaders -= 2) {
 //                System.out.println(leaders);
 
@@ -121,7 +121,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
         ((SignalingSwarmGame) state).numAgents = n;
         ((SignalingSwarmGame) state).steps_lookahead_v = l;
         ((SignalingSwarmGame) state).numLeaders = leaders;
-        ((SignalingSwarmGame) state).setSightRadius(sight);
+        ((SignalingSwarmGame) state).setSightRadius(20);
         ((SignalingSwarmGame) state).setSignalRadius(sight);
         ((SignalingSwarmGame) state).leaderPositioningApproach = posAlgo;
         ((SignalingSwarmGame) state).initSimulation();
@@ -266,7 +266,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
                 swarm.getAcceptLeadersSignalCorrectly(),
                 swarm.getStepsLookahead(),
                 swarm.getSightSize(),
-                swarm.getSightRadius() / swarm.width,
+                swarm.getSignalRadius(),
                 firstSignalStep,
                 signalsCount,
                 currentStep,
@@ -368,7 +368,7 @@ public class SignalingSwarmGameWithUI extends GUIState {
                     new AdjustablePortrayal2D(
                             new MovablePortrayal2D(
                                     new CircledPortrayal2D(
-                                            new LabelledPortrayal2D(basic, name), 0, swarm.sight_radius_v * 2, Color.BLUE, false))));
+                                            new LabelledPortrayal2D(basic, name), 0, (swarm.agents.allObjects.objs[x] instanceof Leader? swarm.signal_radius_v: swarm.sight_radius_v) * 2, Color.BLUE, false))));
             trailsPortrayal.setPortrayalForObject(swarm.agents.allObjects.objs[x], basic);
             signalsPortrayal.setPortrayalForObject(swarm.agents.allObjects.objs[x], new OvalPortrayal2D(color));
 
