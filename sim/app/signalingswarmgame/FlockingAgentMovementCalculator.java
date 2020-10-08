@@ -90,7 +90,7 @@ public class FlockingAgentMovementCalculator extends AgentMovementCalculator{
         neighbors.sort((a1, a2) -> (int) (100 * (getDistanceBetweenPoints(agent.position.loc, ((BaseAgent)a1).position.loc) -
                         getDistanceBetweenPoints(agent.position.loc, ((BaseAgent)a2).position.loc))));
 
-        return neighbors.subList(0,
+        return agent instanceof Leader? neighbors: neighbors.subList(0,
                 Math.min(swarm.sight_size_v, neighbors.size()));
     }
 
