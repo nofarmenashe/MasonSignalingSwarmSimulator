@@ -49,8 +49,11 @@ public abstract class LeaderUtilityCalculator {
         double noSignalUtility =  currStepNoSignalUtility + (Next_STEP_RATE * Math.max(nextStepNoSignalUtility.fst, nextStepNoSignalUtility.snd));
 
         double signalUtility = getSignalUtility(swarm, leader, stepsLookahead, possiblePositions);
+//        System.out.println(signalUtility);
+//        System.out.println(noSignalUtility);
+        System.out.println("STEP");
 
-        return new Pair<>(signalUtility, noSignalUtility);
+        return new Pair<>(signalUtility - swarm.getSignalCost(), noSignalUtility);
     }
 
     private static double getSignalUtility(SignalingSwarmGame swarm, Leader leader, int stepsLookahead, Map<AgentState, Map<Agent, AgentPosition>> possiblePositions) {
@@ -67,6 +70,8 @@ public abstract class LeaderUtilityCalculator {
                     (Next_STEP_RATE * Math.max(nextStepOptionUtility.fst, nextStepOptionUtility.snd));
 
             double optionProbability = getOptionProbability(optionIndex, agentsInSight.size(), swarm.p_signal_accecptness_v);
+            System.out.print(optionProbability);
+            System.out.println(optionUtility);
 
             signalUtility += optionProbability * optionUtility;
         }
@@ -123,7 +128,6 @@ public abstract class LeaderUtilityCalculator {
             boolean isSignalAccepted = (optionIndex % 2) == 1;
             AgentState agentState = isSignalAccepted? AgentState.AcceptedSignal: AgentState.MisunderstoodSignal;
             positions.put((Agent)neighbor, possiblePositions.get(agentState).get(neighbor));
-
             optionIndex = optionIndex / 2;
         }
 

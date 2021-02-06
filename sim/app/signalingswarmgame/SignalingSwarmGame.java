@@ -40,6 +40,8 @@ public class SignalingSwarmGame extends SimState {
     public double sight_radius_v = 11.0;
     public double signal_radius_v = Double.MAX_VALUE;
     public double neighbor_discount_factor_v = 0;
+    public double signal_cost_v = 0;
+    public boolean always_signal_v = false;
     //endregion
 
     //region Simulation Fields
@@ -120,9 +122,16 @@ public class SignalingSwarmGame extends SimState {
     public double getSignalRadius() {
         return signal_radius_v;
     }
-
-    public void setSignalRadius(double signalRadius) {
+    public void  setSignalRadius(double signalRadius) {
         signal_radius_v = signalRadius;
+    }
+
+
+    public double getSignalCost() {
+        return signal_cost_v;
+    }
+    public void setSignalCost(double signalCost) {
+        signal_cost_v = signalCost;
     }
     //endregion
 
